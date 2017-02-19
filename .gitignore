@@ -1,0 +1,7 @@
+/.idea/*
+/vendor/*
+/config/app.php
+/tmp/*
+/logs/*
+/webroot/plugins/*
+!/webroot/plugins/.gitkeep

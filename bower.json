@@ -1,0 +1,26 @@
+{
+  "name": "escola.fr",
+  "authors": [
+    "Mathieu Bour <mathieu.tin.bour@gmail.com>"
+  ],
+  "description": "The Escola website",
+  "main": "index.php",
+  "keywords": [
+    "Schoool",
+    "Curses"
+  ],
+  "license": "proprietary",
+  "homepage": "https://escola.fr",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "webroot/plugins",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
