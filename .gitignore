@@ -1,6 +1,7 @@
 /.idea/*
 /vendor/*
 /config/app.php
+/node_modules/*
 /tmp/*
 /logs/*
 /webroot/plugins/*

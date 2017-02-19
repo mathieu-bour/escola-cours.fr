@@ -1,0 +1,6 @@
+{
+  "css": [
+    "webroot/plugins/bootstrap/dist/css/bootstrap.css",
+    "webroot/css/public/main.css"
+  ]
+}

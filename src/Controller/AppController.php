@@ -21,6 +21,7 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Security');
         $this->loadComponent('Csrf');
+        $this->loadComponent('Auth');
     }
 
     public function beforeRender(Event $event)
