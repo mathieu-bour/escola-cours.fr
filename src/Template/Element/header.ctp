@@ -9,7 +9,7 @@
                     <ul class="nav-list">
                         <li class="nav-item"><a href="#">Qui somme-nous ?</a></li>
                         <li class="nav-item"><a href="#">Recrutement</a></li>
-                        <li class="nav-item"><a href="#">Devenir prof</a></li>
+                        <li class="nav-item"><a href="#">Enseigner</a></li>
                         <li class="nav-item"><a href="#">Nos partenaires</a></li>
                     </ul>
                 </nav>

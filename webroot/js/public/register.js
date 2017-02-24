@@ -104,7 +104,7 @@ $coursesContainer.on('click', '.remove-course', function (e) {
 /*
  * On submit action, create a json string with the selected courses
  */
-$userRegisterForm.on('submit', function (e) {
+$userRegisterForm.on('submit', function () {
     var courses = [];
 
     $('.course').each(function () {
@@ -114,7 +114,7 @@ $userRegisterForm.on('submit', function (e) {
         courses.push({
             level: level,
             discipline: discipline
-        })
+        });
     });
 
     $(this).find('input[name="courses"]').val(JSON.stringify(courses));
