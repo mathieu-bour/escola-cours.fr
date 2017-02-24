@@ -1,7 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: mathieu
- * Date: 19/02/17
- * Time: 19:13
- */
+<footer class="footer">
+    <div class="container">
+        <p class="copyright">Copyright &copy; 2017 | Escola SARL</p>
+    </div>
+</footer>

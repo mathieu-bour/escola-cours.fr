@@ -36,11 +36,9 @@ class LevelsTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
-        $this->belongsToMany('Users', [
-            'foreignKey' => 'level_id',
-            'targetForeignKey' => 'user_id',
-            'joinTable' => 'levels_users'
-        ]);
+        $this->hasMany('Courses');
+        $this->belongsToMany('Disciplines');
+        $this->belongsToMany('Users');
     }
 
     /**

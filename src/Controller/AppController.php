@@ -12,6 +12,7 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
+
     public function initialize()
     {
         parent::initialize();
@@ -22,6 +23,8 @@ class AppController extends Controller
         $this->loadComponent('Security');
         $this->loadComponent('Csrf');
         $this->loadComponent('Auth');
+
+
     }
 
     public function beforeRender(Event $event)

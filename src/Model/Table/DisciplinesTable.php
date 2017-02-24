@@ -32,15 +32,13 @@ class DisciplinesTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('disciplines');
-        $this->displayField('name');
-        $this->primaryKey('id');
+        $this->setTable('disciplines');
+        $this->setDisplayField('name');
+        $this->setPrimaryKey('id');
 
-        $this->belongsToMany('Users', [
-            'foreignKey' => 'discipline_id',
-            'targetForeignKey' => 'user_id',
-            'joinTable' => 'disciplines_users'
-        ]);
+        // Relations
+        $this->hasMany('Courses');
+        $this->belongsToMany('Levels');
     }
 
     /**

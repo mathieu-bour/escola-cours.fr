@@ -33,18 +33,16 @@ class LessonsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('lessons');
-        $this->displayField('id');
-        $this->primaryKey('id');
+        $this->setTable('lessons');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
 
-        $this->belongsTo('Teachers', [
+        $this->belongsTo('Users', [
             'foreignKey' => 'teacher_id'
         ]);
-        $this->belongsToMany('Users', [
-            'foreignKey' => 'lesson_id',
-            'targetForeignKey' => 'user_id',
-            'joinTable' => 'lessons_users'
-        ]);
+        $this->belongsTo('Users');
+        $this->belongsTo('Discipline');
+        $this->belongsTo('Levels');
     }
 
     /**

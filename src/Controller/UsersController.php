@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller;
 
+use Cake\Event\Event;
+
 /**
  * Users Controller
  *
@@ -8,9 +10,19 @@ namespace App\Controller;
  */
 class UsersController extends AppController
 {
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+
+        $this->Auth->allow(['login', 'register']);
+    }
+
     public function register()
     {
-
+        if ($this->request->is('post')) {
+            debug($this->request->getData());
+            die();
+        }
     }
 
     public function login()

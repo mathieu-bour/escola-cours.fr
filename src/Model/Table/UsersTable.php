@@ -38,21 +38,7 @@ class UsersTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->belongsToMany('Disciplines', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'discipline_id',
-            'joinTable' => 'disciplines_users'
-        ]);
-        $this->belongsToMany('Lessons', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'lesson_id',
-            'joinTable' => 'lessons_users'
-        ]);
-        $this->belongsToMany('Levels', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'level_id',
-            'joinTable' => 'levels_users'
-        ]);
+        $this->hasMany('Courses');
     }
 
     /**
