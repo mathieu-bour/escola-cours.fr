@@ -22,6 +22,8 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "owl.carousel": "^2.2.0"
+    "owl.carousel": "^2.2.0",
+    "beemuse": "^0.3.0",
+    "font-awesome": "^4.7.0"
   }
 }

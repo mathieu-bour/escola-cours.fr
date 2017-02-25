@@ -10,9 +10,8 @@
         <!-- CSS -->
         <?= $this->Html->css([
             'https://fonts.googleapis.com/css?family=Open+Sans:400,600',
-            '/plugins/bootstrap/dist/css/bootstrap',
             '/plugins/owl.carousel/dist/assets/owl.carousel.min',
-            'public/main'
+            'public'
         ]); ?>
     </head>
 

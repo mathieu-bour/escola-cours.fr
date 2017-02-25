@@ -20,7 +20,13 @@ class UsersController extends AppController
     public function register()
     {
         if ($this->request->is('post')) {
-            debug($this->request->getData());
+            $user = $this->request->getData();
+            $courses = json_decode($user['courses'], true);
+
+            $user = $this->Users->newEntity($user);
+            unset($user['courses']);
+            debug($user);
+            debug($courses);
             die();
         }
     }

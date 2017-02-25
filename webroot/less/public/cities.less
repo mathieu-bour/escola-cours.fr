@@ -1,0 +1,25 @@
+.city {
+    position: relative;
+    width: 360px;
+    height: 360px;
+
+    .city-bg, .city-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .city-content {
+        z-index: 2;
+        text-align: center;
+
+        .city-name {
+            margin: 180px 0 15px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+    }
+}

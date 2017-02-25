@@ -1,59 +1,103 @@
+<section class="bg-graphing-paper">
+    <div class="container">
+        <h1 class="page-title">Inscription</h1>
+    </div>
+</section>
+
 <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="paper paper-curl-right">
+                    <?= $this->Html->image('//placehold.it/320'); ?>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h2>Comment profiter des services d'Escola ?</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum eveniet odio placeat
+                    praesentium recusandae rem, velit veritatis voluptates voluptatum! Consequuntur cum et eveniet
+                    fugiat iste, maiores modi odit quaerat sint?</p>
+
+                <div class="callout callout-primary">
+                    <h4>Titre</h4>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum eveniet odio placeat
+                        praesentium recusandae rem, velit veritatis voluptates voluptatum! Consequuntur cum et eveniet
+                        fugiat iste, maiores modi odit quaerat sint?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-gray-lighter">
     <div class="container">
         <?= $this->Form->create(null, ['id' => 'user-register-form']); ?>
         <?php $this->Form->unlockField('courses'); ?>
 
-        <h3>Profil</h3>
-        <h4>Je suis :</h4>
-        <?= $this->Form->radio('type', ['student' => 'Élève', 'teacher' => 'Professeur']); ?>
 
-        <div class="row">
-            <div class="col-md-6">
-                <?= $this->Form->input('lastname', ['label' => 'Nom']); ?>
-                <?= $this->Form->input('email', ['label' => 'Adresse e-mail']); ?>
-            </div>
-            <div class="col-md-6">
-                <?= $this->Form->input('firstname', ['label' => 'Prénom']); ?>
-                <?= $this->Form->input('telephone', ['label' => 'Téléphone']); ?>
-            </div>
-        </div>
+        <h3 class="title-lined"><span class="bg-gray-lighter">Profil</span></h3>
+        <div class="form-block">
+            <h4>Je suis :</h4>
+            <?= $this->Form->radio('type', [
+                'student' => 'Élève',
+                'teacher' => 'Professeur'
+            ], [
+                'default' => 'student'
+            ]); ?>
 
-        <?= $this->Form->input('address', [
-            'type' => 'textarea',
-            'label' => 'Adresse postale complète',
-            'rows' => 2,
-            'placeholder' => "6 rue de la Paix\n57000 Metz"
-        ]); ?>
-
-
-        <h3>Mot de passe</h3>
-        <div class="row">
-            <div class="col-md-6">
-                <?= $this->Form->input('password', [
-                    'label' => 'Mot de passe'
-                ]); ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <?= $this->Form->input('lastname', ['label' => 'Nom']); ?>
+                    <?= $this->Form->input('email', ['label' => 'Adresse e-mail']); ?>
+                </div>
+                <div class="col-md-6">
+                    <?= $this->Form->input('firstname', ['label' => 'Prénom']); ?>
+                    <?= $this->Form->input('telephone', ['label' => 'Téléphone']); ?>
+                </div>
             </div>
-            <div class="col-md-6">
-                <?= $this->Form->input('password_confirm', [
-                    'type' => 'password',
-                    'label' => 'Confirmation du mot de passe'
-                ]); ?>
-            </div>
+
+            <?= $this->Form->input('address', [
+                'type' => 'textarea',
+                'label' => 'Adresse postale complète',
+                'rows' => 2,
+                'placeholder' => "6 rue de la Paix\n57000 Metz"
+            ]); ?>
         </div>
 
 
-        <h3>Cours recherchés</h3>
-        <div id="courses-container"></div>
+        <h3 class="title-lined"><span class="bg-gray-lighter">Mot de passe</span></h3>
+        <div class="form-block">
+            <div class="row">
+                <div class="col-md-6">
+                    <?= $this->Form->input('password', [
+                        'label' => 'Mot de passe'
+                    ]); ?>
+                </div>
+                <div class="col-md-6">
+                    <?= $this->Form->input('password_confirm', [
+                        'type' => 'password',
+                        'label' => 'Confirmation du mot de passe'
+                    ]); ?>
+                </div>
+            </div>
+        </div>
 
-        <?= $this->Form->input('courses', [
-            'type' => 'hidden'
-        ]); ?>
 
+        <h3 class="title-lined"><span class="bg-gray-lighter">Cours recherchés</span></h3>
+        <div class="form-block">
+            <div id="courses-container"></div>
 
-        <button class="btn btn-primary" id="add-course"> Ajouter un cours</button>
+            <?= $this->Form->input('courses', [
+                'type' => 'hidden'
+            ]); ?>
+
+            <button class="btn btn-primary" id="add-course"> Ajouter un cours</button>
+        </div>
+
 
         <div class="text-center">
-            <button class="btn btn-lg btn-success"> Valider mon inscription</button>
+            <button class="btn btn-lg btn-primary"> Valider mon inscription</button>
         </div>
         <?= $this->Form->end(); ?>
     </div>
