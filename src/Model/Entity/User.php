@@ -2,10 +2,13 @@
 namespace App\Model\Entity;
 
 use Cake\Auth\DefaultPasswordHasher;
+use Cake\I18n\FrozenDate;
 use Cake\ORM\Entity;
 
 /**
  * User Entity
+ *
+ * @author Mathieu Bour
  *
  * @property int $id
  * @property string $email
@@ -13,13 +16,14 @@ use Cake\ORM\Entity;
  * @property string $type
  * @property string $lastname
  * @property string $firstname
- * @property string $address
  * @property string $telephone
+ * @property string $address
+ * @property string $zip_code
+ * @property string $city
  * @property int $lesson_count
+ * @property FrozenDate $created
  *
- * @property \App\Model\Entity\Discipline[] $disciplines
- * @property \App\Model\Entity\Lesson[] $lessons
- * @property \App\Model\Entity\Level[] $levels
+ * @property Course[] $disciplines
  */
 class User extends Entity
 {

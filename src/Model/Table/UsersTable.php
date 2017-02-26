@@ -1,7 +1,9 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+use App\Model\Entity\User;
+use Cake\Datasource\EntityInterface;
+use Cake\ORM\Association\HasMany;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -9,17 +11,17 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \Cake\ORM\Association\BelongsToMany $Disciplines
- * @property \Cake\ORM\Association\BelongsToMany $Lessons
- * @property \Cake\ORM\Association\BelongsToMany $Levels
+ * @author Mathieu Bour
  *
- * @method \App\Model\Entity\User get($primaryKey, $options = [])
- * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null, $options = [])
+ * @property HasMany $Courses
+ *
+ * @method User get($primaryKey, $options = [])
+ * @method User newEntity($data = null, array $options = [])
+ * @method User[] newEntities(array $data, array $options = [])
+ * @method User|bool save(EntityInterface $entity, $options = [])
+ * @method User patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method User[] patchEntities($entities, array $data, array $options = [])
+ * @method User findOrCreate($search, callable $callback = null, $options = [])
  */
 class UsersTable extends Table
 {
@@ -34,50 +36,61 @@ class UsersTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('users');
-        $this->displayField('id');
-        $this->primaryKey('id');
+        $this->setTable('users');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
 
+        // Behaviors
+        $this->addBehavior('Timestamp');
+
+        // Relations
         $this->hasMany('Courses');
     }
 
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
     public function validationDefault(Validator $validator)
     {
         $validator
+            // id
             ->integer('id')
-            ->allowEmpty('id', 'create');
-
-        $validator
+            ->allowEmpty('id', 'create')
+            // email
             ->email('email')
-            ->allowEmpty('email');
-
-        $validator
-            ->allowEmpty('password');
-
-        $validator
-            ->allowEmpty('type');
-
-        $validator
-            ->allowEmpty('lastname');
-
-        $validator
-            ->allowEmpty('firstname');
-
-        $validator
-            ->allowEmpty('address');
-
-        $validator
-            ->allowEmpty('telephone');
-
-        $validator
+            ->allowEmpty('email', false, 'Votre e-mail est nécessaire')
+            // password
+            ->sameAs('password', 'password_confirm', 'les mots de passe ne correspondent pas.')
+            ->allowEmpty('password', false, 'Votre mot de passe ne peut être vide')
+            // type
+            ->inList('type', ['student', 'teacher'], 'Veuillez sélectionner un type de compte')
+            ->allowEmpty('type', false, 'Veuillez sélectionner un type de compte')
+            // lastname
+            ->lengthBetween('lastname', [1, 60], 'Votre nom doit être compris entre 1 et 60 caractères')
+            ->allowEmpty('lastname', 'Votre nom est nécessaire')
+            // firstname
+            ->lengthBetween('firstname', [1, 60], 'Votre prénom doit être compris entre 1 et 60 caractères')
+            ->allowEmpty('firstname', 'Votre prénom est nécessaire')
+            // telephone
+            ->lengthBetween('telephone', [10, 20], 'Votre numéro de téléphone doit être compris entre 10 et 20 caractères')
+            ->allowEmpty('telephone', 'Votre numéro de téléphone est nécessaire')
+            // address
+            ->lengthBetween('address', [1, 255], 'Votre adresse doit être compris entre 1 et 255 caractères')
+            ->allowEmpty('address', 'Votre adresse est nécessaire')
+            // zip_code
+            ->lengthBetween('zip_code', [1, 10], 'Votre code postal doit être compris entre 1 et 10 caractères')
+            ->allowEmpty('zip_code', 'Votre code postal est nécessaire')
+            // city
+            ->lengthBetween('city', [1, 60], 'Votre ville doit être compris entre 1 et 60 caractères')
+            ->allowEmpty('city', 'Votre ville est nécessaire')
+            // lesson_count
             ->integer('lesson_count')
-            ->allowEmpty('lesson_count');
+            ->allowEmpty('lesson_count')
+            // created
+            ->allowEmpty('created', 'create');
 
         return $validator;
     }
@@ -86,8 +99,8 @@ class UsersTable extends Table
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
     public function buildRules(RulesChecker $rules)
     {

@@ -1,9 +1,3 @@
-<section class="bg-graphing-paper">
-    <div class="container">
-        <h1 class="page-title">Inscription</h1>
-    </div>
-</section>
-
 <section>
     <div class="container">
         <div class="row">
@@ -57,12 +51,17 @@
                 </div>
             </div>
 
-            <?= $this->Form->input('address', [
-                'type' => 'textarea',
-                'label' => 'Adresse postale complète',
-                'rows' => 2,
-                'placeholder' => "6 rue de la Paix\n57000 Metz"
-            ]); ?>
+            <div class="row">
+                <div class="col-md-8">
+                    <?= $this->Form->input('address', ['label' => 'Adresse']); ?>
+                </div>
+                <div class="col-md-2">
+                    <?= $this->Form->input('zip_code', ['label' => 'Code postal']); ?>
+                </div>
+                <div class="col-md-2">
+                    <?= $this->Form->input('city', ['label' => 'Ville']); ?>
+                </div>
+            </div>
         </div>
 
 
@@ -92,7 +91,7 @@
                 'type' => 'hidden'
             ]); ?>
 
-            <button class="btn btn-primary" id="add-course"> Ajouter un cours</button>
+            <button class="btn btn-primary" id="add-course">Ajouter un cours</button>
         </div>
 
 

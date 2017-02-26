@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Network\Exception\UnauthorizedException;
 
 /**
  * Courses Controller
@@ -10,6 +11,21 @@ use App\Controller\AppController;
  */
 class CoursesController extends AppController
 {
+    /**
+     * Check course ownership
+     * @param int $id
+     * @return \App\Model\Entity\Course
+     */
+    private function _checkOwnership(int $id)
+    {
+        $course = $this->Courses->get($id);
+
+        if ($course->user_id != $this->Auth->user('id')) {
+            throw new UnauthorizedException();
+        } else {
+            return $course;
+        }
+    }
 
     /**
      * Index method
@@ -106,13 +122,10 @@ class CoursesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $course = $this->Courses->get($id);
-        if ($this->Courses->delete($course)) {
-            $this->Flash->success(__('The course has been deleted.'));
-        } else {
-            $this->Flash->error(__('The course could not be deleted. Please, try again.'));
-        }
+        $course = $this->_checkOwnership($id);
 
-        return $this->redirect(['action' => 'index']);
+        if ($this->Courses->delete($course)) {
+            return $this->json();
+        }
     }
 }

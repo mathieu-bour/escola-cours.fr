@@ -10,7 +10,6 @@
         <!-- CSS -->
         <?= $this->Html->css([
             'https://fonts.googleapis.com/css?family=Open+Sans:400,600',
-            '/plugins/owl.carousel/dist/assets/owl.carousel.min',
             'public'
         ]); ?>
     </head>
@@ -18,17 +17,19 @@
     <body>
         <?= $this->element('header'); ?>
 
+        <?php if (!empty($pageTitle)): ?>
+            <section class="bg-graphing-paper">
+                <div class="container">
+                    <h1 class="page-title"><?= $pageTitle; ?></h1>
+                </div>
+            </section>
+        <?php endif; ?>
+
         <?= $this->fetch('content'); ?>
 
         <?= $this->element('footer'); ?>
 
         <!-- JS -->
-        <?= $this->Html->script([
-            '/plugins/jquery/dist/jquery',
-            '/plugins/owl.carousel/dist/owl.carousel.min',
-            'public/jquery.refresh',
-            'public/register',
-            'public/main'
-        ]); ?>
+        <?= $this->Html->script('public'); ?>
     </body>
 </html>
