@@ -1,0 +1,7 @@
+beta:
+    scheme: "sftp"
+    host: "escola-cours.fr"
+    user: "www-data"
+    pass: "salome3004"
+    path:
+        remote: "/var/www/beta.escola-cours.fr"
