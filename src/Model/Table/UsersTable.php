@@ -2,7 +2,9 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
+use ArrayObject;
 use Cake\Datasource\EntityInterface;
+use Cake\Event\Event;
 use Cake\ORM\Association\HasMany;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -70,22 +72,22 @@ class UsersTable extends Table
             ->allowEmpty('type', false, 'Veuillez sélectionner un type de compte')
             // lastname
             ->lengthBetween('lastname', [1, 60], 'Votre nom doit être compris entre 1 et 60 caractères')
-            ->allowEmpty('lastname', 'Votre nom est nécessaire')
+            ->allowEmpty('lastname', false, 'Votre nom est nécessaire')
             // firstname
             ->lengthBetween('firstname', [1, 60], 'Votre prénom doit être compris entre 1 et 60 caractères')
-            ->allowEmpty('firstname', 'Votre prénom est nécessaire')
+            ->allowEmpty('firstname', false, 'Votre prénom est nécessaire')
             // telephone
             ->lengthBetween('telephone', [10, 20], 'Votre numéro de téléphone doit être compris entre 10 et 20 caractères')
-            ->allowEmpty('telephone', 'Votre numéro de téléphone est nécessaire')
+            ->allowEmpty('telephone', false, 'Votre numéro de téléphone est nécessaire')
             // address
             ->lengthBetween('address', [1, 255], 'Votre adresse doit être compris entre 1 et 255 caractères')
-            ->allowEmpty('address', 'Votre adresse est nécessaire')
+            ->allowEmpty('address', false, 'Votre adresse est nécessaire')
             // zip_code
             ->lengthBetween('zip_code', [1, 10], 'Votre code postal doit être compris entre 1 et 10 caractères')
-            ->allowEmpty('zip_code', 'Votre code postal est nécessaire')
+            ->allowEmpty('zip_code', false, 'Votre code postal est nécessaire')
             // city
             ->lengthBetween('city', [1, 60], 'Votre ville doit être compris entre 1 et 60 caractères')
-            ->allowEmpty('city', 'Votre ville est nécessaire')
+            ->allowEmpty('city', false, 'Votre ville est nécessaire')
             // lesson_count
             ->integer('lesson_count')
             ->allowEmpty('lesson_count')
@@ -107,5 +109,12 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['email']));
 
         return $rules;
+    }
+
+    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    {
+        if (empty($data['password'])) {
+            unset($data['password'], $data['password_confirm']);
+        }
     }
 }

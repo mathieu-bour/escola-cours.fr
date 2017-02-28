@@ -29,7 +29,6 @@
         <?= $this->Form->create(null, ['id' => 'user-register-form']); ?>
         <?php $this->Form->unlockField('courses'); ?>
 
-
         <h3 class="title-lined"><span class="bg-gray-lighter">Profil</span></h3>
         <div class="form-block">
             <h4>Je suis :</h4>
@@ -69,12 +68,12 @@
         <div class="form-block">
             <div class="row">
                 <div class="col-md-6">
-                    <?= $this->Form->input('password', [
+                    <?= $this->Form->input('new_password', [
                         'label' => 'Mot de passe'
                     ]); ?>
                 </div>
                 <div class="col-md-6">
-                    <?= $this->Form->input('password_confirm', [
+                    <?= $this->Form->input('new_password_confirm', [
                         'type' => 'password',
                         'label' => 'Confirmation du mot de passe'
                     ]); ?>
@@ -96,7 +95,7 @@
 
 
         <div class="text-center">
-            <button class="btn btn-lg btn-primary"> Valider mon inscription</button>
+            <button class="btn btn-lg btn-primary">Valider mon inscription</button>
         </div>
         <?= $this->Form->end(); ?>
     </div>

@@ -12,7 +12,9 @@
             </li>
         </ul>
 
-        <?= $this->Form->create($user); ?>
+        <?= $this->Form->create($user, ['id' => 'user-account-form']); ?>
+        <?php $this->Form->unlockField('courses'); ?>
+
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="profile">
                 <h3 class="title-lined"><span class="bg-white">Profil</span></h3>
@@ -48,7 +50,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <?= $this->Form->input('password', [
-                                'label' => 'Mot de passe'
+                                'label' => 'Mot de passe',
+                                'required' => false
                             ]); ?>
                         </div>
                         <div class="col-md-6">
@@ -70,16 +73,11 @@
                         </div>
                         <?php foreach ($user->courses as $key => $course): ?>
                             <div class="course">
-                                <?= $this->Form->hidden('courses[' . $key . '][id]', [
-                                    'value' => $course->id
-                                ]); ?>
-
                                 <div class="row">
                                     <div class="col-md-5">
                                         <?= $this->Form->input('courses[' . $key . '][level_id]', [
                                             'label' => false,
                                             'type' => 'select',
-                                            'disabled' => true,
                                             'options' => [$course->level->id => $course->level->name],
                                             'value' => $course->level->name
                                         ]); ?>
@@ -88,7 +86,6 @@
                                         <?= $this->Form->input('courses[' . $key . '][discipline_id]', [
                                             'label' => false,
                                             'type' => 'select',
-                                            'disabled' => true,
                                             'options' => [$course->discipline->id => $course->discipline->name],
                                             'value' => $course->discipline->name
                                         ]); ?>

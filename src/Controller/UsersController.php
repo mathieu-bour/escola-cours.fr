@@ -74,10 +74,19 @@ class UsersController extends AppController
 
     public function account()
     {
-        if ($this->request->is('post')) {
-            debug($this->request->getData());
-            die();
+        if ($this->request->is(['post', 'put'])) {
+            $data = $this->request->getData();
+            $data['courses'] = json_decode($data['courses'], true);
+
+            $user = $this->Users->get($this->Auth->user('id'));
+            $user = $this->Users->patchEntity($user, $data, ['associated' => ['Courses']]);
+            $this->Users->Courses->deleteAll(['user_id' => $user->id]);
+
+            if($this->Users->save($user)) {
+                $this->Flash->success('Votre compte a été mis à jour');
+            }
         }
+
         $user = $this->Users->find()
             ->contain([
                 'Courses.Levels',

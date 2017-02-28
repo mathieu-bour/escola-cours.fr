@@ -23,7 +23,23 @@ class LevelsController extends AppController
     public function index()
     {
         if ($this->request->is('json')) {
-            $this->set($this->Levels->find('list')->toArray());
+            $rawRevelsWithDisciplines = $this->Levels->find('all')
+                ->contain(['Disciplines'])->toArray();
+
+            $levelsWithDisciplines = [];
+
+            foreach ($rawRevelsWithDisciplines as $rawLevelWithDisciplines) {
+                $disciplines = [];
+                foreach ($rawLevelWithDisciplines['disciplines'] as $discipline) {
+                    $disciplines[(int)$discipline['id']] = $discipline['name'];
+                }
+                $levelsWithDisciplines[(int)$rawLevelWithDisciplines['id']] = $disciplines;
+            }
+
+            $this->set([
+                'levels' => $this->Levels->find('list')->toArray(),
+                'levelsWithDisciplines' => $levelsWithDisciplines
+            ]);
         }
     }
 }

@@ -34,6 +34,7 @@ gulp.task('js', function () {
             'webroot/plugins/bootstrap/js/button.js',
             'webroot/plugins/bootstrap/js/tab.js',
             'webroot/plugins/owl.carousel/dist/owl.carousel.min.js',
+            'webroot/js/public/jquery.populate.js',
             'webroot/js/public/jquery.postJSON.js',
             'webroot/js/public/jquery.coursesForm.js',
             'webroot/js/public/main.js'
