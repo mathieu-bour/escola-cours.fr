@@ -19,7 +19,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Level[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Level findOrCreate($search, callable $callback = null, $options = [])
  */
-class LevelsTable extends Table
+class LevelsTable extends AppTable
 {
 
     /**

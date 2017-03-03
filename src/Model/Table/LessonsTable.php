@@ -20,7 +20,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Lesson[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Lesson findOrCreate($search, callable $callback = null, $options = [])
  */
-class LessonsTable extends Table
+class LessonsTable extends AppTable
 {
 
     /**

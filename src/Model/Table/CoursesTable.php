@@ -21,7 +21,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Course[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Course findOrCreate($search, callable $callback = null, $options = [])
  */
-class CoursesTable extends Table
+class CoursesTable extends AppTable
 {
 
     /**

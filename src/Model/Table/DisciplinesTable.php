@@ -19,7 +19,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Discipline[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Discipline findOrCreate($search, callable $callback = null, $options = [])
  */
-class DisciplinesTable extends Table
+class DisciplinesTable extends AppTable
 {
 
     /**

@@ -25,7 +25,7 @@ use Cake\Validation\Validator;
  * @method User[] patchEntities($entities, array $data, array $options = [])
  * @method User findOrCreate($search, callable $callback = null, $options = [])
  */
-class UsersTable extends Table
+class UsersTable extends AppTable
 {
 
     /**
