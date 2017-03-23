@@ -24,7 +24,7 @@ use Cake\Validation\Validator;
  * @method Slot[] patchEntities($entities, array $data, array $options = [])
  * @method Slot findOrCreate($search, callable $callback = null, $options = [])
  */
-class SlotsTable extends Table
+class SlotsTable extends AppTable
 {
     /**
      * Initialize method
