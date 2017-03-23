@@ -1,27 +1,30 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
-use Cake\ORM\Table;
+use App\Model\Entity\Level;
+use Cake\Datasource\EntityInterface;
+use Cake\ORM\Association\HasMany;
 use Cake\Validation\Validator;
 
 /**
- * Levels Model
+ * Class LevelsTable
  *
- * @property \Cake\ORM\Association\BelongsToMany $Users
+ * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
+ * @package App\Model\Table
  *
- * @method \App\Model\Entity\Level get($primaryKey, $options = [])
- * @method \App\Model\Entity\Level newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Level[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Level|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Level patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Level[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Level findOrCreate($search, callable $callback = null, $options = [])
+ * @property HasMany $Courses
+ * @property HasMany $Lessons
+ *
+ * @method Level get($primaryKey, $options = [])
+ * @method Level newEntity($data = null, array $options = [])
+ * @method Level[] newEntities(array $data, array $options = [])
+ * @method Level|bool save(EntityInterface $entity, $options = [])
+ * @method Level patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Level[] patchEntities($entities, array $data, array $options = [])
+ * @method Level findOrCreate($search, callable $callback = null, $options = [])
  */
 class LevelsTable extends AppTable
 {
-
     /**
      * Initialize method
      *
@@ -42,8 +45,8 @@ class LevelsTable extends AppTable
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
     public function validationDefault(Validator $validator)
     {

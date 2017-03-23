@@ -6,9 +6,10 @@ use Cake\I18n\FrozenDate;
 use Cake\ORM\Entity;
 
 /**
- * User Entity
+ * Class User
  *
- * @author Mathieu Bour
+ * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
+ * @package App\Model\Entity;
  *
  * @property int $id
  * @property bool $admin
@@ -29,7 +30,6 @@ use Cake\ORM\Entity;
  */
 class User extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

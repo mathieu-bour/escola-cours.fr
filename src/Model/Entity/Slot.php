@@ -1,26 +1,22 @@
 <?php
 namespace App\Model\Entity;
 
-use Cake\I18n\Time;
 use Cake\ORM\Entity;
 
 /**
- * Class Lesson
+ * Class Slot
  *
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Model\Entity
  *
  * @property int $id
- * @property int $teacher_id
- * @property Time $beginning
- * @property float $duration
+ * @property int $day
+ * @property int $hour
+ * @property int $user_id
  *
- * @property User $teacher
  * @property User $user
- * @property Course[] $courses
- * @property Lesson[] $lessons
  */
-class Lesson extends Entity
+class Slot extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

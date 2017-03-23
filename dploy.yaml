@@ -5,4 +5,17 @@ beta:
     pass: "salome3004"
     path:
         remote: "/var/www/beta.escola-cours.fr"
-    exclude: [".idea/*", "webroot/less/*", "webroot/js/public/*", ".bowerrc", ".editorconfig", ".git*", "dploy.yaml", "gulpfile.js", "package.json", "phpunit.xml.dist", "README.md"]
+    exclude: [
+        ".idea/*",
+        "webroot/less/*",
+        "webroot/js/public/*",
+        "webroot/js/admin/*",
+        ".bowerrc",
+        ".editorconfig",
+        ".git*",
+        "dploy.yaml",
+        "gulpfile.js",
+        "package.json",
+        "phpunit.xml.dist",
+        "README.md"
+    ]

@@ -1,31 +1,30 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Course;
+use App\Model\Entity\Slot;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\Association\BelongsTo;
 use Cake\ORM\RulesChecker;
+use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Class CoursesTable
+ * Class SlotsTable
  *
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Model\Table
  *
  * @property BelongsTo $Users
- * @property BelongsTo $Levels
- * @property BelongsTo $Disciplines
  *
- * @method Course get($primaryKey, $options = [])
- * @method Course newEntity($data = null, array $options = [])
- * @method Course[] newEntities(array $data, array $options = [])
- * @method Course|bool save(EntityInterface $entity, $options = [])
- * @method Course patchEntity(EntityInterface $entity, array $data, array $options = [])
- * @method Course[] patchEntities($entities, array $data, array $options = [])
- * @method Course findOrCreate($search, callable $callback = null, $options = [])
+ * @method Slot get($primaryKey, $options = [])
+ * @method Slot newEntity($data = null, array $options = [])
+ * @method Slot[] newEntities(array $data, array $options = [])
+ * @method Slot|bool save(EntityInterface $entity, $options = [])
+ * @method Slot patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Slot[] patchEntities($entities, array $data, array $options = [])
+ * @method Slot findOrCreate($search, callable $callback = null, $options = [])
  */
-class CoursesTable extends AppTable
+class SlotsTable extends Table
 {
     /**
      * Initialize method
@@ -37,14 +36,13 @@ class CoursesTable extends AppTable
     {
         parent::initialize($config);
 
-        $this->setTable('courses');
+        $this->setTable('slots');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        // Relations
-        $this->belongsTo('Users');
-        $this->belongsTo('Levels');
-        $this->belongsTo('Disciplines');
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**
@@ -59,6 +57,14 @@ class CoursesTable extends AppTable
             ->integer('id')
             ->allowEmpty('id', 'create');
 
+        $validator
+            ->integer('day')
+            ->allowEmpty('day');
+
+        $validator
+            ->integer('hour')
+            ->allowEmpty('hour');
+
         return $validator;
     }
 
@@ -72,8 +78,6 @@ class CoursesTable extends AppTable
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['level_id'], 'Levels'));
-        $rules->add($rules->existsIn(['discipline_id'], 'Disciplines'));
 
         return $rules;
     }

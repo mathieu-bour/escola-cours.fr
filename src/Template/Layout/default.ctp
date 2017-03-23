@@ -25,6 +25,10 @@
             </section>
         <?php endif; ?>
 
+        <div class="container">
+            <?= $this->Flash->render(); ?>
+        </div>
+
         <?= $this->fetch('content'); ?>
 
         <?= $this->element('footer'); ?>

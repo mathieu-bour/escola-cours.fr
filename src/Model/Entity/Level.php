@@ -4,18 +4,19 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Level Entity
+ * Class Level
+ *
+ * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
+ * @package App\Model\Entity
  *
  * @property int $id
  * @property string $name
- * @property int $user_count
- * @property int $teacher_count
  *
- * @property \App\Model\Entity\User[] $users
+ * @property Course[] $courses
+ * @property Lesson[] $lessons
  */
 class Level extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

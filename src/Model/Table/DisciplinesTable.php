@@ -1,27 +1,30 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
-use Cake\ORM\Table;
+use App\Model\Entity\Discipline;
+use Cake\Datasource\EntityInterface;
+use Cake\ORM\Association\HasMany;
 use Cake\Validation\Validator;
 
 /**
- * Disciplines Model
+ * Class DisciplinesTable
  *
- * @property \Cake\ORM\Association\BelongsToMany $Users
+ * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
+ * @package App\Model\Table
  *
- * @method \App\Model\Entity\Discipline get($primaryKey, $options = [])
- * @method \App\Model\Entity\Discipline newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Discipline[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Discipline|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Discipline patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Discipline[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Discipline findOrCreate($search, callable $callback = null, $options = [])
+ * @property HasMany $Courses
+ * @property HasMany $Lessons
+ *
+ * @method Discipline get($primaryKey, $options = [])
+ * @method Discipline newEntity($data = null, array $options = [])
+ * @method Discipline[] newEntities(array $data, array $options = [])
+ * @method Discipline|bool save(EntityInterface $entity, $options = [])
+ * @method Discipline patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Discipline[] patchEntities($entities, array $data, array $options = [])
+ * @method Discipline findOrCreate($search, callable $callback = null, $options = [])
  */
 class DisciplinesTable extends AppTable
 {
-
     /**
      * Initialize method
      *
@@ -43,8 +46,8 @@ class DisciplinesTable extends AppTable
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
     public function validationDefault(Validator $validator)
     {

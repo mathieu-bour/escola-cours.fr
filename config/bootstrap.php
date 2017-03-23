@@ -222,3 +222,21 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('Bootstrap');
+
+
+/**
+ * Array search recursive function
+ * @param mixed $needle
+ * @param array $haystack
+ * @return bool|int|string the key if found false otherwise
+ */
+function array_search_recursive($needle, $haystack)
+{
+    foreach ($haystack as $key => $value) {
+        $current_key = $key;
+        if ($needle === $value OR (is_array($value) && array_search_recursive($needle, $value) !== false)) {
+            return $current_key;
+        }
+    }
+    return false;
+}

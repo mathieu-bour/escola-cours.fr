@@ -1,7 +1,5 @@
 <section>
     <div class="container">
-        <?= $this->Flash->render(); ?>
-
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
                 <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a>

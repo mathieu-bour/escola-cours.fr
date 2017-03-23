@@ -4,7 +4,10 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Discipline Entity
+ * Class Discipline
+ *
+ * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
+ * @package App\Model\Entity
  *
  * @property int $id
  * @property string $name
@@ -12,11 +15,11 @@ use Cake\ORM\Entity;
  * @property int $student_count
  * @property int $teacher_count
  *
- * @property \App\Model\Entity\User[] $users
+ * @property Course[] $courses
+ * @property Lesson[] $lessons
  */
 class Discipline extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

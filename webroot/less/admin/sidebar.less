@@ -1,0 +1,94 @@
+.sidebar {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: @gray-dark;
+
+    .logo {
+        height: 60px;
+        background-color: @brand-primary;
+
+        h1 {
+            padding: 0 20px;
+            color: @gray-lighter;
+            font-size: 24px;
+            line-height: 60px;
+        }
+    }
+}
+.sidebar-title {
+    color: @gray-light;
+    padding: 15px 20px;
+}
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    .menu-item {
+        padding: 0 20px;
+        transition: background-color .3s ease;
+        a {
+            position: relative;
+            display: block;
+            height: 50px;
+            color: @gray-light-inter;
+            background-color: transparent !important;
+            line-height: 50px;
+            transition: color .3s ease;
+
+            .fa {
+                margin-right: 15px;
+            }
+        }
+        a:hover {
+            color: @gray-lighter;
+        }
+
+        .submenu {
+            display: none;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            .submenu-item {
+                a:before {
+                    content: '\f105';
+                    display: inline-block;
+                    margin-right: 15px;
+                    width: 1.28571429em;
+                    font-family: "FontAwesome", sans-serif;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .menu-item.current, .menu-item.open {
+        background-color: @gray-darker;
+
+        > a {
+            color: @gray-lighter;
+        }
+    }
+
+    .menu-item.has-submenu > a:after {
+        content: '\f0d7';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 1.28571429em;
+        margin-left: 15px;
+        font-family: "FontAwesome", sans-serif;
+        text-align: center;
+        transition: transform .3s ease;
+        transform: translateY(-50%);
+    }
+    .menu-item.has-submenu.current > a:after,
+    .menu-item.has-submenu.open > a:after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+}

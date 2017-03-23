@@ -4,20 +4,22 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Course Entity
+ * Class Course
+ *
+ * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
+ * @package App\Model\Entity
  *
  * @property int $id
  * @property int $user_id
  * @property int $level_id
  * @property int $discipline_id
  *
- * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\Level $level
- * @property \App\Model\Entity\Discipline $discipline
+ * @property User $user
+ * @property Level $level
+ * @property Discipline $discipline
  */
 class Course extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

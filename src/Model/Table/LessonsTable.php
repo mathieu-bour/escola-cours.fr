@@ -1,28 +1,33 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+use App\Model\Entity\Lesson;
+use Cake\Datasource\EntityInterface;
+use Cake\ORM\Association\BelongsTo;
 use Cake\ORM\RulesChecker;
-use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Lessons Model
+ * Class LessonsTable
  *
- * @property \Cake\ORM\Association\BelongsTo $Teachers
- * @property \Cake\ORM\Association\BelongsToMany $Users
+ * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
+ * @package App\Model\Table
  *
- * @method \App\Model\Entity\Lesson get($primaryKey, $options = [])
- * @method \App\Model\Entity\Lesson newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Lesson[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Lesson|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Lesson patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Lesson[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Lesson findOrCreate($search, callable $callback = null, $options = [])
+ * @property BelongsTo $Teachers
+ * @property BelongsTo $Users
+ * @property BelongsTo $Disciplines
+ * @property BelongsTo $Levels
+ *
+ * @method Lesson get($primaryKey, $options = [])
+ * @method Lesson newEntity($data = null, array $options = [])
+ * @method Lesson[] newEntities(array $data, array $options = [])
+ * @method Lesson|bool save(EntityInterface $entity, $options = [])
+ * @method Lesson patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Lesson[] patchEntities($entities, array $data, array $options = [])
+ * @method Lesson findOrCreate($search, callable $callback = null, $options = [])
  */
 class LessonsTable extends AppTable
 {
-
     /**
      * Initialize method
      *
@@ -37,19 +42,19 @@ class LessonsTable extends AppTable
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        $this->belongsTo('Discipline');
+        $this->belongsTo('Levels');
         $this->belongsTo('Users', [
             'foreignKey' => 'teacher_id'
         ]);
         $this->belongsTo('Users');
-        $this->belongsTo('Discipline');
-        $this->belongsTo('Levels');
     }
 
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
     public function validationDefault(Validator $validator)
     {
@@ -72,8 +77,8 @@ class LessonsTable extends AppTable
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
     public function buildRules(RulesChecker $rules)
     {

@@ -11,11 +11,13 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Users Model
+ * Class UsersTable
  *
- * @author Mathieu Bour
+ * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
+ * @package App\Model\Table
  *
  * @property HasMany $Courses
+ * @property HasMany $Slots
  *
  * @method User get($primaryKey, $options = [])
  * @method User newEntity($data = null, array $options = [])
@@ -27,7 +29,6 @@ use Cake\Validation\Validator;
  */
 class UsersTable extends AppTable
 {
-
     /**
      * Initialize method
      *
@@ -47,6 +48,7 @@ class UsersTable extends AppTable
 
         // Relations
         $this->hasMany('Courses');
+        $this->hasMany('Slots');
     }
 
     /**

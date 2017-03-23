@@ -1,6 +1,3 @@
-/**
- * Mathieu Bour
- */
 $('.owl-carousel').owlCarousel({
     autoplay: true,
     loop: true,
@@ -8,3 +5,5 @@ $('.owl-carousel').owlCarousel({
 });
 
 $('#user-register-form, #user-account-form').coursesForm();
+
+$('#user-slots-form').slotsTable();

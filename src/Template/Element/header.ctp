@@ -13,9 +13,13 @@
                                 'action' => 'about'
                             ]); ?>
                         </li>
-                        <li class="nav-item"><a href="#">Recrutement</a></li>
-                        <li class="nav-item"><a href="#">Enseigner</a></li>
                         <?php if ($isLogged): ?>
+                            <li class="nav-item">
+                                <?= $this->Html->link('Disponibilités', [
+                                    'controller' => 'users',
+                                    'action' => 'slots'
+                                ]); ?>
+                            </li>
                             <li class="nav-item">
                                 <?= $this->Html->link('Mon compte', [
                                     'controller' => 'users',
