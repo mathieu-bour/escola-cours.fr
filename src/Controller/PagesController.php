@@ -18,8 +18,23 @@ class PagesController extends AppController
         return parent::beforeFilter($event);
     }
 
-    public function display($template)
+    public function home()
     {
-        $this->render($template);
+    }
+
+    public function about()
+    {
+    }
+
+    public function cgu()
+    {
+    }
+
+    public function cgv()
+    {
+    }
+
+    public function contact()
+    {
     }
 }

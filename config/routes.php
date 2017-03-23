@@ -46,8 +46,7 @@ Router::defaultRouteClass(DashedRoute::class);
 /*= Public routes
  *=====================================================*/
 Router::scope('/', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'pages', 'action' => 'display', 'home']);
-    $routes->connect('/pages/*', ['controller' => 'pages', 'action' => 'display']);
+    $routes->connect('/', ['controller' => 'pages', 'action' => 'home']);
 
     $routes->fallbacks(DashedRoute::class);
 });
