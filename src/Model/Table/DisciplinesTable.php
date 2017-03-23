@@ -38,7 +38,6 @@ class DisciplinesTable extends AppTable
 
         // Relations
         $this->hasMany('Courses');
-        $this->belongsToMany('Levels');
     }
 
     /**

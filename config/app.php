@@ -227,14 +227,27 @@ return [
             'password' => 'salome3004',
             'database' => 'escola_cours_fr_dev',
             'encoding' => 'utf8',
-            'timezone' => 'Europe/Paris',
             'flags' => [],
             'cacheMetadata' => true,
             'log' => false,
             'quoteIdentifiers' => false,
             'url' => env('DATABASE_URL', null)
         ],
-        'prod'
+        'prod' => [
+            'className' => 'Cake\Database\Connection',
+            'driver' => 'Cake\Database\Driver\Mysql',
+            'persistent' => false,
+            'host' => 'web00.mathieu-bour.fr',
+            'username' => 'escola_cours_fr_dev',
+            'password' => 'salome3004',
+            'database' => 'escola_cours_fr_dev',
+            'encoding' => 'utf8',
+            'flags' => [],
+            'cacheMetadata' => true,
+            'log' => false,
+            'quoteIdentifiers' => false,
+            'url' => env('DATABASE_URL', null)
+        ],
     ],
 
     /**

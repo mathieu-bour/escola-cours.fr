@@ -32,13 +32,11 @@ class LevelsTable extends AppTable
     {
         parent::initialize($config);
 
-        $this->table('levels');
-        $this->displayField('name');
-        $this->primaryKey('id');
+        $this->setTable('levels');
+        $this->setDisplayField('name');
+        $this->setPrimaryKey('id');
 
         $this->hasMany('Courses');
-        $this->belongsToMany('Disciplines');
-        $this->belongsToMany('Users');
     }
 
     /**

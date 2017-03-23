@@ -1,5 +1,7 @@
 <section>
     <div class="container">
+        <?= $this->Flash->render(); ?>
+
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
                 <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a>
@@ -71,27 +73,32 @@
                         <div class="callout callout-primary">
                             Pour supprimer un cours enregistré, cliquez sur le couton "Supprimer".
                         </div>
+
                         <?php foreach ($user->courses as $key => $course): ?>
                             <div class="course">
+                                <?= $this->Form->input('courses[id]', [
+                                    'type' => 'hidden',
+                                    'value' => $course->id
+                                ]); ?>
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <?= $this->Form->input('courses[' . $key . '][level_id]', [
+                                        <?= $this->Form->input('courses[level_id]', [
                                             'label' => false,
                                             'type' => 'select',
-                                            'options' => [$course->level->id => $course->level->name],
-                                            'value' => $course->level->name
+                                            'options' => $levels,
+                                            'value' => $course->level_id
                                         ]); ?>
                                     </div>
                                     <div class="col-md-5">
-                                        <?= $this->Form->input('courses[' . $key . '][discipline_id]', [
+                                        <?= $this->Form->input('courses[discipline_id]', [
                                             'label' => false,
                                             'type' => 'select',
-                                            'options' => [$course->discipline->id => $course->discipline->name],
-                                            'value' => $course->discipline->name
+                                            'options' => $disciplines,
+                                            'value' => $course->discipline_id
                                         ]); ?>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-danger btn-block remove-existing-course">
+                                        <button type="button" class="btn btn-danger btn-block remove-course">
                                             Supprimer
                                         </button>
                                     </div>

@@ -7,6 +7,8 @@ use Cake\Event\Event;
  * Users Controller
  *
  * @property \App\Model\Table\UsersTable $Users
+ * @property \App\Model\Table\LevelsTable $Levels
+ * @property \App\Model\Table\DisciplinesTable $Disciplines
  */
 class UsersController extends AppController
 {
@@ -78,24 +80,48 @@ class UsersController extends AppController
             $data = $this->request->getData();
             $data['courses'] = json_decode($data['courses'], true);
 
-            $user = $this->Users->get($this->Auth->user('id'));
+            $user = $this->Users->find()
+                ->contain(['Courses'])
+                ->where(['id' => $this->Auth->user('id')])
+                ->first();
+
+            $userExistingCourseIds = [];
+            foreach($user->courses as $course) {
+                $userExistingCourseIds[] = $course->id;
+            }
+
             $user = $this->Users->patchEntity($user, $data, ['associated' => ['Courses']]);
-            $this->Users->Courses->deleteAll(['user_id' => $user->id]);
+            $userNewCourseIds = [];
+            foreach($user->courses as $course) {
+                if(!empty($course->id)) {
+                    $userNewCourseIds[] = $course->id;
+                }
+            }
+
+            $userCourseIdsToRemove = array_diff($userExistingCourseIds, $userNewCourseIds);
+
+            if(!empty($userCourseIdsToRemove)) {
+                $this->Users->Courses->deleteAll(['id IN' => $userCourseIdsToRemove]);
+            }
 
             if($this->Users->save($user)) {
                 $this->Flash->success('Votre compte a été mis à jour');
             }
         }
 
+        $this->loadModel('Levels');
+        $this->loadModel('Disciplines');
+
         $user = $this->Users->find()
-            ->contain([
-                'Courses.Levels',
-                'Courses.Disciplines'
-            ])
+            ->contain(['Courses'])
             ->where(['id' => $this->Auth->user('id')])
             ->first();
         unset($user->password);
-        $this->set('user', $user);
+
+        $levels = $this->Levels->find('list');
+        $disciplines = $this->Disciplines->find('list');
+
+        $this->set(compact('user', 'levels', 'disciplines'));
         $this->setTitle('Mon compte');
     }
 }

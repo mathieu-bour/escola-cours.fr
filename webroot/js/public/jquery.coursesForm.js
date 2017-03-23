@@ -2,6 +2,17 @@
  * Handle most of the javascript in the /users/register page
  * @author Mathieu Bour
  */
+$.fn.populate = function (data) {
+    console.log(data);
+    var $this = $(this);
+
+    $.each(data, function (val, text) {
+        $this.append($('<option>').attr('value', val).text(text));
+    });
+
+    return $this;
+};
+
 $.fn.coursesForm = function () {
     /**
      * @type {jQuery} the form
@@ -21,51 +32,39 @@ $.fn.coursesForm = function () {
      */
     var $addCourseBtn = $('#add-course');
 
-    var levels;
-
-    /*
-     * Load courses for existing entries
+    /**
+     * Load courses
+     * @returns {*}
      */
     var getLevels = function () {
-        if (levels == undefined) {
-            return new Promise(function (resolve, reject) {
-                $.getJSON('/levels/index', {}, function (json) {
-                    levels = json;
-                    resolve(levels);
-                });
+        return new Promise(function (resolve, reject) {
+            $.getJSON('/levels/index', {}, function (json) {
+                levels = json;
+                resolve(levels);
             });
-        } else {
-            return levels;
-        }
+        });
     };
 
-    /*
-     * Populate existing courses
+    /**
+     * Load disciplines
+     * @returns {*}
      */
-    getLevels().then(function (json) {
-        $('select[name*="level"]').each(function () {
-            var old = $(this).val();
-            $(this).text('')
-                .append('<option value="" disabled selected>Choisir le niveau</option>')
-                .populate(json.levels)
-                .val(old);
+    var getDisciplines = function () {
+        return new Promise(function (resolve, reject) {
+            $.getJSON('/disciplines/index', {}, function (json) {
+                disciplines = json;
+                resolve(disciplines);
+            });
         });
-        $('select[name*="discipline"]').each(function () {
-            var levelId = $(this).parents('.course').find('select[name*="level"]').val();
-            var old = $(this).val();
-
-            $(this).text('')
-                .append('<option value="" disabled selected>Choisir le niveau</option>')
-                .populate(json.levelsWithDisciplines[levelId])
-                .val(old);
-        });
-    });
+    };
 
     /*
      * Add course button click handler
      */
     $addCourseBtn.on('click', function (e) {
         e.preventDefault();
+
+        console.log('Hello');
 
         coursesIterator++; // First, increment
 
@@ -86,41 +85,28 @@ $.fn.coursesForm = function () {
          */
         var $courseDiscipline = $('<div class="form-group select"></div>').appendTo($courseRow.find('div[class^="col-"]')[1]);
 
+        /**
+         * @type {jQuery} the remove course button
+         */
+        var $courseRemoveBtn = $courseRow.append('<div class="col-md-2"><a href="#" class="btn btn-danger btn-block remove-course">Supprimer</a></div>');
 
-        // First, get the available levels
-        getLevels().then(function (json) {
-            /**
-             * @type {jQuery} the select filled with the levels
-             */
-            var $selectLevel = $('<select name="courses[' + coursesIterator + '][level_id]" class="form-control">').appendTo($courseLevel);
+        /**
+         * @type {jQuery} the select filled with the levels
+         */
+        var $selectLevel = $('<select name="courses[level_id]" class="form-control">').appendTo($courseLevel);
+        $selectLevel.append('<option value="" disabled selected>Choisir le niveau</option>'); // Add default select option
+        /**
+         * @type {jQuery} the select filled with disciplines linked with the selected level
+         */
+        var $selectDiscipline = $('<select name="courses[discipline_id]" class="form-control">').appendTo($courseDiscipline);
+        $selectDiscipline.append('<option value="" disabled selected>Choisir la discipline</option>'); // Add default select option
 
-            $selectLevel.append('<option value="" disabled selected>Choisir le niveau</option>'); // Add default select option
-            $selectLevel.populate(json.levels);
+        getLevels().then(function (levels) {
+            $selectLevel.populate(levels);
+        });
 
-            /**
-             * @type {jQuery|undefined} the select filled with disciplines linked with the selected level
-             */
-            var $selectDiscipline;
-
-            // On level change/select, refresh the disciplines based on the selected level id
-            $selectLevel.on('change', function () {
-                // If not exists, create the discipline select the DOM; else, remove it options
-                if ($selectDiscipline === undefined) {
-                    $selectDiscipline = $('<select name="courses[' + coursesIterator + '][discipline_id]" class="form-control">').appendTo($courseDiscipline);
-                } else {
-                    $selectDiscipline.text('');
-                }
-
-                // If not exists, create the remove course button
-                if ($courseRow.find('.remove-course').length == 0) {
-                    $courseRow.append('<div class="col-md-2"><a href="#" class="btn btn-danger btn-block remove-course">Supprimer</a></div>');
-                }
-
-                // Finally, fill the discipline select with the proper disciplines based on the selected level id
-                $selectDiscipline.append('<option value="" disabled selected>Choisir la matière</option>');
-
-                $selectDiscipline.populate(json.levelsWithDisciplines[$selectLevel.val()]);
-            })
+        getDisciplines().then(function (disciplines) {
+            $selectDiscipline.populate(disciplines);
         });
     });
 
@@ -139,19 +125,27 @@ $.fn.coursesForm = function () {
     /*
      * On submit action, create a json string with the selected courses
      */
-    $form.on('submit', function () {
+    $form.on('submit', function (e) {
         var courses = [];
 
         $('.course').each(function () {
-            var level_id = $(this).find('select[name*="level"]').val();
-            var discipline_id = $(this).find('select[name*="discipline"]').val();
+            var id = $(this).find('input[name*="[id"]').val();
+            var level_id = $(this).find('select[name*="[level_id]"]').val();
+            var discipline_id = $(this).find('select[name*="[discipline_id]"]').val();
+
+            if (id === undefined) {
+                id = null;
+            }
 
             courses.push({
+                id: id,
                 level_id: level_id,
                 discipline_id: discipline_id
             });
         });
 
         $(this).find('input[name="courses"]').val(JSON.stringify(courses));
+
+        console.log(courses);
     });
 };

@@ -66,7 +66,7 @@ class UsersTable extends AppTable
             ->allowEmpty('email', false, 'Votre e-mail est nécessaire')
             // password
             ->sameAs('password', 'password_confirm', 'les mots de passe ne correspondent pas.')
-            ->allowEmpty('password', false, 'Votre mot de passe ne peut être vide')
+            ->allowEmpty('password', 'create', 'Votre mot de passe ne peut être vide')
             // type
             ->inList('type', ['student', 'teacher'], 'Veuillez sélectionner un type de compte')
             ->allowEmpty('type', false, 'Veuillez sélectionner un type de compte')

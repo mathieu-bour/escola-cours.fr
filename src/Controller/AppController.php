@@ -35,15 +35,17 @@ class AppController extends Controller
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-
-        $this->set([
-            '_csrfToken' => $this->request->getParam('_csrfToken')
-        ]);
     }
 
     public function beforeRender(Event $event)
     {
-        $this->set('isLogged', (bool)$this->Auth->user());
+        if (!$this->request->is('json')) {
+            $this->set('isLogged', (bool)$this->Auth->user());
+            $this->set([
+                '_csrfToken' => $this->request->getParam('_csrfToken')
+            ]);
+
+        }
 
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
@@ -52,7 +54,8 @@ class AppController extends Controller
         }
     }
 
-    public function json($data = null, $code = 200, $message = 'OK') {
+    public function json($data = null, $code = 200, $message = 'OK')
+    {
         $this->set([
             'code' => $code,
             'message' => $message,
@@ -61,7 +64,8 @@ class AppController extends Controller
         ]);
     }
 
-    public function setTitle($pageTitle) {
+    public function setTitle($pageTitle)
+    {
         $this->set('pageTitle', $pageTitle);
     }
 }

@@ -90,7 +90,7 @@
                 'type' => 'hidden'
             ]); ?>
 
-            <button class="btn btn-primary" id="add-course">Ajouter un cours</button>
+            <a class="btn btn-primary" id="add-course">Ajouter un cours</a>
         </div>
 
 
