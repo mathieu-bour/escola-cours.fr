@@ -9,7 +9,7 @@ class PagesController extends AppController
     {
         parent::beforeFilter($event);
 
-        $this->Auth->allow(['home']);
+        $this->Auth->allow(['home', 'about', 'cgv', 'cgu']);
     }
 
     public function home()
