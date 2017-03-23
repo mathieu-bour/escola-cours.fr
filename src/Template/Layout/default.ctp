@@ -9,7 +9,7 @@
 
         <!-- CSS -->
         <?= $this->Html->css([
-            'https://fonts.googleapis.com/css?family=Open+Sans:400,600',
+            'https://fonts.googleapis.com/css?family=Open+Sans:400,600,800',
             'public'
         ]); ?>
     </head>

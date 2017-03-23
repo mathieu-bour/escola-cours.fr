@@ -8,4 +8,3 @@ $('.owl-carousel').owlCarousel({
 });
 
 $('#user-register-form, #user-account-form').coursesForm();
-

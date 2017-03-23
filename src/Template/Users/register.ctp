@@ -82,7 +82,7 @@
         </div>
 
 
-        <h3 class="title-lined"><span class="bg-gray-lighter">Cours recherchés</span></h3>
+        <h3 class="title-lined"><span class="bg-gray-lighter">Cours et matières</span></h3>
         <div class="form-block">
             <div id="courses-container"></div>
 

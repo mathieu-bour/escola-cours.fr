@@ -3,7 +3,6 @@
  * @author Mathieu Bour
  */
 $.fn.populate = function (data) {
-    console.log(data);
     var $this = $(this);
 
     $.each(data, function (val, text) {
@@ -63,8 +62,6 @@ $.fn.coursesForm = function () {
      */
     $addCourseBtn.on('click', function (e) {
         e.preventDefault();
-
-        console.log('Hello');
 
         coursesIterator++; // First, increment
 
@@ -145,7 +142,5 @@ $.fn.coursesForm = function () {
         });
 
         $(this).find('input[name="courses"]').val(JSON.stringify(courses));
-
-        console.log(courses);
     });
 };

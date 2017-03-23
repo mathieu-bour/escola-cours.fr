@@ -1,4 +1,4 @@
-<section class="no-pt">
+<section class="no-p">
     <div class="owl-carousel owl-theme">
         <div>
             <?= $this->Html->image('//placehold.it/1920x600'); ?>

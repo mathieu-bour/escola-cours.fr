@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @author Mathieu Bour
  *
  * @property int $id
+ * @property bool $admin
  * @property string $email
  * @property string $password
  * @property string $type
@@ -23,7 +24,8 @@ use Cake\ORM\Entity;
  * @property int $lesson_count
  * @property FrozenDate $created
  *
- * @property Course[] $disciplines
+ * @property Course[] $courses
+ * @property Lesson[] $lessons
  */
 class User extends Entity
 {

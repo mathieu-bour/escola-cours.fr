@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Model\Entity\User;
 use Cake\Event\Event;
 
 /**
@@ -74,49 +75,66 @@ class UsersController extends AppController
         return $this->redirect($this->Auth->redirectUrl());
     }
 
+    /**
+     * Account page
+     */
     public function account()
     {
         if ($this->request->is(['post', 'put'])) {
             $data = $this->request->getData();
             $data['courses'] = json_decode($data['courses'], true);
 
+            /** @var User */
             $user = $this->Users->find()
                 ->contain(['Courses'])
+                ->select([
+                    'Users.id', 'Users.email', 'Users.lastname', 'Users.firstname', 'Users.telephone', 'Users.address', 'Users.zip_code', 'Users.city'
+                ])
                 ->where(['id' => $this->Auth->user('id')])
                 ->first();
 
+            // Get existing course ids
             $userExistingCourseIds = [];
-            foreach($user->courses as $course) {
+            foreach ($user->courses as $course) {
                 $userExistingCourseIds[] = $course->id;
             }
 
+            // Get new course ids
+            /** @var User */
             $user = $this->Users->patchEntity($user, $data, ['associated' => ['Courses']]);
             $userNewCourseIds = [];
-            foreach($user->courses as $course) {
-                if(!empty($course->id)) {
+            foreach ($user->courses as $course) {
+                if (!empty($course->id)) {
                     $userNewCourseIds[] = $course->id;
                 }
             }
 
+            // Calculate obsolete course ids
             $userCourseIdsToRemove = array_diff($userExistingCourseIds, $userNewCourseIds);
 
-            if(!empty($userCourseIdsToRemove)) {
+            // Remove them if they exist
+            if (!empty($userCourseIdsToRemove)) {
                 $this->Users->Courses->deleteAll(['id IN' => $userCourseIdsToRemove]);
             }
 
-            if($this->Users->save($user)) {
+            if ($this->Users->save($user)) {
                 $this->Flash->success('Votre compte a été mis à jour');
+            } else {
+                $this->Flash->success('Erreur lors de la mise à jour de votre compte');
             }
         }
 
+        // Load required models
         $this->loadModel('Levels');
         $this->loadModel('Disciplines');
 
         $user = $this->Users->find()
+            ->select([
+                'Users.id', 'Users.email', 'Users.lastname', 'Users.firstname', 'Users.telephone', 'Users.address', 'Users.zip_code', 'Users.city'
+            ])
             ->contain(['Courses'])
             ->where(['id' => $this->Auth->user('id')])
             ->first();
-        unset($user->password);
 
         $levels = $this->Levels->find('list');
         $disciplines = $this->Disciplines->find('list');

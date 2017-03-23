@@ -7,7 +7,12 @@
             <div class="col-md-8">
                 <nav class="nav">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="#">Qui somme-nous ?</a></li>
+                        <li class="nav-item">
+                            <?= $this->Html->link('Qui sommes-nous ?', [
+                                'controller' => 'pages',
+                                'action' => 'about'
+                            ]); ?>
+                        </li>
                         <li class="nav-item"><a href="#">Recrutement</a></li>
                         <li class="nav-item"><a href="#">Enseigner</a></li>
                         <?php if ($isLogged): ?>
