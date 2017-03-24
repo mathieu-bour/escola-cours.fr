@@ -1,6 +1,6 @@
 /**
- * Copyright (C) 2017 - Ecola.fr 
- * Written with live by Mathieu Bour
+ * Copyright (C) 2017 - Escola.fr
+ * Written with love by Mathieu Bour
  */
 /*!
  * JavaScript Cookie v2.1.3

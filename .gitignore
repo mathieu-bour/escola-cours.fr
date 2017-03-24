@@ -1,7 +1,8 @@
-/.idea/*
-/vendor/*
-/node_modules/*
-/tmp/*
-/logs/*
-/webroot/plugins/*
-!/webroot/plugins/.gitkeep
+.idea/
+bower_components/
+logs/
+node_modules/
+tmp/
+vendor/
+webroot/css/*.css
+webroot/js/*.js

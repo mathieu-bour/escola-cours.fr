@@ -1,7 +1,3 @@
-/**
- * Copyright (C) 2017 - Ecola.fr 
- * Written with live by Mathieu Bour
- */
 /*!
  * JavaScript Cookie v2.1.3
  * https://github.com/js-cookie/js-cookie
