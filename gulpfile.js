@@ -1,3 +1,7 @@
+/*!
+ * gulpfile.js
+ * Gulp tasks to manage code building and deployment
+ */
 var gulp = require('gulp-param')(require('gulp'), process.argv),
     watch = require('gulp-watch'),
     header = require('gulp-header'),
@@ -5,9 +9,12 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
     csso = require('gulp-csso'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    exec = require('gulp-exec');
+    exec = require('child_process').exec;
 
-
+/**
+ * Banner to prepend to css and js files on build
+ * @type {string}
+ */
 var banner = [
     '/**',
     ' * Copyright (C) 2017 - Escola.fr ',
@@ -102,7 +109,10 @@ gulp.task('watch', function () {
     ], ['js-admin']);
 });
 
+/*= Deployment
+ *=====================================================*/
 gulp.task('deploy', ['less-public', 'js-public', 'less-admin', 'js-admin', 'fonts'], function (server) {
+    // Minify CSS
     gulp.src([
             'webroot/css/public.css',
             'webroot/css/admin.css'
@@ -111,6 +121,7 @@ gulp.task('deploy', ['less-public', 'js-public', 'less-admin', 'js-admin', 'font
         .pipe(header(banner))
         .pipe(gulp.dest('webroot/css'));
 
+    // Minify JS
     gulp.src([
             'webroot/js/public.js',
             'webroot/js/admin.js'
@@ -122,6 +133,5 @@ gulp.task('deploy', ['less-public', 'js-public', 'less-admin', 'js-admin', 'font
     exec('dploy ' + server, function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
-        cb(err);
     });
 });
