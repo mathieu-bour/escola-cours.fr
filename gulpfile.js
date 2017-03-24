@@ -110,6 +110,7 @@ gulp.task('deploy', ['less-public', 'js-public', 'less-admin', 'js-admin', 'font
         .pipe(csso({comments: false}))
         .pipe(header(banner))
         .pipe(gulp.dest('webroot/css'));
+
     gulp.src([
             'webroot/js/public.js',
             'webroot/js/admin.js'
@@ -117,5 +118,10 @@ gulp.task('deploy', ['less-public', 'js-public', 'less-admin', 'js-admin', 'font
         .pipe(uglify())
         .pipe(header(banner))
         .pipe(gulp.dest('webroot/js'));
-    exec('dploy ' + server);
+
+    exec('dploy ' + server, function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
 });
