@@ -1,18 +1,14 @@
 beta:
-  scheme: "sftp"
-  host: "escola-cours.fr"
-  user: "www-data"
-  pass: "salome3004"
-  path:
-    remote: "/var/www/beta.escola-cours.fr"
+  scheme: "ftp"
+  host: "mathieu-bour.fr"
+  user: "beta_escola_cours_fr"
+  pass: "54wmoNxi2hMokyw8KSj7"
   exclude:
     - ".idea/*"
     - "webroot/less/**"
     - "webroot/js/public/*"
     - "webroot/js/admin/*"
-    - ".bowerrc"
-    - ".editorconfig"
-    - ".git*"
+    - ".*"
     - "dploy.yaml"
     - "gulpfile.js"
     - "package.json"
