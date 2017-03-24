@@ -113,6 +113,8 @@ class UsersTable extends AppTable
         return $rules;
     }
 
+    /*= Hooks
+     *=====================================================*/
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
     {
         if (empty($data['password'])) {

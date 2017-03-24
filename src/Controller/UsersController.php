@@ -124,7 +124,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Flash->success('Votre compte a été mis à jour');
             } else {
-                $this->Flash->success('Erreur lors de la mise à jour de votre compte');
+                $this->Flash->error('Erreur lors de la mise à jour de votre compte');
             }
         }
 
