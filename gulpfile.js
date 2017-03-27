@@ -1,6 +1,10 @@
-/*!
+/**
  * gulpfile.js
  * Gulp tasks to manage code building and deployment
+ */
+/**
+ * Gulp and NPM modules
+ * @type {gulp}
  */
 var gulp = require('gulp-param')(require('gulp'), process.argv),
     watch = require('gulp-watch'),
@@ -8,8 +12,18 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
     less = require('gulp-less'),
     csso = require('gulp-csso'),
     concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    exec = require('child_process').exec;
+    uglify = require('gulp-uglify');
+
+var exec = require('child_process').exec,
+    fs = require('fs'),
+    merge = require('merge-stream');
+
+/**
+ * Assets to build
+ * @type {Object}
+ */
+var assets = JSON.parse(fs.readFileSync('./assets.json'));
+var buildTask = ['css-public', 'js-public', 'css-admin', 'js-admin'];
 
 /**
  * Banner to prepend to css and js files on build
@@ -23,58 +37,51 @@ var banner = [
     ''
 ].join('\n');
 
-/*= Public
- *=====================================================*/
-gulp.task('less-public', function () {
-    return gulp.src('webroot/less/public.less')
+/**
+ * Build css based on assets.json directives
+ * @param {string} section
+ */
+function buildCss(section) {
+    var lessStream = gulp.src(assets['less'][section])
         .pipe(less())
-        .pipe(gulp.dest('webroot/css'))
+        .pipe(concat(section + '-less.less'));
+
+    var cssStream = gulp.src(assets['css'][section])
+        .pipe(concat(section + '-css.css'));
+
+    return merge(lessStream, cssStream)
+        .pipe(concat(section + '.css'))
+        .pipe(gulp.dest('webroot/css'));
+}
+
+/**
+ * Build js based on assets.json directives
+ * @param {string} section
+ */
+function buildJs(section) {
+    return gulp.src(assets['js'][section])
+        .pipe(concat(section + '.js'))
+        .pipe(gulp.dest('webroot/js/'));
+}
+
+/*= CSS
+ *=====================================================*/
+gulp.task('css-public', function () {
+    return buildCss('public');
+});
+gulp.task('css-admin', function () {
+    return buildCss('admin');
 });
 
+/*= JS
+ *=====================================================*/
 gulp.task('js-public', function () {
-    return gulp.src([
-            'bower_components/js-cookie/src/js.cookie.js',
-            'bower_components/jquery/dist/jquery.js',
-            'bower_components/bootstrap/js/alert.js',
-            'bower_components/bootstrap/js/button.js',
-            'bower_components/bootstrap/js/tab.js',
-            'bower_components/owl.carousel/dist/owl.carousel.min.js',
-            'webroot/js/public/jquery.postJSON.js',
-            'webroot/js/public/jquery.coursesForm.js',
-            'webroot/js/public/jquery.slotsTable.js',
-            'webroot/js/public/main.js'
-        ])
-        .pipe(concat('public.js'))
-        //.pipe(uglify())
-        .pipe(header(banner))
-        .pipe(gulp.dest('webroot/js/'));
+    return buildJs('public');
 });
-
-/*= Admin
- *=====================================================*/
-gulp.task('less-admin', function () {
-    return gulp.src('webroot/less/admin.less')
-        .pipe(less())
-        .pipe(csso({
-            comments: false
-        }))
-        .pipe(header(banner))
-        .pipe(gulp.dest('webroot/css'))
-});
-
 gulp.task('js-admin', function () {
-    return gulp.src([
-            'bower_components/js-cookie/src/js.cookie.js',
-            'bower_components/jquery/dist/jquery.js',
-            'bower_components/owl.carousel/dist/owl.carousel.min.js',
-            'webroot/js/admin/main.js'
-        ])
-        .pipe(concat('admin.js'))
-        .pipe(gulp.dest('webroot/js/'));
+    return buildJs('admin');
 });
 
-/*= Miscellaneous
- *=====================================================*/
 gulp.task('fonts', function () {
     return gulp.src([
             'bower_components/font-awesome/fonts/*',
@@ -83,35 +90,9 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest('webroot/fonts/'));
 });
 
-/*= Watch
+/*= Minify assets
  *=====================================================*/
-gulp.task('watch', function () {
-    // Public
-    gulp.watch([
-        'webroot/less/common/*.less',
-        'webroot/less/public/*.less',
-        'webroot/less/public.less'
-    ], ['less-public']);
-
-    gulp.watch([
-        'webroot/js/public/*.js'
-    ], ['js-public']);
-
-    // Admin
-    gulp.watch([
-        'webroot/less/common/*.less',
-        'webroot/less/admin/*.less',
-        'webroot/less/admin.less'
-    ], ['less-admin']);
-
-    gulp.watch([
-        'webroot/js/admin/*.js'
-    ], ['js-admin']);
-});
-
-/*= Deployment
- *=====================================================*/
-gulp.task('deploy', ['less-public', 'js-public', 'less-admin', 'js-admin', 'fonts'], function (server) {
+gulp.task('minify', buildTask, function () {
     // Minify CSS
     gulp.src([
             'webroot/css/public.css',
@@ -129,7 +110,37 @@ gulp.task('deploy', ['less-public', 'js-public', 'less-admin', 'js-admin', 'font
         .pipe(uglify())
         .pipe(header(banner))
         .pipe(gulp.dest('webroot/js'));
+});
 
+/*= Watch assets
+ *=====================================================*/
+gulp.task('watch', buildTask, function () {
+    // Public
+    gulp.watch([
+        'webroot/less/common/*.less',
+        'webroot/less/public/*.less',
+        'webroot/less/public.less'
+    ], ['css-public']);
+
+    gulp.watch([
+        'webroot/js/public/*.js'
+    ], ['js-public']);
+
+    // Admin
+    gulp.watch([
+        'webroot/less/common/*.less',
+        'webroot/less/admin/*.less',
+        'webroot/less/admin.less'
+    ], ['css-admin']);
+
+    gulp.watch([
+        'webroot/js/admin/*.js'
+    ], ['js-admin']);
+});
+
+/*= Deploy project
+ *=====================================================*/
+gulp.task('deploy', ['minify', 'fonts'], function (server) {
     exec('dploy ' + server, function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);

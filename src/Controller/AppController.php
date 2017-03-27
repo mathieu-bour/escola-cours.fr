@@ -37,11 +37,6 @@ class AppController extends Controller
         ]);
     }
 
-    public function beforeFilter(Event $event)
-    {
-        return parent::beforeFilter($event);
-    }
-
     public function beforeRender(Event $event)
     {
         if (!$this->request->is('json')) {

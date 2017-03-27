@@ -38,5 +38,6 @@ class AppView extends View
     {
         $this->loadHelper('Html', ['className' => 'Bootstrap.Html']);
         $this->loadHelper('Form', ['className' => 'Bootstrap.Form']);
+        $this->loadHelper('WyriHaximus/MinifyHtml.MinifyHtml');
     }
 }

@@ -42,9 +42,10 @@ class LessonsTable extends AppTable
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Discipline');
+        $this->belongsTo('Disciplines');
         $this->belongsTo('Levels');
-        $this->belongsTo('Users', [
+        $this->belongsTo('Teachers', [
+            'className' => 'Users',
             'foreignKey' => 'teacher_id'
         ]);
         $this->belongsTo('Users');
@@ -82,7 +83,8 @@ class LessonsTable extends AppTable
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['teacher_id'], 'Teachers'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->existsIn(['teacher_id'], 'Users'));
 
         return $rules;
     }

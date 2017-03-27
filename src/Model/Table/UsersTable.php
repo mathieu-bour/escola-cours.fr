@@ -7,7 +7,6 @@ use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
 use Cake\ORM\Association\HasMany;
 use Cake\ORM\RulesChecker;
-use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
@@ -68,7 +67,7 @@ class UsersTable extends AppTable
             ->allowEmpty('email', false, 'Votre e-mail est nécessaire')
             // password
             ->sameAs('password', 'password_confirm', 'les mots de passe ne correspondent pas.')
-            ->allowEmpty('password', 'create', 'Votre mot de passe ne peut être vide')
+            ->requirePresence('password', 'create', 'Votre mot de passe ne peut être vide')
             // type
             ->inList('type', ['student', 'teacher'], 'Veuillez sélectionner un type de compte')
             ->allowEmpty('type', false, 'Veuillez sélectionner un type de compte')
@@ -117,8 +116,10 @@ class UsersTable extends AppTable
      *=====================================================*/
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
     {
-        if (empty($data['password'])) {
-            unset($data['password'], $data['password_confirm']);
+        if (!empty($data['new_password'])) {
+            $data['password'] = $data['new_password'];
+            $data['password_confirm'] = $data['new_password_confirm'];
+            unset($data['new_password'], $data['new_password_confirm']);
         }
     }
 }

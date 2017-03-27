@@ -11,7 +11,8 @@
     "cakephp/migrations": "~1.0",
     "cakephp/plugin-installer": "*",
     "holt59/cakephp3-bootstrap-helpers": "dev-master",
-    "fheider/cakephp-datatables": "dev-master"
+    "fheider/cakephp-datatables": "dev-master",
+    "wyrihaximus/minify-html": "^1.1"
   },
   "require-dev": {
     "psy/psysh": "@stable",

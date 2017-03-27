@@ -1,0 +1,48 @@
+{
+  "css": {
+    "public": [
+      "bower_components/beemuse/dist/beemuse.css",
+      "bower_components/owl.carousel/dist/assets/owl.carousel.css"
+    ],
+    "admin": [
+      "bower_components/datatables.net-bs/css/dataTables.bootstrap.css",
+      "bower_components/datatables.net-responsive-bs/css/responsive.bootstrap.css",
+      "bower_components/select2/dist/css/select2.css",
+      "bower_components/select2-bootstrap-theme/dist/select2-bootstrap.css"
+    ]
+  },
+  "less": {
+    "public": [
+      "bower_components/font-awesome/less/font-awesome.less",
+      "webroot/less/public.less"
+    ],
+    "admin": [
+      "bower_components/font-awesome/less/font-awesome.less",
+      "webroot/less/admin.less"
+    ]
+  },
+  "js": {
+    "public": [
+      "bower_components/js-cookie/src/js.cookie.js",
+      "bower_components/jquery/dist/jquery.js",
+      "bower_components/bootstrap/js/alert.js",
+      "bower_components/bootstrap/js/button.js",
+      "bower_components/bootstrap/js/tab.js",
+      "bower_components/owl.carousel/dist/owl.carousel.min.js",
+      "webroot/js/common/*.js",
+      "webroot/js/public/main.js"
+    ],
+    "admin": [
+      "bower_components/jquery/dist/jquery.js",
+      "bower_components/datatables.net/js/jquery.dataTables.js",
+      "bower_components/datatables.net-bs/js/dataTables.bootstrap.js",
+      "bower_components/datatables.net-responsive/js/dataTables.responsive.js",
+      "bower_components/datatables.net-responsive-bs/js/responsive.bootstrap.js",
+      "bower_components/select2/dist/js/select2.js",
+      "vendor/fheider/cakephp-datatables/webroot/js/cakephp.dataTables.js",
+      "bower_components/moment/min/moment-with-locales.js",
+      "webroot/js/common/*.js",
+      "webroot/js/admin/main.js"
+    ]
+  }
+}

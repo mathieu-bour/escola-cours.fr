@@ -222,8 +222,12 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('Bootstrap');
+Plugin::load('WyriHaximus/MinifyHtml', ['bootstrap' => true]);
+Plugin::load('DataTables', ['bootstrap' => false, 'routes' => false]);
 
 
+/*= Custom global functions
+ *=====================================================*/
 /**
  * Array search recursive function
  * @param mixed $needle
@@ -238,5 +242,6 @@ function array_search_recursive($needle, $haystack)
             return $current_key;
         }
     }
+
     return false;
 }

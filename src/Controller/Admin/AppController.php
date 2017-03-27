@@ -1,8 +1,6 @@
 <?php
 namespace App\Controller\Admin;
 
-use Cake\Event\Event;
-
 /**
  * Class AppController
  *
@@ -11,8 +9,16 @@ use Cake\Event\Event;
  */
 class AppController extends \App\Controller\AppController
 {
-    public function beforeFilter(Event $event)
+    public $helpers = [
+        'DataTables' => [
+            'className' => 'DataTables.DataTables'
+        ]
+    ];
+
+    public function initialize()
     {
-        return parent::beforeFilter($event);
+        parent::initialize();
+
+        $this->loadComponent('DataTables.DataTables');
     }
 }

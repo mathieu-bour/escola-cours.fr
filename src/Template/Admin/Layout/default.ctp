@@ -21,5 +21,6 @@
         </div>
 
         <?= $this->Html->script('admin'); ?>
+        <?= $this->fetch('script'); ?>
     </body>
 </html>

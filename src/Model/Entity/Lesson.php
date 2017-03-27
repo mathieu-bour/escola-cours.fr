@@ -11,14 +11,17 @@ use Cake\ORM\Entity;
  * @package App\Model\Entity
  *
  * @property int $id
- * @property int $teacher_id
  * @property Time $beginning
  * @property float $duration
+ * @property int $teacher_id
+ * @property int $user_id
+ * @property int $level_id
+ * @property int $discipline_id
  *
  * @property User $teacher
  * @property User $user
- * @property Course[] $courses
- * @property Lesson[] $lessons
+ * @property Level $level
+ * @property Discipline $discipline
  */
 class Lesson extends Entity
 {

@@ -1,13 +1,13 @@
 body {
     position: relative;
-    background-color: #eeeeee;
+    background-color: @gray-dark;
 }
 #content {
     position: absolute;
-    left: 300px;
-    top: 70px;
+    left: 250px;
+    top: 60px;
     right: 0;
-    padding: 20px;
+    padding: 20px 20px 20px 0;
 }
 .panel-heading > h3 {
     margin: 5px 0;
@@ -20,7 +20,13 @@ body {
 /* = DataTables
  * =========================================================== */
 .dataTable {
+    width: 100%;
 }
 .dataTable td {
     vertical-align: middle;
+}
+/*= select2
+ *=====================================================*/
+.select2-selection {
+    border-radius: 0 !important;
 }

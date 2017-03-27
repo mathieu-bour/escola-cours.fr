@@ -1,9 +1,10 @@
-$('.menu-item.has-submenu').on('click', function (e) {
+$('.menu-item.has-submenu > a').on('click', function (e) {
     e.preventDefault();
 
-    var isOpen = $(this).hasClass('open');
-    var $submenu = $(this).find('.submenu');
-    $(this).toggleClass('open');
+    var $item = $(this).parent();
+    var isOpen = $item.hasClass('open');
+    var $submenu = $item.find('.submenu');
+    $item.toggleClass('open');
 
     if (!isOpen) {
         $submenu.slideDown(300);
@@ -11,3 +12,8 @@ $('.menu-item.has-submenu').on('click', function (e) {
         $submenu.slideUp(300);
     }
 });
+$('#user-add-admin-form').coursesForm();
+
+$.fn.select2.defaults.set("theme", "bootstrap");
+
+moment.locale('fr');

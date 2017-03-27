@@ -1,7 +1,4 @@
 <aside class="sidebar" id="sidebar">
-    <div class="logo">
-        <h1><i class="fa fa-graduation-cap"></i> Escola</h1>
-    </div>
 
     <h5 class="sidebar-title">Navigation</h5>
 
@@ -33,6 +30,13 @@
             </li>
             <li class="menu-item">
                 <?= $this->Html->link(
+                    '<i class="fa fa-fw fa-plus" aria-hidden="true"></i>Ajouter un utilisateur',
+                    ['controller' => 'users', 'action' => 'add'],
+                    ['escape' => false]
+                ); ?>
+            </li>
+            <li class="menu-item">
+                <?= $this->Html->link(
                     '<i class="fa fa-fw fa-users" aria-hidden="true"></i>Élèves',
                     ['controller' => 'users', 'action' => 'students'],
                     ['escape' => false]
@@ -40,7 +44,7 @@
             </li>
             <li class="menu-item">
                 <?= $this->Html->link(
-                    '<i class="fa fa-fw fa-university" aria-hidden="true"></i>Professeurs',
+                    '<i class="fa fa-fw fa-graduation-cap" aria-hidden="true"></i>Professeurs',
                     ['controller' => 'users', 'action' => 'teachers'],
                     ['escape' => false]
                 ); ?>
