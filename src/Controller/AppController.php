@@ -1,6 +1,13 @@
 <?php
+
 namespace App\Controller;
 
+use App\Controller\Component\CrumbsComponent;
+use Cake\Controller\Component\AuthComponent;
+use Cake\Controller\Component\CsrfComponent;
+use Cake\Controller\Component\FlashComponent;
+use Cake\Controller\Component\RequestHandlerComponent;
+use Cake\Controller\Component\SecurityComponent;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Routing\Route\Route;
@@ -10,6 +17,13 @@ use Cake\Routing\Route\Route;
  *
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Controller
+ *
+ * @property AuthComponent $Auth
+ * @property CrumbsComponent $Crumbs
+ * @property CsrfComponent $Csrf
+ * @property FlashComponent $Flash
+ * @property RequestHandlerComponent $RequestHandler
+ * @property SecurityComponent $Security
  */
 class AppController extends Controller
 {
@@ -21,10 +35,6 @@ class AppController extends Controller
         parent::initialize();
 
         // Components
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
-        $this->loadComponent('Security');
-        $this->loadComponent('Csrf');
         $this->loadComponent('Auth', [
             'loginAction' => [
                 'admin' => false
@@ -35,6 +45,16 @@ class AppController extends Controller
                 ]
             ]
         ]);
+        $this->loadComponent('Crumbs');
+        $this->loadComponent('Csrf');
+        $this->loadComponent('Flash');
+        $this->loadComponent('RequestHandler');
+        $this->loadComponent('Security');
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
     }
 
     public function beforeRender(Event $event)
@@ -83,5 +103,6 @@ class AppController extends Controller
     public function setTitle($pageTitle)
     {
         $this->set('pageTitle', $pageTitle);
+        $this->Crumbs->end($pageTitle);
     }
 }

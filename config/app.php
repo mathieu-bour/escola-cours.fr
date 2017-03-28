@@ -222,7 +222,7 @@ return [
             'className' => 'Cake\Database\Connection',
             'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
-            'host' => filter_var(env('LOCAL', true), FILTER_VALIDATE_BOOLEAN) ? '127.0.0.1' : 'mathieu-bour.fr',
+            'host' => 'mathieu-bour.fr',
             'username' => 'escola_cours_fr_dev',
             'password' => '*G3uf&6XJkvZP*429x01',
             'database' => 'escola_cours_fr_dev',

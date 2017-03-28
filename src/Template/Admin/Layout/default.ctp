@@ -16,7 +16,17 @@
             <?= $this->element('sidebar'); ?>
 
             <div id="content">
-                <?= $this->fetch('content'); ?>
+                <div class="panel">
+                    <?php if (!empty($pageTitle)): ?>
+                        <div class="panel-heading">
+                            <h2 class="page-title"><?= $pageTitle; ?></h2>
+                        </div>
+                    <?php endif; ?>
+                    <div class="panel-body">
+                        <?= $this->Breadcrumbs->render($crumbList); ?>
+                        <?= $this->fetch('content'); ?>
+                    </div>
+                </div>
             </div>
         </div>
 

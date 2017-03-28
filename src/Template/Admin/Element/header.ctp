@@ -21,10 +21,4 @@
             </div>
         </div>
     </div>
-
-    <div class="header-right">
-        <a href="#" class="toggle-sidebar">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
 </header>

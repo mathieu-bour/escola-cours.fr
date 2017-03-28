@@ -1,7 +1,3 @@
-<?php
-use Cake\Routing\Router;
-
-?>
 <div class="panel">
     <div class="panel-heading">
         <h2>Ajouter un cours</h2>
@@ -13,24 +9,29 @@ use Cake\Routing\Router;
                 <?= $this->Form->create(); ?>
                 <?= $this->Form->input('user_id', [
                     'type' => 'select',
-                    'id' => 'user-select2'
+                    'id' => 'user-select2',
+                    'label' => 'Élève'
                 ]); ?>
                 <?= $this->Form->input('course', [
                     'type' => 'select',
-                    'id' => 'course-select2'
+                    'id' => 'course-select2',
+                    'label' => 'Cours'
                 ]); ?>
                 <?= $this->Form->input('teacher_id', [
                     'type' => 'select',
-                    'id' => 'teacher-select2'
+                    'id' => 'teacher-select2',
+                    'label' => 'Professeur'
                 ]); ?>
 
                 <?= $this->Form->input('beginning', [
                     'type' => 'date',
-                    'monthNames' => false
+                    'monthNames' => false,
+                    'label' => 'Date'
                 ]); ?>
                 <?= $this->Form->input('beginning', [
                     'type' => 'time',
-                    'interval' => 30
+                    'interval' => 30,
+                    'label' => 'Heure'
                 ]); ?>
                 <?= $this->Form->input('duration', [
                     'type' => 'select',
@@ -38,7 +39,8 @@ use Cake\Routing\Router;
                         '1' => '1 heure',
                         '1.5' => '1 heure 30 minutes',
                         '2' => '2 heures',
-                    ]
+                    ],
+                    'label' => 'Durée'
                 ]); ?>
 
                 <button class="btn btn-block btn-primary">Enregister</button>
