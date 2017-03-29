@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Mathématiques"
+  },
+  {
+    "id": 2,
+    "name": "Physique-Chimie"
+  },
+  {
+    "id": 3,
+    "name": "Français"
+  },
+  {
+    "id": 4,
+    "name": "Anglais"
+  },
+  {
+    "id": 5,
+    "name": "Allemand"
+  },
+  {
+    "id": 6,
+    "name": "Espagnol"
+  },
+  {
+    "id": 7,
+    "name": "Sciences de la Vie et de la Terre"
+  },
+  {
+    "id": 8,
+    "name": "Sciences de l'Ingénieur"
+  },
+  {
+    "id": 9,
+    "name": "Technologie"
+  }
+]

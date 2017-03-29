@@ -3,8 +3,6 @@
         <h1 class="header-logo">Escola</h1>
 
         <div class="header-profile clearfix">
-            <?= $this->Html->image('//placehold.it/70', ['class' => 'header-profile-photo']); ?>
-
             <div class="header-profile-meta">
                 <div class="header-profile-welcome">Bienvenue</div>
                 <div class="header-profile-name">

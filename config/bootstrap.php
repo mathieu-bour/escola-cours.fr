@@ -245,3 +245,27 @@ function array_search_recursive($needle, $haystack)
 
     return false;
 }
+
+/**
+ * Get random value from array
+ * @param array $array the array
+ * @param int $count the value count to find
+ * @return mixed
+ */
+function array_rand_value($array, $count = 1) {
+    if(count($array) < $count) {
+        throw new InvalidArgumentException('Value count cannot be larger than the array.');
+    }
+
+    $keys = array_rand($array, $count);
+
+    if(!is_array($keys)) {
+        return $array[$keys];
+    } else {
+        $result = [];
+        foreach($keys as $key) {
+            $result[] = $array[$key];
+        }
+        return $result;
+    }
+}

@@ -6,6 +6,7 @@ use ArrayObject;
 use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
 use Cake\ORM\Association\HasMany;
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\Validation\Validator;
 
@@ -121,5 +122,18 @@ class UsersTable extends AppTable
             $data['password_confirm'] = $data['new_password_confirm'];
             unset($data['new_password'], $data['new_password_confirm']);
         }
+    }
+
+    /*= Finders
+     *=====================================================*/
+    public function findTeachers(Query $query, array $options) {
+        $query->innerJoinWith('Courses', function (Query $q) use ($options) {
+            return $q->where([
+                'Courses.level_id' => $options['level_id'],
+                'Courses.discipline_id' => $options['discipline_id']
+            ]);
+        })
+            ->where(['type' => 'teacher']);
+        return $query;
     }
 }

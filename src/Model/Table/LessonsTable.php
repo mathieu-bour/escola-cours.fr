@@ -49,6 +49,11 @@ class LessonsTable extends AppTable
             'foreignKey' => 'teacher_id'
         ]);
         $this->belongsTo('Users');
+
+        $this->addBehavior('CounterCache', [
+            'Users' => ['lesson_count'],
+            'Teachers' => ['lesson_count']
+        ]);
     }
 
     /**

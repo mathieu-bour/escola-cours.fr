@@ -17,3 +17,9 @@ $('#user-add-admin-form').coursesForm();
 $.fn.select2.defaults.set("theme", "bootstrap");
 
 moment.locale('fr');
+
+Chart.scaleService.updateScaleDefaults('linear', {
+    ticks: {
+        beginAtZero: true
+    }
+});
