@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\UsersController;
+use Cake\I18n\Time;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -9,69 +11,84 @@ use Cake\TestSuite\IntegrationTestCase;
  */
 class UsersControllerTest extends IntegrationTestCase
 {
+    public $fixtures = ['app.users'];
 
-    /**
-     * Fixtures
-     *
-     * @var array
-     */
-    public $fixtures = [
-        'app.users',
-        'app.disciplines',
-        'app.disciplines_users',
-        'app.lessons',
-        'app.lessons_users',
-        'app.levels',
-        'app.levels_users'
-    ];
-
-    /**
-     * Test index method
-     *
-     * @return void
-     */
-    public function testIndex()
+    /*= Public action get
+     *=====================================================*/
+    public function testRegister()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/users/register');
+        $this->assertResponseOk();
     }
 
-    /**
-     * Test view method
-     *
-     * @return void
-     */
-    public function testView()
+    public function testRegisterPostData()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+        $this->post('/users/register', [
+            'type' => 'student',
+            'email' => 'registerstudent@gmail.com',
+            'new_password' => 'password',
+            'new_password_confirm' => 'password',
+            'lastname' => 'Student',
+            'firstname' => 'Test',
+            'telephone' => '0612345678',
+            'address' => '15 rue des Tests',
+            'zip_code' => '00000',
+            'city' => 'Test City'
+        ]);
+        $this->assertResponseSuccess();
     }
 
-    /**
-     * Test add method
-     *
-     * @return void
-     */
-    public function testAdd()
+    public function testRegisterBadPostData()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+        $this->post('/users/register', []);
+        $this->assertResponseError();
     }
 
-    /**
-     * Test edit method
-     *
-     * @return void
-     */
-    public function testEdit()
+    public function testLogin()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/users/login');
+        $this->assertResponseOk();
     }
 
-    /**
-     * Test delete method
-     *
-     * @return void
-     */
-    public function testDelete()
+    public function testSucessfulLogin()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+        $this->post('/users/login', ['email' => 'john.doe@gmail.com', 'password' => 'password']);
+        $this->assertResponseSuccess();
+    }
+
+    public function testLoginBadCredentials()
+    {
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+        $this->post('/users/login', ['email' => 'john.doe@gmail.com', 'password' => 'wrong']);
+        $this->assertResponseError();
+    }
+
+    public function testForgot()
+    {
+        $this->get('/users/forgot');
+        $this->assertResponseOk();
+    }
+
+    public function testForgotExistingEmail()
+    {
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+        $this->post('/users/forgot', ['email' => 'john.doe@gmail.com']);
+        $this->assertResponseOk();
+    }
+
+    public function testNotExistingEmail()
+    {
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+        $this->post('/users/forgot', ['email' => 'john.wrong@gmail.com']);
+        $this->assertResponseError();
     }
 }
