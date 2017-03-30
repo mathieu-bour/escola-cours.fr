@@ -51,7 +51,7 @@ class UsersController extends AppController
                 throw new BadRequestException();
             }
 
-            if (!empty($course)) {
+            if (!empty($courses)) {
                 foreach ($courses as $key => $course) {
                     $courses[$key]['user_id'] = $user->id;
                 }
