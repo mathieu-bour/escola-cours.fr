@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\Entity\Slot;
 use App\Model\Entity\User;
+use Aura\Intl\Exception;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
 use Cake\Mailer\MailerAwareTrait;
@@ -42,24 +43,15 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             $user = $this->request->getData();
-            $courses = !empty($user['courses']) ? json_decode($user['courses'], true) : [];
+            $user['courses'] = !empty($user['courses']) ? json_decode($user['courses'], true) : [];
 
-            $user = $this->Users->newEntity($user);
-            unset($user['courses']);
+            $user = $this->Users->newEntity($user, ['associated' => ['Courses']]);
 
-            if (!$this->Users->save($user)) {
-                throw new BadRequestException();
-            }
-
-            if (!empty($courses)) {
-                foreach ($courses as $key => $course) {
-                    $courses[$key]['user_id'] = $user->id;
-                }
-                $courses = $this->Users->Courses->newEntities($courses);
-
-                if (!$this->Users->Courses->saveMany($courses)) {
-                    throw new BadRequestException();
-                }
+            if ($this->Users->save($user)) {
+                $this->Flash->success('Votre inscription a bien été prise en compte, vous pouvez dès lors vous connecter.');
+                $this->redirect(['controller' => 'users', 'action' => 'login']);
+            } else {
+                $this->Flash->success('Erreur lors de votre inscription');
             }
         }
 
