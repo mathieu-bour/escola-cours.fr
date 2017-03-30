@@ -1,3 +1,7 @@
+$.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+    jqXHR.setRequestHeader('X-CSRF-Token', Cookies.get('csrfToken'));
+});
+
 $('.menu-item.has-submenu > a').on('click', function (e) {
     e.preventDefault();
 

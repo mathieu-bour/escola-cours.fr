@@ -33,6 +33,7 @@
       "webroot/js/public/main.js"
     ],
     "admin": [
+      "bower_components/js-cookie/src/js.cookie.js",
       "bower_components/jquery/dist/jquery.js",
       "bower_components/datatables.net/js/jquery.dataTables.js",
       "bower_components/datatables.net-bs/js/dataTables.bootstrap.js",

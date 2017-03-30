@@ -53,9 +53,31 @@ $this->start('script'); ?>
                 "title": "Niveau",
                 "name": "Levels.name",
                 "data": "level.name"
+            },
+            {
+                "title": "Actions",
+                "render": function(data, type, row) {
+                    return '<button class="btn btn-xs btn-danger btn-delete">Supprimer<button';
+                }
             }
         ],
         "order": [0, "desc"]
+    }).on('draw.dt', function () {
+        $('.btn-delete').on('click', function () {
+            var $tr = $(this).closest('tr');
+            var id = parseInt($tr.attr('id'));
+
+            if (confirm('Confirmer la suppression ?')) {
+                $.ajax({
+                    "dataType": "json",
+                    "method": "post",
+                    "url": "/admin/lessons/delete/" + id,
+                    "success": function (json) {
+                        dataTable.draw();
+                    }
+                });
+            }
+        });
     });
 </script>
 <?php $this->end(); ?>

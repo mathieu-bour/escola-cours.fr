@@ -55,4 +55,11 @@ class LessonsController extends AppController
             }
         }
     }
+
+    public function delete(int $id)
+    {
+        $this->json(
+            $this->Lessons->delete($id)
+        );
+    }
 }
