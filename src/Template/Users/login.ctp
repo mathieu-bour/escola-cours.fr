@@ -10,8 +10,20 @@
                         '?' => !empty($redirect) ? ['redirect' => $redirect] : null
                     ]
                 ]); ?>
-                <?= $this->Form->input('email'); ?>
-                <?= $this->Form->input('password'); ?>
+                <?= $this->Form->input('email', [
+                    'label' => 'Adresse e-mail'
+                ]); ?>
+                <?= $this->Form->input('password', [
+                    'label' => 'Mot de passe'
+                ]); ?>
+
+                <?= $this->Html->link(
+                    'Vous avez oublié votre mot de passe ?', [
+                    'controller' => 'users',
+                    'action' => 'forgot'
+                ], [
+                    'class' => 'forgot-password'
+                ]); ?>
 
                 <button class="btn btn-primary">Connexion</button>
                 <?= $this->Form->end(); ?>

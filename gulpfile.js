@@ -12,7 +12,9 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
     less = require('gulp-less'),
     csso = require('gulp-csso'),
     concat = require('gulp-concat'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    mjml = require('gulp-mjml'),
+    ext_replace = require('gulp-ext-replace');
 
 var exec = require('child_process').exec,
     fs = require('fs'),
@@ -23,7 +25,7 @@ var exec = require('child_process').exec,
  * @type {Object}
  */
 var assets = JSON.parse(fs.readFileSync('./assets.json'));
-var buildTask = ['css-public', 'js-public', 'css-admin', 'js-admin'];
+var buildTask = ['css-public', 'js-public', 'css-admin', 'js-admin', 'emails'];
 
 /**
  * Banner to prepend to css and js files on build
@@ -82,6 +84,8 @@ gulp.task('js-admin', function () {
     return buildJs('admin');
 });
 
+/*= Misc
+ *=====================================================*/
 gulp.task('fonts', function () {
     return gulp.src([
             'bower_components/font-awesome/fonts/*',

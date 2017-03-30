@@ -329,12 +329,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Holt59/cakephp3-bootstrap-helpers.git",
-                "reference": "12bbcc76f2e8b4090b4c29acbdbad293dbf65b19"
+                "reference": "d8f1ee840866a89daea2a0d89ab8073df2b2235e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Holt59/cakephp3-bootstrap-helpers/zipball/12bbcc76f2e8b4090b4c29acbdbad293dbf65b19",
-                "reference": "12bbcc76f2e8b4090b4c29acbdbad293dbf65b19",
+                "url": "https://api.github.com/repos/Holt59/cakephp3-bootstrap-helpers/zipball/d8f1ee840866a89daea2a0d89ab8073df2b2235e",
+                "reference": "d8f1ee840866a89daea2a0d89ab8073df2b2235e",
                 "shasum": ""
             },
             "require": {
@@ -363,7 +363,7 @@
                 "bootstrap",
                 "cakephp"
             ],
-            "time": "2017-03-24 06:52:33"
+            "time": "2017-03-30 08:54:52"
         },
         {
             "name": "linkorb/jsmin-php",

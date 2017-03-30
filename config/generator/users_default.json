@@ -11,5 +11,18 @@
     "address": "6 rue de Vieilleville",
     "zip_code": "57070",
     "city": "Metz"
+  },
+  {
+    "admin": 1,
+    "type": "student",
+    "email": "camille.schoumacker1@gmail.com",
+    "new_password": "camille",
+    "new_password_confirm": "camille",
+    "firstname": "Camille",
+    "lastname": "Schoumacker",
+    "telephone": "0649151266",
+    "address": "45 Route de Borny",
+    "zip_code": "57070",
+    "city": "Metz"
   }
 ]

@@ -24,6 +24,7 @@ class PagesController extends AppController
 
     public function about()
     {
+        $this->setTitle('À propos');
     }
 
     public function cgu()

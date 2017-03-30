@@ -36,6 +36,9 @@ class LessonsController extends AppController
         ]);
     }
 
+    /**
+     * Add a lesson
+     */
     public function add()
     {
         if ($this->request->is('post')) {
@@ -56,10 +59,24 @@ class LessonsController extends AppController
         }
     }
 
+    /**
+     * Delete a lesson
+     * @param int $id
+     */
     public function delete(int $id)
     {
-        $this->json(
-            $this->Lessons->delete($id)
-        );
+        $this->request->allowMethod(['ajax', 'json']);
+
+        $lesson = $this->Lessons->get($id);
+
+        if (!empty($lesson)) {
+            if ($this->Lessons->delete($lesson)) {
+                $this->json();
+            } else {
+                $this->json([], 200, 'Unable to delete lesson with id ' . $id);
+            }
+        } else {
+            $this->json([], 404, 'Lesson with id ' . $id . ' was not found.');
+        }
     }
 }

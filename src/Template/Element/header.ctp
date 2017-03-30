@@ -1,12 +1,17 @@
 <header class="header">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h1 class="main-title"><?= $this->Html->link('Escola', '/'); ?></h1>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <nav class="nav">
                     <ul class="nav-list">
+                        <?php if ($isAdmin): ?>
+                            <li class="nav-item">
+                                <?= $this->Html->link('Administration', '/admin'); ?>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item">
                             <?= $this->Html->link('Qui sommes-nous ?', [
                                 'controller' => 'pages',

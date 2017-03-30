@@ -13,6 +13,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property bool $admin
+ * @property string $token
  * @property string $email
  * @property string $password
  * @property string $type

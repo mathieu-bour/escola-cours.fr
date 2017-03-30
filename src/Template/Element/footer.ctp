@@ -23,16 +23,45 @@
                     <h4 class="footer-title">Liens</h4>
 
                     <ul>
-                        <li><?= $this->Html->link('Qui sommes-nous ?', ['controller' => 'pages', 'action' => 'about']); ?></li>
-                        <li><?= $this->Html->link('C.G.U.', ['controller' => 'pages', 'action' => 'cgu']); ?></li>
-                        <li><?= $this->Html->link('C.G.V.', ['controller' => 'pages', 'action' => 'cgv']); ?></li>
+                        <li>
+                            <?= $this->Html->link('Connexion', [
+                                'controller' => 'users',
+                                'action' => 'login'
+                            ]); ?>
+                        </li>
+                        <li>
+                            <?= $this->Html->link('Inscription', [
+                                'controller' => 'users',
+                                'action' => 'register'
+                            ]); ?>
+                        </li>
+                        <li>
+                            <?= $this->Html->link('Qui sommes-nous ?', [
+                                'controller' => 'pages',
+                                'action' => 'about'
+                            ]); ?>
+                        </li>
+                        <li>
+                            <?= $this->Html->link('C.G.U.', [
+                                'controller' => 'pages',
+                                'action' => 'cgu'
+                            ]); ?>
+                        </li>
+                        <li>
+                            <?= $this->Html->link('C.G.V.', [
+                                'controller' => 'pages',
+                                'action' => 'cgv'
+                            ]); ?>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="col-md-3">
                     <h4 class="footer-title">Développeurs</h4>
 
-                    <p class="text-center">Proudly developped and maintained by the synthetica team</p>
+                    <p>Proudly developped and maintained by</p>
+
+                    <?= $this->Html->image('synthetica-logo.png'); ?>
                 </div>
             </div>
         </div>

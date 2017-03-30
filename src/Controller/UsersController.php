@@ -4,7 +4,10 @@ namespace App\Controller;
 
 use App\Model\Entity\Slot;
 use App\Model\Entity\User;
+use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
+use Cake\Mailer\MailerAwareTrait;
+use Cake\Utility\Text;
 
 /**
  * Users Controller
@@ -18,11 +21,13 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
+    use MailerAwareTrait;
+
     /*= Hooks
      *=====================================================*/
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['login', 'register']);
+        $this->Auth->allow(['login', 'register', 'forgot', 'reset']);
         return parent::beforeFilter($event);
     }
 
@@ -78,6 +83,54 @@ class UsersController extends AppController
     {
         $this->Auth->logout();
         $this->redirect($this->Auth->redirectUrl());
+    }
+
+    /**
+     * Password forgot page
+     */
+    public function forgot()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->Users->find()
+                ->where(['email' => $this->request->getData('email')])
+                ->first();
+
+            if (empty($user)) {
+                $this->Flash->error('Nous n\'avons pas pu trouver votre adresse e-mail, veuiller réessayer');
+            } else {
+                // Regenerate token
+                $user = $this->Users->patchEntity($user, ['token' => Text::uuid()]);
+
+                if ($this->Users->save($user)) {
+                    $this->getMailer('User')->send('resetPassword', [$user]);
+                    $this->Flash->success('Nous vous avons envoyé un e-mail contenant des instructions pour récupérer votre compte');
+                }
+            }
+        }
+
+        $this->setTitle('Mot de passe oublié');
+    }
+
+    /**
+     * Reset a password
+     * @param $token
+     */
+    public function reset(string $token)
+    {
+        $user = $this->Users->find()
+            ->where(['token' => $token])
+            ->first();
+
+        if (empty($user)) {
+            throw new RecordNotFoundException('Ce lien n\'est pas lié à un utilisateur ou a expiré.');
+        } else if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $data['token'] = null;
+            $user = $this->Users->patchEntity($user, $data);
+            $this->Users->save($user);
+        }
+
+        $this->setTitle('Réinitialisation du mot de passe');
     }
 
     /**
