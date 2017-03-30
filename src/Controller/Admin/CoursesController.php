@@ -11,7 +11,6 @@ use DataTables\Controller\Component\DataTablesComponent;
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Controller\Admin
  *
- * @property DataTablesComponent $DataTables
  * @property CoursesTable $Courses
  */
 class CoursesController extends AppController

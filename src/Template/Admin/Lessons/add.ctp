@@ -25,7 +25,9 @@
 
                 <?= $this->Form->input('beginning', [
                     'type' => 'date',
-                    'monthNames' => false,
+                    'templates' => [
+                        'dateWidget' => '<div class="row">{{day}}{{month}}{{year}}</div>'
+                    ],
                     'label' => 'Date'
                 ]); ?>
                 <?= $this->Form->input('beginning', [
@@ -83,7 +85,6 @@
 <?php $this->start('script'); ?>
 <script>
     var $userSelect2 = $('#user-select2').select2({
-        minimumResultsForSearch: Infinity,
         ajax: {
             dataType: 'json',
             url: '/admin/users/students/list',
@@ -102,7 +103,6 @@
         }
     }).on('change', function () {
         var $courseSelect2 = $('#course-select2').select2({
-            minimumResultsForSearch: Infinity,
             ajax: {
                 dataType: 'json',
                 url: '/admin/courses/user/' + $userSelect2.val(),
@@ -121,7 +121,6 @@
             }
         }).on('change', function () {
             var $teacherSelect2 = $('#teacher-select2').select2({
-                minimumResultsForSearch: Infinity,
                 ajax: {
                     dataType: 'json',
                     url: '/admin/users/teachers/' + $courseSelect2.val(),

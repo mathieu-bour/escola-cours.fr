@@ -27,17 +27,18 @@ use Cake\Routing\Route\Route;
  */
 class AppController extends Controller
 {
-
     /*= Hooks
      *=====================================================*/
     public function initialize()
     {
         parent::initialize();
-
         // Components
         $this->loadComponent('Auth', [
+            'authorize' => 'Controller',
             'loginAction' => [
-                'admin' => false
+                'prefix' => false,
+                'controller' => 'users',
+                'action' => 'login'
             ],
             'authenticate' => [
                 'Form' => [
@@ -65,7 +66,6 @@ class AppController extends Controller
                 'isAdmin' => (bool)$this->Auth->user('admin'),
                 '_csrfToken' => $this->request->getParam('_csrfToken')
             ]);
-
         }
 
         if (
@@ -76,6 +76,19 @@ class AppController extends Controller
         }
 
         return parent::beforeRender($event);
+    }
+
+    public function isAuthorized($user = null)
+    {
+        if (!$this->request->getParam('prefix')) {
+            return true;
+        }
+
+        if ($this->request->getParam('prefix') === 'admin') {
+            return (bool)($user['admin']);
+        }
+
+        return false;
     }
 
     /*= Common functions

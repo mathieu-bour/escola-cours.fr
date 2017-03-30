@@ -3,8 +3,13 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <?= $this->Flash->render('auth'); ?>
-
-                <?= $this->Form->create(); ?>
+                <?= $this->Form->create(null, [
+                    'url' => [
+                        'controller' => 'users',
+                        'action' => 'login',
+                        '?' => !empty($redirect) ? ['redirect' => $redirect] : null
+                    ]
+                ]); ?>
                 <?= $this->Form->input('email'); ?>
                 <?= $this->Form->input('password'); ?>
 

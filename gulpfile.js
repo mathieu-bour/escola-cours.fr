@@ -123,6 +123,7 @@ gulp.task('watch', buildTask, function () {
     ], ['css-public']);
 
     gulp.watch([
+        'webroot/js/common/*.js',
         'webroot/js/public/*.js'
     ], ['js-public']);
 
@@ -134,6 +135,7 @@ gulp.task('watch', buildTask, function () {
     ], ['css-admin']);
 
     gulp.watch([
+        'webroot/js/common/*.js',
         'webroot/js/admin/*.js'
     ], ['js-admin']);
 });

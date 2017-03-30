@@ -3,12 +3,15 @@
 namespace App\Controller\Admin;
 
 use Cake\Event\Event;
+use DataTables\Controller\Component\DataTablesComponent;
 
 /**
  * Class AppController
  *
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Controller\Admin
+ *
+ * @property DataTablesComponent $DataTables
  */
 class AppController extends \App\Controller\AppController
 {
@@ -26,6 +29,7 @@ class AppController extends \App\Controller\AppController
 
         $this->loadComponent('DataTables.DataTables');
     }
+
 
     public function beforeFilter(Event $event)
     {

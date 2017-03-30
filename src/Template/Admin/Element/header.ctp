@@ -9,14 +9,15 @@
                     <?= $this->request->session()->read('Auth.User.firstname'); ?>
                     <?= $this->request->session()->read('Auth.User.lastname'); ?>
                 </div>
-                <div class="header-profile-actions">
-                    <?= $this->Html->link(
-                        '<i class="fa fa-sign-out"></i>',
-                        ['admin' => false, 'controller' => 'users', 'action' => 'logout'],
-                        ['escape' => false]
-                    ); ?>
-                </div>
             </div>
         </div>
+    </div>
+
+    <div class="header-right">
+        <?= $this->Html->link(
+            'Déconnexion <i class="fa fa-sign-out"></i>',
+            ['prefix' => false, 'controller' => 'users', 'action' => 'logout'],
+            ['escape' => false]
+        ); ?>
     </div>
 </header>

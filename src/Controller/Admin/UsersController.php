@@ -13,11 +13,11 @@ use DataTables\Controller\Component\DataTablesComponent;
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Controller\Admin
  *
- * @property DataTablesComponent $DataTables
  * @property UsersTable $Users
  */
 class UsersController extends AppController
 {
+
     /**
      * Students page
      */
@@ -25,7 +25,9 @@ class UsersController extends AppController
     {
         if ($action == 'list') {
             $this->json(
-                $this->Users->find()->where(['type' => 'student'])
+                $this->Users->find()
+                    ->where(['type' => 'student'])
+                    ->orderAsc('lastname')
             );
         } else {
             $data = $this->DataTables->find('Users', 'all', [
@@ -65,6 +67,7 @@ class UsersController extends AppController
                         ]);
                     })
                     ->where(['type' => 'teacher'])
+                    ->orderAsc('lastname')
             );
         } else {
             $data = $this->DataTables->find('Users', 'all', [
