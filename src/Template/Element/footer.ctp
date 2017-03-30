@@ -10,12 +10,17 @@
 
                 <div class="col-md-3">
                     <h4 class="footer-title">Suivez-nous !</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta expedita explicabo necessitatibus</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta expedita explicabo
+                        necessitatibus</p>
 
                     <ul class="footer-socials">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li>
+                            <?= $this->Html->link(
+                                '<i class="fa fa-facebook"></i>',
+                                'https://www.facebook.com/Escola-1731493677142558',
+                                ['escape' => false, 'target' => '_blank']
+                            ); ?>
+                        </li>
                     </ul>
                 </div>
 
@@ -61,7 +66,11 @@
 
                     <p>Proudly developped and maintained by</p>
 
-                    <?= $this->Html->image('synthetica-logo.png'); ?>
+                    <?= $this->Html->link(
+                        $this->Html->image('synthetica-logo.png'),
+                        'https://synthetica.fr', [
+                        'escape' => false
+                    ]); ?>
                 </div>
             </div>
         </div>

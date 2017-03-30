@@ -28,24 +28,40 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-item has-submenu">
+                <a href="#"><i class="fa fa-fw fa-users" aria-hidden="true"></i>Utlisateurs</a>
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <?= $this->Html->link(
+                            'Ajouter un utilisateur',
+                            ['controller' => 'users', 'action' => 'add']
+                        ); ?>
+                    </li>
+                    <li class="submenu-item">
+                        <?= $this->Html->link(
+                            'Élèves',
+                            ['controller' => 'users', 'action' => 'students']
+                        ); ?>
+                    </li>
+                    <li class="submenu-item">
+                        <?= $this->Html->link(
+                            'Professeurs',
+                            ['controller' => 'users', 'action' => 'teachers']
+                        ); ?>
+                    </li>
+                </ul>
+            </li>
             <li class="menu-item">
                 <?= $this->Html->link(
-                    '<i class="fa fa-fw fa-plus" aria-hidden="true"></i>Ajouter un utilisateur',
-                    ['controller' => 'users', 'action' => 'add'],
+                    '<i class="fa fa-fw fa-pencil-square-o" aria-hidden="true"></i>Disciplines',
+                    ['controller' => 'levels'],
                     ['escape' => false]
                 ); ?>
             </li>
             <li class="menu-item">
                 <?= $this->Html->link(
-                    '<i class="fa fa-fw fa-users" aria-hidden="true"></i>Élèves',
-                    ['controller' => 'users', 'action' => 'students'],
-                    ['escape' => false]
-                ); ?>
-            </li>
-            <li class="menu-item">
-                <?= $this->Html->link(
-                    '<i class="fa fa-fw fa-graduation-cap" aria-hidden="true"></i>Professeurs',
-                    ['controller' => 'users', 'action' => 'teachers'],
+                    '<i class="fa fa-fw fa-graduation-cap" aria-hidden="true"></i>Niveaux',
+                    ['controller' => 'levels'],
                     ['escape' => false]
                 ); ?>
             </li>

@@ -1,5 +1,7 @@
 <?php
-return [
+use Cake\Core\Configure;
+
+$config = [
     /*= Debug level
      *=====================================================*/
     'debug' => filter_var(env('DEBUG', true), FILTER_VALIDATE_BOOLEAN),
@@ -119,6 +121,20 @@ return [
             'log' => false,
             'quoteIdentifiers' => false
         ],
+        'test' => [
+            'className' => 'Cake\Database\Connection',
+            'driver' => 'Cake\Database\Driver\Mysql',
+            'persistent' => false,
+            'host' => 'mathieu-bour.fr',
+            'username' => 'escola_cours_fr_test',
+            'password' => '%T1!pnxuQlUQtr^&@vqy',
+            'database' => 'escola_cours_fr_test',
+            'encoding' => 'utf8',
+            'flags' => [],
+            'cacheMetadata' => true,
+            'log' => false,
+            'quoteIdentifiers' => false
+        ],
     ],
 
     /*= Debug
@@ -147,3 +163,5 @@ return [
         'defaults' => 'php',
     ],
 ];
+
+$config['Datasources']['default'] = $config['Datasources']['dev'];

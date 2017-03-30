@@ -12,7 +12,8 @@
     "cakephp/plugin-installer": "*",
     "holt59/cakephp3-bootstrap-helpers": "dev-master",
     "fheider/cakephp-datatables": "dev-master",
-    "wyrihaximus/minify-html": "^1.1"
+    "wyrihaximus/minify-html": "^1.1",
+    "phpunit/phpunit": "^6.0"
   },
   "require-dev": {
     "psy/psysh": "@stable",

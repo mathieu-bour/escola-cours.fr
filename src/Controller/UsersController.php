@@ -7,6 +7,8 @@ use App\Model\Entity\User;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
 use Cake\Mailer\MailerAwareTrait;
+use Cake\Network\Exception\BadRequestException;
+use Cake\Network\Exception\ForbiddenException;
 use Cake\Utility\Text;
 
 /**
@@ -40,17 +42,25 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             $user = $this->request->getData();
-            $courses = json_decode($user['courses'], true);
+            $courses = !empty($user['courses']) ? json_decode($user['courses'], true) : [];
 
             $user = $this->Users->newEntity($user);
             unset($user['courses']);
 
-            $user = $this->Users->save($user);
-            foreach ($courses as $key => $course) {
-                $courses[$key]['user_id'] = $user->id;
+            if (!$this->Users->save($user)) {
+                throw new BadRequestException();
             }
-            $courses = $this->Users->Courses->newEntities($courses);
-            $this->Users->Courses->saveMany($courses);
+
+            if (!empty($course)) {
+                foreach ($courses as $key => $course) {
+                    $courses[$key]['user_id'] = $user->id;
+                }
+                $courses = $this->Users->Courses->newEntities($courses);
+
+                if (!$this->Users->Courses->saveMany($courses)) {
+                    throw new BadRequestException();
+                }
+            }
         }
 
         $this->setTitle('Inscription');
@@ -67,9 +77,8 @@ class UsersController extends AppController
                 $this->Auth->setUser($user);
                 $this->redirect($this->Auth->redirectUrl());
             } else {
-                $this->Flash->error('Vos identifiants sont incorrects', [
-                    'key' => 'auth'
-                ]);
+                $this->Flash->error('Vos identifiants sont incorrects');
+                $this->response = $this->response->withStatus(403);
             }
         }
 
@@ -97,6 +106,7 @@ class UsersController extends AppController
 
             if (empty($user)) {
                 $this->Flash->error('Nous n\'avons pas pu trouver votre adresse e-mail, veuiller réessayer');
+                $this->response = $this->response->withStatus(404);
             } else {
                 // Regenerate token
                 $user = $this->Users->patchEntity($user, ['token' => Text::uuid()]);

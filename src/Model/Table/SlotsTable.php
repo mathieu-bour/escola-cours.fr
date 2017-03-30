@@ -40,9 +40,9 @@ class SlotsTable extends AppTable
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id'
-        ]);
+        $this->belongsTo('Courses');
+        $this->belongsTo('Levels');
+        $this->belongsTo('Users');
     }
 
     /**
