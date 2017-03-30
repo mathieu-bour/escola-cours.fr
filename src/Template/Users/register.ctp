@@ -42,10 +42,17 @@
             <div class="row">
                 <div class="col-md-6">
                     <?= $this->Form->input('lastname', ['label' => 'Nom']); ?>
-                    <?= $this->Form->input('email', ['label' => 'Adresse e-mail']); ?>
                 </div>
                 <div class="col-md-6">
                     <?= $this->Form->input('firstname', ['label' => 'Prénom']); ?>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <?= $this->Form->input('email', ['label' => 'Adresse e-mail']); ?>
+                </div>
+                <div class="col-md-6">
                     <?= $this->Form->input('telephone', ['label' => 'Téléphone']); ?>
                 </div>
             </div>
@@ -69,6 +76,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <?= $this->Form->input('new_password', [
+                        'type' => 'password',
                         'label' => 'Mot de passe'
                     ]); ?>
                 </div>

@@ -51,7 +51,7 @@ class UsersController extends AppController
                 $this->Flash->success('Votre inscription a bien été prise en compte, vous pouvez dès lors vous connecter.');
                 $this->redirect(['controller' => 'users', 'action' => 'login']);
             } else {
-                $this->Flash->success('Erreur lors de votre inscription');
+                $this->Flash->error('Erreur lors de votre inscription');
             }
         }
 
@@ -102,6 +102,8 @@ class UsersController extends AppController
             } else {
                 // Regenerate token
                 $user = $this->Users->patchEntity($user, ['token' => Text::uuid()]);
+
+                debug($user);
 
                 if ($this->Users->save($user)) {
                     $this->getMailer('User')->send('resetPassword', [$user]);
