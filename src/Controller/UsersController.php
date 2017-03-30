@@ -119,17 +119,19 @@ class UsersController extends AppController
      */
     public function reset(string $token)
     {
-        $user = $this->Users->find()
-            ->where(['token' => $token])
-            ->first();
-
-        if (empty($user)) {
-            throw new RecordNotFoundException('Ce lien n\'est pas lié à un utilisateur ou a expiré.');
-        } else if ($this->request->is('post')) {
+        if ($this->request->is('post')) {
             $data = $this->request->getData();
             $data['token'] = null;
             $user = $this->Users->patchEntity($user, $data);
             $this->Users->save($user);
+        } else {
+            $user = $this->Users->find()
+                ->where(['token' => $token])
+                ->first();
+
+            if (empty($user)) {
+                throw new RecordNotFoundException('Ce lien n\'est pas lié à un utilisateur ou a expiré.');
+            }
         }
 
         $this->setTitle('Réinitialisation du mot de passe');
