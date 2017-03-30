@@ -105,7 +105,7 @@ gulp.task('minify', buildTask, function () {
         .pipe(gulp.dest('webroot/css'));
 
     // Minify JS
-    gulp.src([
+    return gulp.src([
             'webroot/js/public.js',
             'webroot/js/admin.js'
         ])

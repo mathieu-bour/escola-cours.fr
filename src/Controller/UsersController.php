@@ -103,8 +103,6 @@ class UsersController extends AppController
                 // Regenerate token
                 $user = $this->Users->patchEntity($user, ['token' => Text::uuid()]);
 
-                debug($user);
-
                 if ($this->Users->save($user)) {
                     $this->getMailer('User')->send('resetPassword', [$user]);
                     $this->Flash->success('Nous vous avons envoyé un e-mail contenant des instructions pour récupérer votre compte');
