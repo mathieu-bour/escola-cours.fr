@@ -51,6 +51,7 @@ class UsersController extends AppController
                 $this->Flash->success('Votre inscription a bien été prise en compte, vous pouvez dès lors vous connecter.');
                 $this->redirect(['controller' => 'users', 'action' => 'login']);
             } else {
+                $this->response = $this->response->withStatus(400, 'Invalid data');
                 $this->Flash->error('Erreur lors de votre inscription');
             }
         }
