@@ -2,7 +2,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <h1 class="main-title"><?= $this->Html->link('Escola', '/'); ?></h1>
+                <h1 class="main-title">
+                    <?= $this->Html->link(
+                        '<i class="fa fa-bars"></i>',
+                        '#', [
+                            'class' => 'toggle-nav',
+                            'escape' => false
+                        ]
+                    ); ?>
+                    <?= $this->Html->link('Escola', '/'); ?>
+                </h1>
             </div>
             <div class="col-md-9">
                 <nav class="nav">

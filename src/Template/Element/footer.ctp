@@ -13,7 +13,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta expedita explicabo
                         necessitatibus</p>
 
-                    <ul class="footer-socials">
+                    <ul class="footer-socials clearfix">
                         <li>
                             <?= $this->Html->link(
                                 '<i class="fa fa-facebook"></i>',

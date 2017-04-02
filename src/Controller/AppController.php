@@ -96,13 +96,12 @@ class AppController extends Controller
     /**
      * Set a properly formatted json response
      * @param mixed $data
-     * @param int $code
      * @param string $message
      */
-    public function json($data = null, $code = 200, $message = 'OK')
+    public function json($data = null, $message = 'OK')
     {
         $this->set([
-            'code' => $code,
+            'code' => $this->response->getStatusCode(),
             'message' => $message,
             'data' => $data,
             'url' => $this->request->getRequestTarget()

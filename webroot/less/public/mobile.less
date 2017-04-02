@@ -1,0 +1,114 @@
+@media only screen and (max-width: @screen-xs-max) {
+    body {
+        font-size: 12px;
+        padding-top: 50px;
+    }
+    section {
+        padding: 20px 0;
+    }
+    /*= Header
+     *=====================================================*/
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 5;
+        height: 50px;
+        background-color: #ffffff;
+    }
+    .main-title {
+        font-size: 24px;
+        line-height: 50px;
+    }
+    .page-title {
+        font-size: 30px;
+    }
+    .page-subtitle {
+        font-size: 18px;
+    }
+    /*= Nav
+     *=====================================================*/
+    #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 4;
+    }
+    .toggle-nav {
+        margin-right: 5px;
+    }
+    nav.nav {
+        margin: 0 -15px;
+        height: auto;
+    }
+    .nav-list {
+        position: fixed;
+        display: block;
+        width: 250px;
+        top: 50px;
+        left: 0;
+        bottom: 0;
+        text-align: left;
+        background-color: #ffffff;
+        transform: translateX(-100%);
+        transition: transform .3s ease;
+    }
+    nav.nav.open > .nav-list {
+        transform: translateX(0);
+    }
+    .nav-item {
+        display: block;
+        float: none;
+
+        a {
+            display: block;
+            line-height: 40px;
+        }
+    }
+    /*= Cities
+     *=====================================================*/
+    .city {
+        width: 100%;
+        height: auto;
+        display: inline-block;
+        position: relative;
+    }
+    .city:after {
+        padding-top: 100%;
+        display: block;
+        content: '';
+    }
+    .city-bg {
+        width: 100%;
+    }
+    /*= Features
+     *=====================================================*/
+    .feature {
+        margin: 0;
+        padding: 10px 0;
+    }
+    .features-container:before {
+        display: none;
+    }
+    /*= Partners
+     *=====================================================*/
+    .partner {
+        margin-bottom: 10px;
+    }
+    /*= Slots
+     *=====================================================*/
+    .slots-container {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    /*= Footer
+     *=====================================================*/
+    .footer-title {
+        margin-top: 20px;
+    }
+}
