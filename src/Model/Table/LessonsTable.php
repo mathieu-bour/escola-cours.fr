@@ -5,6 +5,7 @@ use App\Model\Entity\Lesson;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\Association\BelongsTo;
 use Cake\ORM\RulesChecker;
+use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
@@ -26,7 +27,7 @@ use Cake\Validation\Validator;
  * @method Lesson[] patchEntities($entities, array $data, array $options = [])
  * @method Lesson findOrCreate($search, callable $callback = null, $options = [])
  */
-class LessonsTable extends AppTable
+class LessonsTable extends Table
 {
     /**
      * Initialize method

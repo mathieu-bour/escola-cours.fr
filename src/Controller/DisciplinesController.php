@@ -27,9 +27,9 @@ class DisciplinesController extends AppController
      */
     public function index()
     {
-        $this->request->allowMethod(['json', 'ajax']);
+        $this->request->allowMethod(['json']);
 
-        if ($this->request->is(['json', 'ajax'])) {
+        if ($this->request->is(['json'])) {
             $disciplines = $this->Disciplines->find('list')->toArray();
             $this->set($disciplines);
         }

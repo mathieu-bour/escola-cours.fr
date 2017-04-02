@@ -1,10 +1,8 @@
 <?php
-use Cake\Core\Configure;
-
 $config = [
     /*= Debug level
      *=====================================================*/
-    'debug' => filter_var(env('DEBUG', true), FILTER_VALIDATE_BOOLEAN),
+    'debug' => env('DATASOURCE_CONFIG', 'dev') == 'dev',
 
     'App' => [
         'namespace' => 'App',
@@ -96,30 +94,32 @@ $config = [
         'dev' => [
             'className' => 'Cake\Database\Connection',
             'driver' => 'Cake\Database\Driver\Mysql',
-            'persistent' => false,
             'host' => 'mathieu-bour.fr',
             'username' => 'escola_cours_fr_dev',
             'password' => '*G3uf&6XJkvZP*429x01',
             'database' => 'escola_cours_fr_dev',
             'encoding' => 'utf8',
-            'flags' => [],
-            'cacheMetadata' => true,
-            'log' => false,
-            'quoteIdentifiers' => false
+            'log' => true
+        ],
+        'beta' => [
+            'className' => 'Cake\Database\Connection',
+            'driver' => 'Cake\Database\Driver\Mysql',
+            'host' => '127.0.0.1',
+            'username' => 'escola_cours_fr_dev',
+            'password' => '*G3uf&6XJkvZP*429x01',
+            'database' => 'escola_cours_fr_dev',
+            'encoding' => 'utf8',
+            'log' => true
         ],
         'prod' => [
             'className' => 'Cake\Database\Connection',
             'driver' => 'Cake\Database\Driver\Mysql',
-            'persistent' => false,
             'host' => '127.0.0.1',
             'username' => 'escola_cours_fr',
             'password' => '*G3uf&6XJkvZP*429x01',
             'database' => 'escola_cours_fr',
             'encoding' => 'utf8',
-            'flags' => [],
-            'cacheMetadata' => true,
-            'log' => false,
-            'quoteIdentifiers' => false
+            'log' => true
         ],
         'test' => [
             'className' => 'Cake\Database\Connection',
@@ -129,11 +129,7 @@ $config = [
             'username' => 'escola_cours_fr_test',
             'password' => '%T1!pnxuQlUQtr^&@vqy',
             'database' => 'escola_cours_fr_test',
-            'encoding' => 'utf8',
-            'flags' => [],
-            'cacheMetadata' => true,
-            'log' => false,
-            'quoteIdentifiers' => false
+            'encoding' => 'utf8'
         ],
     ],
 
@@ -164,4 +160,4 @@ $config = [
     ],
 ];
 
-$config['Datasources']['default'] = $config['Datasources']['dev'];
+return $config;

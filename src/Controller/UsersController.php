@@ -48,11 +48,12 @@ class UsersController extends AppController
             $user = $this->Users->newEntity($user, ['associated' => ['Courses']]);
 
             if ($this->Users->save($user)) {
-                $this->Flash->success('Votre inscription a bien été prise en compte, vous pouvez dès lors vous connecter.');
+                $this->Flash->success('Votre inscription a bien été prise en compte, vous pouvez dès lors vous connecter');
                 $this->redirect(['controller' => 'users', 'action' => 'login']);
-            } else {
+            } else if (!empty($user->getErrors()) || !empty($user->invalid())) {
+                $this->set('user', $user);
                 $this->response = $this->response->withStatus(400, 'Invalid data');
-                $this->Flash->error('Erreur lors de votre inscription');
+                $this->Flash->error('Erreur lors de votre inscription, veuillez corriger vos informations');
             }
         }
 
@@ -83,8 +84,12 @@ class UsersController extends AppController
      */
     public function logout()
     {
-        $this->Auth->logout();
-        $this->redirect($this->Auth->redirectUrl());
+        if ($this->Auth->user()) {
+            $this->Auth->logout();
+            $this->redirect($this->Auth->redirectUrl());
+        } else {
+            $this->redirect('/');
+        }
     }
 
     /**
@@ -105,8 +110,15 @@ class UsersController extends AppController
                 $user = $this->Users->patchEntity($user, ['token' => Text::uuid()]);
 
                 if ($this->Users->save($user)) {
-                    $this->getMailer('User')->send('resetPassword', [$user]);
-                    $this->Flash->success('Nous vous avons envoyé un e-mail contenant des instructions pour récupérer votre compte');
+                    if ($this->getMailer('User')->send('resetPassword', [$user])) {
+                        $this->Flash->success('Nous vous avons envoyé un e-mail contenant des instructions pour récupérer votre compte');
+                    } else {
+                        $this->response = $this->response->withStatus(503);
+                        $this->Flash->error('Impossible de vous envoyer l\'e-mail ; contactez le support');
+                    }
+                } else {
+                    $this->response = $this->response->withStatus(503);
+                    $this->Flash->error('Impossible de regénérer votre token ; contactez le support');
                 }
             }
         }
@@ -128,10 +140,16 @@ class UsersController extends AppController
             $data = $this->request->getData();
             $data['token'] = null;
             $user = $this->Users->patchEntity($user, $data);
-            $this->Users->save($user);
+            if ($this->Users->save($user)) {
+                $this->Flash->success('Votre mot de passe a été changé avec succès, vous pouvez vous reconnecter');
+                $this->redirect(['controller' => 'users', 'action' => 'login']);
+            } else {
+                $this->Flash->error('Votre mot de passe n\'a pas pu être modifié ; contactez le support');
+            }
         } else {
             if (empty($user)) {
-                throw new RecordNotFoundException('Ce lien n\'est pas lié à un utilisateur ou a expiré.');
+                $this->response = $this->response->withStatus(404);
+                $this->Flash->error('Ce lien n\'est pas lié à un utilisateur ou a expiré');
             }
         }
 
@@ -143,7 +161,7 @@ class UsersController extends AppController
      */
     public function account()
     {
-        if ($this->request->is(['post', 'put'])) {
+        if ($this->request->is(['post'])) {
             $data = $this->request->getData();
             $data['courses'] = json_decode($data['courses'], true);
 
@@ -182,6 +200,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Flash->success('Votre compte a été mis à jour');
             } else {
+                $this->response = $this->response->withStatus(400);
                 $this->Flash->error('Erreur lors de la mise à jour de votre compte');
             }
         }
@@ -259,6 +278,7 @@ class UsersController extends AppController
                 unset($slots);
                 $this->Flash->success('Vos disponibilités on été mises à jour');
             } else {
+                $this->response = $this->response->withStatus(400);
                 $this->Flash->error('Erreur lors de la mise à jour de vos disponibilités');
             }
         }

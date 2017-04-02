@@ -9,10 +9,11 @@ beta:
     - "webroot/js/public/*"
     - "webroot/js/admin/*"
     - ".*"
+    - "assets.json"
+    - "bower.json"
     - "dploy.yaml"
     - "gulpfile.js"
-    - "package.json"
-    - "phpunit.xml.dist"
+    - "phpunit.xml"
     - "README.md"
   include:
      "webroot/css/*": "webroot/css/"

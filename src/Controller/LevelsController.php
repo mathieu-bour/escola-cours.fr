@@ -27,9 +27,9 @@ class LevelsController extends AppController
      */
     public function index()
     {
-        $this->request->allowMethod(['json', 'ajax']);
+        $this->request->allowMethod(['json']);
 
-        if ($this->request->is(['json', 'ajax'])) {
+        if ($this->request->is(['json'])) {
             $levels = $this->Levels->find('list')->toArray();
             $this->set($levels);
         }

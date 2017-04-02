@@ -26,7 +26,9 @@
 
 <section class="bg-gray-lighter">
     <div class="container">
-        <?= $this->Form->create(null, ['id' => 'user-register-form']); ?>
+        <?= $this->Flash->render(); ?>
+
+        <?= $this->Form->create($user ?? null, ['id' => 'user-register-form']); ?>
         <?php $this->Form->unlockField('courses'); ?>
 
         <h3 class="title-lined"><span class="bg-gray-lighter">Profil</span></h3>
@@ -75,13 +77,13 @@
         <div class="form-block">
             <div class="row">
                 <div class="col-md-6">
-                    <?= $this->Form->input('new_password', [
+                    <?= $this->Form->input('password', [
                         'type' => 'password',
                         'label' => 'Mot de passe'
                     ]); ?>
                 </div>
                 <div class="col-md-6">
-                    <?= $this->Form->input('new_password_confirm', [
+                    <?= $this->Form->input('password_confirm', [
                         'type' => 'password',
                         'label' => 'Confirmation du mot de passe'
                     ]); ?>

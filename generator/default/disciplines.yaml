@@ -1,0 +1,16 @@
+# Sciences
+- name: Mathématiques
+- name: Physique-Chimie
+- name: Sciences de la Vie et de la Terre
+- name: Sciences de l'Ingénieur
+- name: Technologie
+# Economy
+- name: Sciences Économiques et Sociales
+# Literature
+- name: Français
+- name: Pholosophie
+# Languages
+- name: Anglais
+- name: Allemand
+- name: Espagnol
+- name: Italien

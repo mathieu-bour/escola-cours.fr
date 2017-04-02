@@ -5,6 +5,7 @@ use App\Model\Entity\Course;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\Association\BelongsTo;
 use Cake\ORM\RulesChecker;
+use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
@@ -25,7 +26,7 @@ use Cake\Validation\Validator;
  * @method Course[] patchEntities($entities, array $data, array $options = [])
  * @method Course findOrCreate($search, callable $callback = null, $options = [])
  */
-class CoursesTable extends AppTable
+class CoursesTable extends Table
 {
     /**
      * Initialize method

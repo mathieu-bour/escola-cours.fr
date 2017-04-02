@@ -8,6 +8,8 @@ use Cake\Event\Event;
 use Cake\ORM\Association\HasMany;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
+use Cake\ORM\Table;
+use Cake\Utility\Text;
 use Cake\Validation\Validator;
 
 /**
@@ -27,7 +29,7 @@ use Cake\Validation\Validator;
  * @method User[] patchEntities($entities, array $data, array $options = [])
  * @method User findOrCreate($search, callable $callback = null, $options = [])
  */
-class UsersTable extends AppTable
+class UsersTable extends Table
 {
     /**
      * Initialize method
@@ -67,7 +69,7 @@ class UsersTable extends AppTable
             ->email('email')
             ->allowEmpty('email', false, 'Votre e-mail est nécessaire')
             // password
-            ->sameAs('password', 'password_confirm', 'les mots de passe ne correspondent pas.')
+            ->sameAs('password', 'password_confirm', 'Les mots de passe ne correspondent pas.')
             ->requirePresence('password', 'create', 'Votre mot de passe ne peut être vide')
             // type
             ->inList('type', ['student', 'teacher'], 'Veuillez sélectionner un type de compte')
@@ -108,19 +110,17 @@ class UsersTable extends AppTable
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['email'], 'Cette adresse e-mail est déjà utilisée'));
 
         return $rules;
     }
 
     /*= Hooks
      *=====================================================*/
-    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    public function beforeSave(Event $event, User $entity, ArrayObject $options)
     {
-        if (!empty($data['new_password'])) {
-            $data['password'] = $data['new_password'];
-            $data['password_confirm'] = $data['new_password_confirm'];
-            unset($data['new_password'], $data['new_password_confirm']);
+        if ($entity->isNew()) {
+            $entity->token = Text::uuid();
         }
     }
 

@@ -29,13 +29,16 @@ class PagesController extends AppController
 
     public function cgu()
     {
+        $this->setTitle('Conditions générales d\'utilisation');
     }
 
     public function cgv()
     {
+        $this->setTitle('Conditions générales de vente');
     }
 
     public function contact()
     {
+        $this->setTitle('Contact');
     }
 }

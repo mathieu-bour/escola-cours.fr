@@ -8,6 +8,8 @@ use Cake\Console\Shell;
 use Cake\Filesystem\File;
 use Cake\I18n\Time;
 use Cake\Utility\Text;
+use Symfony\Component\Yaml\Exception\ParseException;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class GenerateUsersTask
@@ -21,7 +23,7 @@ class GenerateUsersTask extends Shell
 {
     private $_usersDefaultFile;
     private $_usersDefault;
-    private $_usersDicFile;
+    private $_usersDicFiles;
     private $_usersDic;
     private $_users;
 
@@ -30,11 +32,23 @@ class GenerateUsersTask extends Shell
         parent::initialize();
         $this->loadModel('Users');
 
-        $this->_usersDicFile = new File(ROOT . DS . 'config' . DS . 'generator' . DS . 'users_dic.json');
-        $this->_usersDic = json_decode($this->_usersDicFile->read(), true);
+        // Load dictionaries
+        $this->_usersDicFiles = [
+            'firstname' => new File(ROOT . DS . 'generator' . DS . 'dictionaries' . DS . 'users_firstname.yaml'),
+            'lastname' => new File(ROOT . DS . 'generator' . DS . 'dictionaries' . DS . 'users_lastname.yaml'),
+            'email_domain' => new File(ROOT . DS . 'generator' . DS . 'dictionaries' . DS . 'users_email_domain.yaml'),
+            'street' => new File(ROOT . DS . 'generator' . DS . 'dictionaries' . DS . 'users_street.yaml'),
+        ];
 
-        if (!$this->_usersDicFile) {
-            throw new StopException('Unable to read user generator json file', 2);
+        try {
+            $this->_usersDic = [
+                'firstname' => (array)Yaml::parse($this->_usersDicFiles['firstname']->read()),
+                'lastname' => (array)Yaml::parse($this->_usersDicFiles['lastname']->read()),
+                'email_domain' => (array)Yaml::parse($this->_usersDicFiles['email_domain']->read()),
+                'street' => (array)Yaml::parse($this->_usersDicFiles['street']->read())
+            ];
+        } catch (ParseException $e) {
+            $this->err('Unable to parse the YAML string: ' . $e->getMessage());
         }
     }
 
@@ -64,12 +78,12 @@ class GenerateUsersTask extends Shell
             $this->_users[] = [
                 'firstname' => $firstname,
                 'lastname' => $lastname,
-                'email' => strtolower(Text::slug($firstname . '.' . $lastname, ['preserve' => '.'])) . random_int(1, 10) .
-                    '@' . array_rand_value($this->_usersDic['emails']),
+                'email' => strtolower(Text::slug($firstname . '.' . $lastname, ['preserve' => '.'])) . random_int(1, 100) .
+                    '@' . array_rand_value($this->_usersDic['email_domain']),
                 'address' => random_int(1, 20) . ' ' . array_rand_value($this->_usersDic['street']),
-                'new_password' => 'test',
-                'new_password_confirm' => 'test',
-                'type' => array_rand_value($this->_usersDic['type']),
+                'password' => 'test',
+                'password_confirm' => 'test',
+                'type' => array_rand_value(['student', 'teacher']),
                 'telephone' => '06' . random_int(10000000, 99999999),
                 'zip_code' => '57000',
                 'city' => 'Metz',
@@ -89,14 +103,13 @@ class GenerateUsersTask extends Shell
      */
     private function _saveDefault()
     {
-        $this->_usersDefaultFile = new File(ROOT . DS . 'config' . DS . 'generator' . DS . 'users_default.json');
-        $this->_usersDefault = json_decode($this->_usersDefaultFile->read(), true);
+        $this->_usersDefaultFile = new File(ROOT . DS . 'generator' . DS . 'default' . DS . 'users.yaml');
+        $this->_usersDefault = (array)Yaml::parse($this->_usersDefaultFile->read());
 
         $this->out('Saving default users');
         $users = $this->Users->newEntities($this->_usersDefault);
 
         if (!$this->Users->saveMany($users)) {
-            debug($users);
             throw new StopException('Unable to save user chunk', 2);
         }
         $this->out('Default users saved');
@@ -118,7 +131,6 @@ class GenerateUsersTask extends Shell
             $users = $this->Users->newEntities($this->_users[$i - 1]);
 
             if (!$this->Users->saveMany($users)) {
-                debug($users);
                 throw new StopException('Unable to save user chunk', 2);
             }
         }

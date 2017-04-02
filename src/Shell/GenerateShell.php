@@ -10,6 +10,7 @@ use App\Shell\Task\GenerateUsersTask;
 use Cake\Console\Shell;
 use Cake\Database\Connection;
 use Cake\Datasource\ConnectionManager;
+use Cake\ORM\Table;
 
 /**
  * Class Generate
@@ -32,16 +33,16 @@ class GenerateShell extends Shell
         'GenerateSlots'
     ];
 
-    public function main()
+    public function main($userCount = 500, $chunkSize = 100)
     {
         $this->out($this->nl(0));
         $this->out('Welcome in escola-cours.fr test data generator');
 
         if ($this->_eraseDatabase()) {
-            $this->GenerateUsers->main();
-            $this->GenerateCourses->main();
-            $this->GenerateLessons->main();
-            $this->GenerateSlots->main();
+            $this->GenerateUsers->main($userCount, $chunkSize);
+            $this->GenerateCourses->main(1, 3, $chunkSize);
+            $this->GenerateLessons->main($userCount / 2);
+            $this->GenerateSlots->main($chunkSize * 5);
         }
     }
 
@@ -59,7 +60,7 @@ class GenerateShell extends Shell
         }
 
         $this->out('Erasing database...');
-        $conn = new Connection(ConnectionManager::get(AppTable::defaultConnectionName())->config());
+        $conn = new Connection(ConnectionManager::get(Table::defaultConnectionName())->config());
         $conn->query('SET foreign_key_checks = 0');
         $conn->query('TRUNCATE courses; TRUNCATE lessons; TRUNCATE slots; TRUNCATE users');
         $conn->query('SET foreign_key_checks = 1');

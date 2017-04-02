@@ -29,6 +29,7 @@ class GenerateSlotsTask extends Shell
             ->enableHydration(false)
             ->select(['id', 'type']);
 
+        $this->out($this->nl(0));
         $this->_generate();
         $this->_save($chunkSize);
     }

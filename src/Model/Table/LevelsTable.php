@@ -4,6 +4,7 @@ namespace App\Model\Table;
 use App\Model\Entity\Level;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\Association\HasMany;
+use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
@@ -23,7 +24,7 @@ use Cake\Validation\Validator;
  * @method Level[] patchEntities($entities, array $data, array $options = [])
  * @method Level findOrCreate($search, callable $callback = null, $options = [])
  */
-class LevelsTable extends AppTable
+class LevelsTable extends Table
 {
     /**
      * Initialize method

@@ -4,6 +4,7 @@ namespace App\Model\Table;
 use App\Model\Entity\Discipline;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\Association\HasMany;
+use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
@@ -23,7 +24,7 @@ use Cake\Validation\Validator;
  * @method Discipline[] patchEntities($entities, array $data, array $options = [])
  * @method Discipline findOrCreate($search, callable $callback = null, $options = [])
  */
-class DisciplinesTable extends AppTable
+class DisciplinesTable extends Table
 {
     /**
      * Initialize method

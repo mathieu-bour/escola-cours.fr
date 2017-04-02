@@ -221,6 +221,11 @@ if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
 
+/*
+ * Define default database
+ */
+\Cake\DataSource\ConnectionManager::alias(env('DATASOURCE_CONFIG', 'dev'), 'default');
+
 Plugin::load('Bootstrap');
 Plugin::load('WyriHaximus/MinifyHtml', ['bootstrap' => true]);
 Plugin::load('DataTables', ['bootstrap' => false, 'routes' => false]);

@@ -13,21 +13,21 @@ class UsersControllerTest extends IntegrationTestCase
 {
     public $fixtures = ['app.users'];
 
-    /*= Public action get
+    /*= Register
      *=====================================================*/
-    public function testRegister()
+    public function testRegisterGet()
     {
         $this->get('/users/register');
         $this->assertResponseOk();
     }
 
-    public function testRegisterPostData()
+    public function testRegisterPostWithoutCourses()
     {
         $this->enableCsrfToken();
         $this->enableSecurityToken();
         $this->post('/users/register', [
             'type' => 'student',
-            'email' => 'registerstudent@gmail.com',
+            'email' => 'student@gmail.com',
             'new_password' => 'password',
             'new_password_confirm' => 'password',
             'lastname' => 'Student',
@@ -40,7 +40,31 @@ class UsersControllerTest extends IntegrationTestCase
         $this->assertResponseSuccess();
     }
 
-    public function testRegisterBadPostData()
+    public function testRegisterPostWithCourses()
+    {
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+        $this->post('/users/register', [
+            'type' => 'teacher',
+            'email' => 'teacher@gmail.com',
+            'new_password' => 'password',
+            'new_password_confirm' => 'password',
+            'lastname' => 'Teacher',
+            'firstname' => 'Test',
+            'telephone' => '0612345678',
+            'address' => '15 rue des Tests',
+            'zip_code' => '00000',
+            'city' => 'Test City',
+            'courses' => [
+                ['disicpline_id' => 1, 'level_id' => 1],
+                ['disicpline_id' => 2, 'level_id' => 1],
+                ['disicpline_id' => 3, 'level_id' => 1]
+            ]
+        ]);
+        $this->assertResponseSuccess();
+    }
+
+    public function testRegisterPostInvalidData()
     {
         $this->enableCsrfToken();
         $this->enableSecurityToken();
@@ -48,13 +72,15 @@ class UsersControllerTest extends IntegrationTestCase
         $this->assertResponseError();
     }
 
-    public function testLogin()
+    /*= Login
+     *=====================================================*/
+    public function testLoginGet()
     {
         $this->get('/users/login');
         $this->assertResponseOk();
     }
 
-    public function testSucessfulLogin()
+    public function testLoginPostValid()
     {
         $this->enableCsrfToken();
         $this->enableSecurityToken();
@@ -62,7 +88,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->assertResponseSuccess();
     }
 
-    public function testLoginBadCredentials()
+    public function testLoginPostInvalid()
     {
         $this->enableCsrfToken();
         $this->enableSecurityToken();
@@ -70,6 +96,8 @@ class UsersControllerTest extends IntegrationTestCase
         $this->assertResponseError();
     }
 
+    /*= Forgot
+     *=====================================================*/
     public function testForgot()
     {
         $this->get('/users/forgot');

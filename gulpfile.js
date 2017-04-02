@@ -85,11 +85,12 @@ gulp.task('js-admin', function () {
 /*= Misc
  *=====================================================*/
 gulp.task('fonts', function () {
-    return gulp.src([
-            'bower_components/font-awesome/fonts/*',
-            'bower_components/bootstrap/fonts/*'
-        ])
-        .pipe(gulp.dest('webroot/fonts/'));
+    gulp.src(['bower_components/font-awesome/fonts/*'])
+        .pipe(gulp.dest('webroot/fonts/font-awesome/'));
+    gulp.src(['bower_components/bootstrap/fonts/*'])
+        .pipe(gulp.dest('webroot/fonts/glyphicons/'));
+    return gulp.src(['bower_components/open-sans-fontface/fonts/**'])
+        .pipe(gulp.dest('webroot/fonts/open-sans/'));
 });
 
 /*= Minify assets

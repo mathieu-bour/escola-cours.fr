@@ -1,5 +1,7 @@
 <section>
     <div class="container">
+        <?= $this->Flash->render(); ?>
+
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
                 <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a>
@@ -57,13 +59,13 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <?= $this->Form->input('new_password', [
+                            <?= $this->Form->input('password', [
                                 'label' => 'Mot de passe',
                                 'required' => false
                             ]); ?>
                         </div>
                         <div class="col-md-6">
-                            <?= $this->Form->input('new_password_confirm', [
+                            <?= $this->Form->input('password_confirm', [
                                 'type' => 'password',
                                 'label' => 'Confirmation du mot de passe'
                             ]); ?>
