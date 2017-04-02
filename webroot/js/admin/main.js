@@ -8,6 +8,22 @@ $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
 });
 
 
+/*=
+ *=====================================================*/
+$('.toggle-nav').on('click', function (e) {
+    e.preventDefault();
+    var $sidebar = $('#sidebar');
+    var $overlay = $('#overlay');
+
+    $sidebar.toggleClass('open');
+
+    if ($sidebar.hasClass('open')) {
+        $overlay.fadeIn(300);
+    } else {
+        $overlay.fadeOut(300);
+    }
+});
+
 /*= Sidebar submenus
  *=====================================================*/
 $('.menu-item.has-submenu > a').on('click', function (e) {

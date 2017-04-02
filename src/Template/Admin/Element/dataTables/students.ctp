@@ -4,6 +4,7 @@ use Cake\Routing\Router;
 $this->start('script'); ?>
 <script>
     var dataTable = $('.dataTable').DataTable({
+        "responsive": true,
         "language": {
             "url": '<?=Router::url('/i18n/dataTables.fr_FR.json'); ?>'
         },

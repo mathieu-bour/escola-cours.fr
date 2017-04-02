@@ -4,7 +4,7 @@
             <div class="col-md-3">
                 <h1 class="main-title">
                     <?= $this->Html->link(
-                        '<i class="fa fa-bars"></i>',
+                        '<i class="fa fa-bars visible-xs-inline-block"></i>',
                         '#', [
                             'class' => 'toggle-nav',
                             'escape' => false

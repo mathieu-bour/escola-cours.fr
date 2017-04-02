@@ -106,30 +106,32 @@
                 <h3>Professeurs les plus actifs</h3>
             </div>
             <div class="panel-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Disciplines</th>
-                            <th>Cours donnés</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($tables['bestTeachers'] as $teacher): ?>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td><?= $teacher->lastname . ' ' . $teacher->firstname; ?></td>
-                                <td>
-                                    <?php foreach ($teacher->courses as $course): ?>
-                                        <span class="label label-primary">
+                                <th>Nom</th>
+                                <th>Disciplines</th>
+                                <th>Cours donnés</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($tables['bestTeachers'] as $teacher): ?>
+                                <tr>
+                                    <td><?= $teacher->lastname . ' ' . $teacher->firstname; ?></td>
+                                    <td>
+                                        <?php foreach ($teacher->courses as $course): ?>
+                                            <span class="label label-primary">
                                             <?= $course->discipline->name . ' (' . $course->level->name . ')'; ?>
                                         </span>&nbsp;
-                                    <?php endforeach; ?>
-                                </td>
-                                <td><?= $teacher->lesson_count; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                                        <?php endforeach; ?>
+                                    </td>
+                                    <td><?= $teacher->lesson_count; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -140,30 +142,32 @@
                 <h3>Élèves les plus actifs</h3>
             </div>
             <div class="panel-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Disciplines</th>
-                            <th>Cours suivis</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($tables['bestStudents'] as $student): ?>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td><?= $student->lastname . ' ' . $student->firstname; ?></td>
-                                <td>
-                                    <?php foreach ($student->courses as $course): ?>
-                                        <span class="label label-primary">
+                                <th>Nom</th>
+                                <th>Disciplines</th>
+                                <th>Cours suivis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($tables['bestStudents'] as $student): ?>
+                                <tr>
+                                    <td><?= $student->lastname . ' ' . $student->firstname; ?></td>
+                                    <td>
+                                        <?php foreach ($student->courses as $course): ?>
+                                            <span class="label label-primary">
                                             <?= $course->discipline->name . ' (' . $course->level->name . ')'; ?>
                                         </span>&nbsp;
-                                    <?php endforeach; ?>
-                                </td>
-                                <td><?= $student->lesson_count; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                                        <?php endforeach; ?>
+                                    </td>
+                                    <td><?= $student->lesson_count; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

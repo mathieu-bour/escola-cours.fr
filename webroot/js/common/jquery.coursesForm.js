@@ -65,7 +65,7 @@ $.fn.coursesForm = function () {
 
         coursesIterator++; // First, increment
 
-        /**
+        /**php
          * @type {jQuery} the course container
          */
         var $course = $('<div class="course">').appendTo($coursesContainer);

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\Table\DisciplinesTable;
 use Cake\Event\Event;
 
 /**
@@ -10,7 +11,7 @@ use Cake\Event\Event;
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Controller
  *
- * @property \App\Model\Table\DisciplinesTable $Disciplines
+ * @property DisciplinesTable $Disciplines
  */
 class DisciplinesController extends AppController
 {

@@ -4,12 +4,11 @@ namespace App\Controller;
 
 use App\Model\Entity\Slot;
 use App\Model\Entity\User;
-use Aura\Intl\Exception;
-use Cake\Datasource\Exception\RecordNotFoundException;
+use App\Model\Table\DisciplinesTable;
+use App\Model\Table\LevelsTable;
+use App\Model\Table\UsersTable;
 use Cake\Event\Event;
 use Cake\Mailer\MailerAwareTrait;
-use Cake\Network\Exception\BadRequestException;
-use Cake\Network\Exception\ForbiddenException;
 use Cake\Utility\Text;
 
 /**
@@ -18,9 +17,9 @@ use Cake\Utility\Text;
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Controller
  *
- * @property \App\Model\Table\UsersTable $Users
- * @property \App\Model\Table\LevelsTable $Levels
- * @property \App\Model\Table\DisciplinesTable $Disciplines
+ * @property UsersTable $Users
+ * @property LevelsTable $Levels
+ * @property DisciplinesTable $Disciplines
  */
 class UsersController extends AppController
 {

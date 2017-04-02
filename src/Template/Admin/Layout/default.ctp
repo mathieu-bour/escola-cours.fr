@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Escola - Administraion - <?= $pageTitle ?? ''; ?></title>
 
+        <!-- CSS -->
         <?= $this->Html->css('admin'); ?>
     </head>
 
@@ -29,8 +30,11 @@
                     </div>
                 </div>
             </div>
+
+            <div id="overlay"></div>
         </div>
 
+        <!-- JS -->
         <?= $this->Html->script('admin'); ?>
         <?= $this->fetch('script'); ?>
     </body>

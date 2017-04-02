@@ -1,11 +1,29 @@
 .sidebar {
     position: fixed;
     z-index: 10;
-    top: 100px;
+    top: 50px;
     left: 0;
     bottom: 0;
     width: 250px;
+    background-color: @gray-dark;
 }
+.sidebar-profile {
+    background-color: @brand-primary;
+    padding: 10px 20px;
+}
+.sidebar-profile-meta {
+    float: left;
+    color: @gray-lighter;
+}
+.sidebar-profile-welcome {
+    font-size: 12px;
+    line-height: 16px;
+}
+.sidebar-profile-name {
+    font-size: 16px;
+    line-height: 24px;
+}
+
 .sidebar-title {
     color: @gray-light;
     padding: 15px 20px 0;

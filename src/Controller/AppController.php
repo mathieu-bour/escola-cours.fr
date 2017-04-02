@@ -10,7 +10,6 @@ use Cake\Controller\Component\RequestHandlerComponent;
 use Cake\Controller\Component\SecurityComponent;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
-use Cake\Routing\Route\Route;
 
 /**
  * Class AppController
@@ -78,6 +77,13 @@ class AppController extends Controller
         return parent::beforeRender($event);
     }
 
+    /*= Auth
+     *=====================================================*/
+    /**
+     * Authorize user to access
+     * @param null|array $user the user
+     * @return bool
+     */
     public function isAuthorized($user = null)
     {
         if (!$this->request->getParam('prefix')) {

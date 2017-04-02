@@ -3,9 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Model\Table\UsersTable;
-use Cake\I18n\Time;
 use Cake\ORM\Query;
-use DataTables\Controller\Component\DataTablesComponent;
 
 /**
  * Class UsersController

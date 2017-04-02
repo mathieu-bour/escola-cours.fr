@@ -1,9 +1,7 @@
-<?php
-use Cake\Routing\Router;
-
-$this->start('script'); ?>
+<?php $this->start('script'); ?>
 <script>
     var dataTable = $('.dataTable').DataTable({
+        "responsive": true,
         "language": {
             "url": '/i18n/dataTables.fr_FR.json'
         },

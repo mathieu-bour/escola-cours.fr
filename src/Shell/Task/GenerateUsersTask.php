@@ -5,6 +5,7 @@ namespace App\Shell\Task;
 use App\Model\Table\UsersTable;
 use Cake\I18n\Time;
 use Cake\Utility\Text;
+
 /**
  * Class GenerateUsersTask
  *

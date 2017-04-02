@@ -1,16 +1,15 @@
 <header class="header" id="header">
     <div class="header-left">
-        <h1 class="header-logo">Escola</h1>
-
-        <div class="header-profile clearfix">
-            <div class="header-profile-meta">
-                <div class="header-profile-welcome">Bienvenue</div>
-                <div class="header-profile-name">
-                    <?= $this->request->session()->read('Auth.User.firstname'); ?>
-                    <?= $this->request->session()->read('Auth.User.lastname'); ?>
-                </div>
-            </div>
-        </div>
+        <h1 class="header-logo">
+            <?= $this->Html->link(
+                '<i class="fa fa-bars visible-xs-inline-block"></i>',
+                '#', [
+                    'class' => 'toggle-nav',
+                    'escape' => false
+                ]
+            ); ?>
+            <?= $this->Html->link('Escola', '/admin/'); ?>
+        </h1>
     </div>
 
     <div class="header-right">

@@ -1,4 +1,13 @@
 <aside class="sidebar" id="sidebar">
+    <div class="sidebar-profile clearfix">
+        <div class="sidebar-profile-meta">
+            <div class="sidebar-profile-welcome">Bienvenue</div>
+            <div class="sidebar-profile-name">
+                <?= $this->request->session()->read('Auth.User.firstname'); ?>
+                <?= $this->request->session()->read('Auth.User.lastname'); ?>
+            </div>
+        </div>
+    </div>
 
     <h5 class="sidebar-title">Navigation</h5>
 

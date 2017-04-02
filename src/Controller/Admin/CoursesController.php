@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Model\Table\CoursesTable;
-use DataTables\Controller\Component\DataTablesComponent;
 
 /**
  * Class CoursesController
