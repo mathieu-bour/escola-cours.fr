@@ -12,7 +12,8 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
     less = require('gulp-less'),
     csso = require('gulp-csso'),
     concat = require('gulp-concat'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    imagemin = require('gulp-imagemin');
 
 var exec = require('child_process').exec,
     fs = require('fs'),
@@ -106,13 +107,18 @@ gulp.task('minify', buildTask, function () {
         .pipe(gulp.dest('webroot/css'));
 
     // Minify JS
-    return gulp.src([
+    gulp.src([
             'webroot/js/public.js',
             'webroot/js/admin.js'
         ])
         .pipe(uglify())
         .pipe(header(banner))
         .pipe(gulp.dest('webroot/js'));
+
+    // Minify images
+    return gulp.src('webroot/img/**')
+        .pipe(imagemin())
+        .pipe(gulp.dest('webroot/img/'))
 });
 
 /*= Watch assets
