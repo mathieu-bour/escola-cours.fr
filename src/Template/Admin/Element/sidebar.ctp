@@ -53,15 +53,8 @@
             </li>
             <li class="menu-item">
                 <?= $this->Html->link(
-                    '<i class="fa fa-fw fa-pencil-square-o" aria-hidden="true"></i>Disciplines',
-                    ['controller' => 'levels'],
-                    ['escape' => false]
-                ); ?>
-            </li>
-            <li class="menu-item">
-                <?= $this->Html->link(
-                    '<i class="fa fa-fw fa-graduation-cap" aria-hidden="true"></i>Niveaux',
-                    ['controller' => 'levels'],
+                    '<i class="fa fa-fw fa-graduation-cap" aria-hidden="true"></i>Disciplines et niveaux',
+                    ['controller' => 'pages', 'action' => 'settings'],
                     ['escape' => false]
                 ); ?>
             </li>

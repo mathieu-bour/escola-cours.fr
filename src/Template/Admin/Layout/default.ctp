@@ -24,6 +24,8 @@
                     <?php endif; ?>
                     <div class="panel-body">
                         <?= $this->Breadcrumbs->render($crumbList); ?>
+
+                        <?= $this->Flash->render(); ?>
                         <?= $this->fetch('content'); ?>
                     </div>
                 </div>

@@ -115,11 +115,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($tables['bestTeachers'] as $teacher): ?>
+                        <?php foreach ($tables['bestTeachers'] as $teacher): ?>
                             <tr>
                                 <td><?= $teacher->lastname . ' ' . $teacher->firstname; ?></td>
                                 <td>
-                                    <?php foreach($teacher->courses as $course): ?>
+                                    <?php foreach ($teacher->courses as $course): ?>
                                         <span class="label label-primary">
                                             <?= $course->discipline->name . ' (' . $course->level->name . ')'; ?>
                                         </span>&nbsp;
@@ -149,11 +149,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($tables['bestStudents'] as $student): ?>
+                        <?php foreach ($tables['bestStudents'] as $student): ?>
                             <tr>
                                 <td><?= $student->lastname . ' ' . $student->firstname; ?></td>
                                 <td>
-                                    <?php foreach($student->courses as $course): ?>
+                                    <?php foreach ($student->courses as $course): ?>
                                         <span class="label label-primary">
                                             <?= $course->discipline->name . ' (' . $course->level->name . ')'; ?>
                                         </span>&nbsp;

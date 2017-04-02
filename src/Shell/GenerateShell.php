@@ -2,9 +2,10 @@
 
 namespace App\Shell;
 
-use App\Model\Table\AppTable;
 use App\Shell\Task\GenerateCoursesTask;
+use App\Shell\Task\GenerateDisciplinesTask;
 use App\Shell\Task\GenerateLessonsTask;
+use App\Shell\Task\GenerateLevelsTask;
 use App\Shell\Task\GenerateSlotsTask;
 use App\Shell\Task\GenerateUsersTask;
 use Cake\Console\Shell;
@@ -19,6 +20,8 @@ use Cake\ORM\Table;
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Shell
  *
+ * @property GenerateDisciplinesTask $GenerateDisciplines
+ * @property GenerateLevelsTask $GenerateLevels
  * @property GenerateUsersTask $GenerateUsers
  * @property GenerateCoursesTask $GenerateCourses
  * @property GenerateLessonsTask $GenerateLessons
@@ -27,22 +30,27 @@ use Cake\ORM\Table;
 class GenerateShell extends Shell
 {
     public $tasks = [
+        'Generate',
+        'GenerateDisciplines',
+        'GenerateLevels',
         'GenerateUsers',
         'GenerateLessons',
         'GenerateCourses',
         'GenerateSlots'
     ];
 
-    public function main($userCount = 500, $chunkSize = 100)
+    public function main()
     {
         $this->out($this->nl(0));
         $this->out('Welcome in escola-cours.fr test data generator');
 
         if ($this->_eraseDatabase()) {
-            $this->GenerateUsers->main($userCount, $chunkSize);
-            $this->GenerateCourses->main(1, 3, $chunkSize);
-            $this->GenerateLessons->main($userCount / 2);
-            $this->GenerateSlots->main($chunkSize * 5);
+            $this->GenerateDisciplines->main();
+            $this->GenerateLevels->main();
+            $this->GenerateUsers->main();
+            $this->GenerateCourses->main();
+            $this->GenerateLessons->main();
+            $this->GenerateSlots->main();
         }
     }
 
@@ -62,10 +70,12 @@ class GenerateShell extends Shell
         $this->out('Erasing database...');
         $conn = new Connection(ConnectionManager::get(Table::defaultConnectionName())->config());
         $conn->query('SET foreign_key_checks = 0');
-        $conn->query('TRUNCATE courses; TRUNCATE lessons; TRUNCATE slots; TRUNCATE users');
+        $conn->query('TRUNCATE courses; TRUNCATE disciplines; TRUNCATE lessons; TRUNCATE levels; TRUNCATE slots; TRUNCATE users');
         $conn->query('SET foreign_key_checks = 1');
         $this->out('Database erased...');
 
         return true;
     }
+
+
 }

@@ -56,7 +56,7 @@ $this->start('script'); ?>
             },
             {
                 "title": "Actions",
-                "render": function(data, type, row) {
+                "render": function (data, type, row) {
                     return '<button class="btn btn-xs btn-danger btn-delete">Supprimer<button';
                 }
             }

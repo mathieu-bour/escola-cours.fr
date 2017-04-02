@@ -22,7 +22,8 @@
                 <h3 class="title-lined"><span class="bg-white">Profil</span></h3>
                 <div class="form-block">
                     <div class="callout callout-primary">
-                        Ces informations sont strictement confidentielles et uniquement visibles par les administrateurs d'Escola.
+                        Ces informations sont strictement confidentielles et uniquement visibles par les administrateurs
+                        d'Escola.
                     </div>
 
                     <div class="row">

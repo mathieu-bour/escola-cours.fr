@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Model\Table\CoursesTable;
 use App\Model\Table\DisciplinesTable;
 use App\Model\Table\LessonsTable;
+use App\Model\Table\LevelsTable;
 use App\Model\Table\UsersTable;
 use Cake\I18n\Time;
 use Cake\ORM\Query;
@@ -18,6 +19,7 @@ use Cake\ORM\Query;
  * @property CoursesTable $Courses
  * @property DisciplinesTable $Disciplines
  * @property LessonsTable $Lessons
+ * @property LevelsTable $Levels
  * @property UsersTable $Users
  */
 class PagesController extends AppController
@@ -76,6 +78,18 @@ class PagesController extends AppController
                     ->orderDesc('lesson_count')
                     ->toArray()
             ]
+        ]);
+    }
+
+    public function settings()
+    {
+        $this->loadModel('Disciplines');
+        $this->loadModel('Levels');
+
+        $this->setTitle('Disciplines et niveaux');
+        $this->set([
+            'disciplines' => $this->Disciplines->find()->toArray(),
+            'levels' => $this->Levels->find()->toArray()
         ]);
     }
 

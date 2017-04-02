@@ -1,7 +1,8 @@
 <section>
     <div class="container">
         <h2 class="page-subtitle">Qui sommes-nous ?</h2>
-        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, ad aut consequatur deleniti deserunt
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, ad aut consequatur
+            deleniti deserunt
             dolore doloremque dolorum, eum id iste neque nisi porro possimus quo ratione repudiandae rerum voluptatibus
             voluptatum.</p>
 

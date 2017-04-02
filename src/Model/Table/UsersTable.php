@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
@@ -126,7 +127,8 @@ class UsersTable extends Table
 
     /*= Finders
      *=====================================================*/
-    public function findTeachers(Query $query, array $options) {
+    public function findTeachers(Query $query, array $options)
+    {
         $query->innerJoinWith('Courses', function (Query $q) use ($options) {
             return $q->where([
                 'Courses.level_id' => $options['level_id'],
