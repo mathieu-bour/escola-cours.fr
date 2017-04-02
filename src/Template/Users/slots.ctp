@@ -7,7 +7,7 @@
         </div>
 
         <?= $this->Form->create(null, ['id' => 'user-slots-form']); ?>
-        <div class="slots-container">
+        <div class="table-responsive">
             <table class="table table-bordered slots">
                 <thead>
                     <tr>

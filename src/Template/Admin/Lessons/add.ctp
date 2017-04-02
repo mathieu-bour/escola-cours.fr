@@ -50,33 +50,36 @@
             </div>
 
             <div class="col-md-8">
-                <table class="table table-bordered slots">
-                    <thead>
-                        <tr>
-                            <th>Heure</th>
-                            <th>Lundi</th>
-                            <th>Mardi</th>
-                            <th>Mercredi</th>
-                            <th>Jeudi</th>
-                            <th>Vendredi</th>
-                            <th>Samedi</th>
-                            <th>Dimanche</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php for ($i = 0; $i < 24; $i++) { ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered slots">
+                        <thead>
                             <tr>
-                                <td>
-                                    <?= $i < 10 ? '0' . $i : $i; ?>:00 - <?= $i + 1 < 10 ? '0' . ($i + 1) : $i + 1; ?>
-                                    :00
-                                </td>
-                                <?php for ($j = 0; $j < 7; $j++) { ?>
-                                    <td class="slot" id="slot-<?= $j . '-' . $i ?>"></td>
-                                <?php } ?>
+                                <th>Heure</th>
+                                <th>Lundi</th>
+                                <th>Mardi</th>
+                                <th>Mercredi</th>
+                                <th>Jeudi</th>
+                                <th>Vendredi</th>
+                                <th>Samedi</th>
+                                <th>Dimanche</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php for ($i = 0; $i < 24; $i++) { ?>
+                                <tr>
+                                    <td>
+                                        <?= $i < 10 ? '0' . $i : $i; ?>:00
+                                        - <?= $i + 1 < 10 ? '0' . ($i + 1) : $i + 1; ?>
+                                        :00
+                                    </td>
+                                    <?php for ($j = 0; $j < 7; $j++) { ?>
+                                        <td class="slot" id="slot-<?= $j . '-' . $i ?>"></td>
+                                    <?php } ?>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
