@@ -13,6 +13,7 @@
  */
 namespace App\View;
 
+use Bootstrap\View\Helper\HtmlHelper;
 use Cake\View\View;
 
 /**
@@ -21,6 +22,8 @@ use Cake\View\View;
  * Your application’s default view class
  *
  * @link http://book.cakephp.org/3.0/en/views.html#the-app-view
+ *
+ * @property HtmlHelper Html
  */
 class AppView extends View
 {
@@ -39,5 +42,9 @@ class AppView extends View
         $this->loadHelper('Html', ['className' => 'Bootstrap.Html']);
         $this->loadHelper('Form', ['className' => 'Bootstrap.Form']);
         $this->loadHelper('WyriHaximus/MinifyHtml.MinifyHtml');
+
+        $this->Html->setTemplates([
+            'javascriptlink' => '<script src="{{url}}" type="text/javascript"{{attrs}}></script>'
+        ]);
     }
 }

@@ -2,7 +2,7 @@
 $config = [
     /*= Debug level
      *=====================================================*/
-    'debug' => env('DATASOURCE_CONFIG', 'dev') == 'dev',
+    'debug' => env('DATASOURCE_CONFIG') == 'dev',
 
     'App' => [
         'namespace' => 'App',
