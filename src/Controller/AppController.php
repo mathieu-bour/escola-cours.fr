@@ -52,15 +52,11 @@ class AppController extends Controller
         $this->loadComponent('Security');
     }
 
-    public function beforeFilter(Event $event)
-    {
-        parent::beforeFilter($event);
-    }
-
     public function beforeRender(Event $event)
     {
         if (!$this->request->is('json')) {
             $this->set([
+                'here' =>  $this->request->getRequestTarget(),
                 'isLogged' => (bool)$this->Auth->user(),
                 'isAdmin' => (bool)$this->Auth->user('admin'),
                 '_csrfToken' => $this->request->getParam('_csrfToken')
@@ -122,5 +118,9 @@ class AppController extends Controller
     {
         $this->set('pageTitle', $pageTitle);
         $this->Crumbs->end($pageTitle);
+    }
+
+    public function setDescription($pageDescription) {
+        $this->set('pageDescription', $pageDescription);
     }
 }
