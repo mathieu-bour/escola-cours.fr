@@ -16,7 +16,6 @@ use Cake\Utility\Text;
  *
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Controller
- *
  * @property UsersTable $Users
  * @property LevelsTable $Levels
  * @property DisciplinesTable $Disciplines
@@ -29,7 +28,8 @@ class UsersController extends AppController
      *=====================================================*/
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['login', 'register', 'forgot', 'reset']);
+        $this->Auth->allow(['login', 'register', 'teachers', 'forgot', 'reset']);
+
         return parent::beforeFilter($event);
     }
 
@@ -39,6 +39,34 @@ class UsersController extends AppController
      * Register a user
      */
     public function register()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->request->getData();
+
+            debug($user);
+            die();
+
+            $user['courses'] = !empty($user['courses']) ? json_decode($user['courses'], true) : [];
+
+            $user = $this->Users->newEntity($user, ['associated' => ['Courses']]);
+
+            if ($this->Users->save($user)) {
+                $this->Flash->success('Votre inscription a bien été prise en compte, vous pouvez dès lors vous connecter');
+                $this->redirect(['controller' => 'users', 'action' => 'login']);
+            } else if (!empty($user->getErrors()) || !empty($user->invalid())) {
+                $this->set('user', $user);
+                $this->response = $this->response->withStatus(400, 'Invalid data');
+                $this->Flash->error('Erreur lors de votre inscription, veuillez corriger vos informations');
+            }
+        }
+
+        $this->setTitle('Inscription');
+    }
+
+    /**
+     * Teacher register page
+     */
+    public function teachers()
     {
         if ($this->request->is('post')) {
             $user = $this->request->getData();
@@ -56,7 +84,7 @@ class UsersController extends AppController
             }
         }
 
-        $this->setTitle('Inscription');
+        $this->setTitle('Recrutement');
     }
 
     /**
@@ -127,6 +155,7 @@ class UsersController extends AppController
 
     /**
      * Reset a password
+     *
      * @param $token
      */
     public function reset(string $token)

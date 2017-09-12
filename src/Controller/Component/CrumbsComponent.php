@@ -12,6 +12,7 @@ class CrumbsComponent extends Component
 
     /**
      * Initialize crumbs
+     *
      * @param array $config
      */
     public function initialize(array $config)
@@ -21,6 +22,7 @@ class CrumbsComponent extends Component
 
     /**
      * Append a crumb to crumbList
+     *
      * @param string|array $crumb
      */
     public function append($crumb)
@@ -30,6 +32,7 @@ class CrumbsComponent extends Component
 
     /**
      * Prepend a crumb to crumbList
+     *
      * @param string|array $crumb
      */
     public function prepend($crumb)
@@ -39,6 +42,7 @@ class CrumbsComponent extends Component
 
     /**
      * Ensure that the end is at the end
+     *
      * @param string|array $crumb
      */
     public function end($crumb)
@@ -56,6 +60,8 @@ class CrumbsComponent extends Component
             array_push($crumbList, $this->crumbEnd);
         }
 
-        $event->getSubject()->set('crumbList', $this->crumbList);
+        if (!empty($crumbList)) {
+            $event->getSubject()->set('crumbList', $this->crumbList);
+        }
     }
 }

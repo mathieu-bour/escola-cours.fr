@@ -53,14 +53,12 @@ use Cake\Core\Configure;
 
                         <div id="courses-container"></div>
 
-                        <?= $this->Form->input('courses', [
-                            'type' => 'hidden'
-                        ]); ?>
+                        <?= $this->Form->input('courses', ['type' => 'hidden', 'id' => 'courses-json']); ?>
 
                         <a class="btn btn-primary" id="add-course">Ajouter un cours</a>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Valider mon inscription</button>
+                            <button class="btn btn-primary" id="register-form-send">Valider mon inscription</button>
                         </div>
                     </div>
                 </div>

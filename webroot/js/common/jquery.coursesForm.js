@@ -122,7 +122,11 @@ $.fn.coursesForm = function () {
     /*
      * On submit action, create a json string with the selected courses
      */
-    $form.on('submit', function (e) {
+    var $coursesJson = $form.find('#courses-json');
+
+    $('#register-form-send').click(function (e) {
+        e.preventDefault();
+
         var courses = [];
 
         $('.course').each(function () {
@@ -141,6 +145,10 @@ $.fn.coursesForm = function () {
             });
         });
 
-        $(this).find('input[name="courses"]').val(JSON.stringify(courses));
+        console.log($coursesJson);
+        $coursesJson.val(JSON.stringify(courses));
+
+
+        $form.submit();
     });
 };

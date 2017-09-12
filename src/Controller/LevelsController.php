@@ -4,13 +4,13 @@ namespace App\Controller;
 
 use App\Model\Table\LevelsTable;
 use Cake\Event\Event;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Levels Controller
  *
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Controller
- *
  * @property LevelsTable $Levels
  */
 class LevelsController extends AppController
@@ -28,11 +28,7 @@ class LevelsController extends AppController
      */
     public function index()
     {
-        $this->request->allowMethod(['json']);
-
-        if ($this->request->is(['json'])) {
-            $levels = $this->Levels->find('list')->toArray();
-            $this->set($levels);
-        }
+        $levels = $this->Levels->find('list')->toArray();
+        $this->set($levels);
     }
 }

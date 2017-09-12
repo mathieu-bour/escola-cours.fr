@@ -1,16 +1,7 @@
 <section class="no-p">
-    <div class="owl-carousel owl-theme">
+    <div class="owl-carousel owl-theme" id="main-carousel">
         <div>
-            <?= $this->Html->image('//placehold.it/1920x600'); ?>
-        </div>
-        <div>
-            <?= $this->Html->image('//placehold.it/1920x600'); ?>
-        </div>
-        <div>
-            <?= $this->Html->image('//placehold.it/1920x600'); ?>
-        </div>
-        <div>
-            <?= $this->Html->image('//placehold.it/1920x600'); ?>
+            <?= $this->Html->image('slider/slide-1.jpg'); ?>
         </div>
     </div>
 </section>
@@ -61,55 +52,31 @@
                 <div class="col-md-4 col-xs-6">
                     <div class="feature">
                         <div class="feature-icon"><span class="glyphicon glyphicon-home"></span></div>
-                        <h4 class="feature-title">Lorem</h4>
-                        <p class="feature-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta enim
-                            omnis
-                            sint tenetur.</p>
+                        <p class="feature-text">Des étudiants et enseignants compétents choisis par nos soins après entretien.</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-6">
-                    <div class="feature feature-pushed">
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <div class="feature">
+                        <div class="feature-icon"><span class="glyphicon glyphicon-time"></span></div>
+                        <p class="feature-text">En quelques clis, faîtes votre demande de prof, et nous vous sélectionnons un Super Prof
+                            Escola en moins de 24 heures !</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <div class="feature feature">
                         <div class="feature-icon"><span class="glyphicon glyphicon-tasks"></span></div>
-                        <h4 class="feature-title">Ipsum</h4>
-                        <p class="feature-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta enim
-                            omnis
-                            sint tenetur.</p>
+                        <p class="feature-text">Un suivi approfondi de chaque élève selon leurs besoins, avec des bilans réguliers</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-6">
-                    <div class="feature">
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <div class="feature feature">
                         <div class="feature-icon"><span class="glyphicon glyphicon-euro"></span></div>
-                        <h4 class="feature-title">Dolor</h4>
-                        <p class="feature-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta enim
-                            omnis
-                            sint tenetur.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-6">
-                    <div class="feature feature-pushed">
-                        <div class="feature-icon"><span class="glyphicon glyphicon-phone"></span></div>
-                        <h4 class="feature-title">Consectetur</h4>
-                        <p class="feature-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta enim
-                            omnis
-                            sint tenetur.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-6">
-                    <div class="feature">
-                        <div class="feature-icon"><span class="glyphicon glyphicon-send"></span></div>
-                        <h4 class="feature-title">Amet</h4>
-                        <p class="feature-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta enim
-                            omnis
-                            sint tenetur.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-6">
-                    <div class="feature feature-pushed">
-                        <div class="feature-icon"><span class="glyphicon glyphicon-paperclip"></span></div>
-                        <h4 class="feature-title">Sit</h4>
-                        <p class="feature-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta enim
-                            omnis
-                            sint tenetur.</p>
+                        <p class="feature-text">Escola, c’est aucun frais de dossier ni d’inscription : les cours particuliers à un prix enfin
+                            raisonnable</p>
                     </div>
                 </div>
             </div>
@@ -117,7 +84,7 @@
     </div>
 </section>
 
-<section>
+<?php /*<section>
     <div class="container">
         <h2 class="page-subtitle">Partenaires</h2>
         <div class="row">
@@ -135,4 +102,4 @@
             </div>
         </div>
     </div>
-</section>
+</section>*/ ?>

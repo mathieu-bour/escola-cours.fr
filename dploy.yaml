@@ -18,3 +18,23 @@ beta:
   include:
      "webroot/css/*": "webroot/css/"
      "webroot/js/*": "webroot/js/"
+live:
+  scheme: "ftp"
+  host: "mathieu-bour.fr"
+  user: "escola_cours_fr"
+  pass: "PC54Jfa7H5BKXAdrk23e"
+  exclude:
+    - ".idea/*"
+    - "webroot/less/**"
+    - "webroot/js/public/*"
+    - "webroot/js/admin/*"
+    - ".*"
+    - "assets.json"
+    - "bower.json"
+    - "dploy.yaml"
+    - "gulpfile.js"
+    - "phpunit.xml"
+    - "README.md"
+  include:
+     "webroot/css/*": "webroot/css/"
+     "webroot/js/*": "webroot/js/"
