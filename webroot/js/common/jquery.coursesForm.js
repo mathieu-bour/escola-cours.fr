@@ -148,7 +148,6 @@ $.fn.coursesForm = function () {
         console.log($coursesJson);
         $coursesJson.val(JSON.stringify(courses));
 
-
         $form.submit();
     });
 };

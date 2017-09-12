@@ -4,8 +4,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <?= $this->Html->image('//placehold.it/200x80', ['class' => 'footer-logo']); ?>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta expedita explicabo necessitatibus
-                        ipsum dolor sit amet.</p>
+                    <p>Escola, </p>
                 </div>
 
                 <div class="col-md-3">
