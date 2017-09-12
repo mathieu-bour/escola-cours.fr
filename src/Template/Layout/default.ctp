@@ -39,6 +39,7 @@ use Cake\Routing\Router;
         <div id="overlay"></div>
 
         <!-- JS -->
+        <?= $this->fetch('js'); ?>
         <?= $this->Html->script('public'); ?>
     </body>
 </html>

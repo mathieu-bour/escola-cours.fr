@@ -1,112 +1,83 @@
+<?php
+use Cake\Core\Configure;
+
+?>
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="paper paper-curl-right">
-                    <?= $this->Html->image('//placehold.it/320'); ?>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <h2>Comment profiter des services d'Escola ?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum eveniet odio placeat
-                    praesentium recusandae rem, velit veritatis voluptates voluptatum! Consequuntur cum et eveniet
-                    fugiat iste, maiores modi odit quaerat sint?</p>
+            <div class="col-md-6 col-md-offset-3">
+                <?= $this->Form->create(null, ['id' => 'register-form']) ?>
+                <div class="owl-carousel owl-theme" id="register-form-carousel">
+                    <div class="form-page">
+                        <h3>Bienvenue sur Escola !</h3>
+                        <p>Tout d'abord, nous avons besoin de votre adresse.</p>
 
-                <div class="callout callout-primary">
-                    <h4>Titre</h4>
+                        <?= $this->Form->input('dynamic_address', [
+                            'class' => 'input-lg',
+                            'placeholder' => '10 rue Einstein Metz',
+                            'label' => false,
+                            'append' => $this->Form->button('<i class="fa fa-search"></i>', [
+                                'id' => 'locate-btn',
+                                'class' => 'btn-lg btn-primary',
+                                'type' => 'button'
+                            ])
+                        ]); ?>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum eveniet odio placeat
-                        praesentium recusandae rem, velit veritatis voluptates voluptatum! Consequuntur cum et eveniet
-                        fugiat iste, maiores modi odit quaerat sint?</p>
+                        <div id="register-form-map"></div>
+                    </div>
+
+                    <div class="form-page">
+                        <h3>Super !</h3>
+                        <p>Nous avons maintenant besoin de quelques informations personnelles.</p>
+
+                        <?= $this->Form->input('lastname', ['label' => 'Nom']); ?>
+                        <?= $this->Form->input('firstname', ['label' => 'Prénom']); ?>
+                        <?= $this->Form->input('email', ['label' => 'Adresse e-mail']); ?>
+                        <?= $this->Form->input('telephone', ['label' => 'Téléphone']); ?>
+                    </div>
+
+                    <div class="form-page">
+                        <h3>Excellent !</h3>
+                        <p>Choisissez maintenant votre mot de passe</p>
+
+                        <?= $this->Form->input('password', ['label' => 'Mot de passe']); ?>
+                        <?= $this->Form->input('password_confirm', [
+                            'type' => 'password',
+                            'label' => 'Confirmation du mot de passe'
+                        ]); ?>
+                    </div>
+
+                    <div class="form-page">
+                        <h3>Parfait !</h3>
+                        <p>Indiquez maintenant quels cours vous recherchez.</p>
+
+                        <div id="courses-container"></div>
+
+                        <?= $this->Form->input('courses', [
+                            'type' => 'hidden'
+                        ]); ?>
+
+                        <a class="btn btn-primary" id="add-course">Ajouter un cours</a>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Valider mon inscription</button>
+                        </div>
+                    </div>
                 </div>
+
+                <div>
+                    <span id="register-form-message"></span>
+                    <button class="btn btn-primary pull-right" id="register-form-next" style="display: none">
+                        Continuer
+                    </button>
+                </div>
+                <?= $this->Form->end() ?>
             </div>
         </div>
     </div>
 </section>
 
-<section class="bg-gray-lighter">
-    <div class="container">
-        <?= $this->Flash->render(); ?>
+<?php $this->start('js') ?>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= Configure::read('GoogleMapsAPI.key') ?>"></script>
+<?php $this->end() ?>
 
-        <?= $this->Form->create($user ?? null, ['id' => 'user-register-form']); ?>
-        <?php $this->Form->unlockField('courses'); ?>
-
-        <h3 class="title-lined"><span class="bg-gray-lighter">Profil</span></h3>
-        <div class="form-block">
-            <h4>Je suis :</h4>
-            <?= $this->Form->radio('type', [
-                'student' => 'Élève',
-                'teacher' => 'Professeur'
-            ], [
-                'default' => 'student'
-            ]); ?>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <?= $this->Form->input('lastname', ['label' => 'Nom']); ?>
-                </div>
-                <div class="col-md-6">
-                    <?= $this->Form->input('firstname', ['label' => 'Prénom']); ?>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <?= $this->Form->input('email', ['label' => 'Adresse e-mail']); ?>
-                </div>
-                <div class="col-md-6">
-                    <?= $this->Form->input('telephone', ['label' => 'Téléphone']); ?>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-8">
-                    <?= $this->Form->input('address', ['label' => 'Adresse']); ?>
-                </div>
-                <div class="col-md-2">
-                    <?= $this->Form->input('zip_code', ['label' => 'Code postal']); ?>
-                </div>
-                <div class="col-md-2">
-                    <?= $this->Form->input('city', ['label' => 'Ville']); ?>
-                </div>
-            </div>
-        </div>
-
-
-        <h3 class="title-lined"><span class="bg-gray-lighter">Mot de passe</span></h3>
-        <div class="form-block">
-            <div class="row">
-                <div class="col-md-6">
-                    <?= $this->Form->input('password', [
-                        'type' => 'password',
-                        'label' => 'Mot de passe'
-                    ]); ?>
-                </div>
-                <div class="col-md-6">
-                    <?= $this->Form->input('password_confirm', [
-                        'type' => 'password',
-                        'label' => 'Confirmation du mot de passe'
-                    ]); ?>
-                </div>
-            </div>
-        </div>
-
-
-        <h3 class="title-lined"><span class="bg-gray-lighter">Cours et matières</span></h3>
-        <div class="form-block">
-            <div id="courses-container"></div>
-
-            <?= $this->Form->input('courses', [
-                'type' => 'hidden'
-            ]); ?>
-
-            <a class="btn btn-primary" id="add-course">Ajouter un cours</a>
-        </div>
-
-
-        <div class="text-center">
-            <button class="btn btn-lg btn-primary">Valider mon inscription</button>
-        </div>
-        <?= $this->Form->end(); ?>
-    </div>
-</section>

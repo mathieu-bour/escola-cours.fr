@@ -2,7 +2,8 @@
 $config = [
     /*= Debug level
      *=====================================================*/
-    'debug' => env('DATASOURCE_CONFIG') == 'dev',
+    //'debug' => env('DATASOURCE_CONFIG') == 'dev',
+    'debug' => true,
 
     'App' => [
         'namespace' => 'App',
@@ -158,6 +159,10 @@ $config = [
         'cookie' => 'session',
         'defaults' => 'php',
     ],
+
+    'GoogleMapsAPI' => [
+        'key' => 'AIzaSyCh6vG543HS6KI9ybwxLMWyUEfY88cWGcU'
+    ]
 ];
 
 return $config;

@@ -27,6 +27,20 @@
                                 'action' => 'about'
                             ]); ?>
                         </li>
+                        <li class="nav-item">
+                            <?= $this->Html->link('Blog', [
+                                'controller' => 'posts',
+                                'action' => 'index'
+                            ]); ?>
+                        </li>
+                        <?php if(!$isLogged): ?>
+                            <li class="nav-item">
+                                <?= $this->Html->link('Recrutement', [
+                                    'controller' => 'users',
+                                    'action' => 'teachers'
+                                ]); ?>
+                            </li>
+                        <?php endif; ?>
                         <?php if ($isLogged): ?>
                             <li class="nav-item">
                                 <?= $this->Html->link('Disponibilités', [
@@ -48,13 +62,13 @@
                             </li>
                         <?php else: ?>
                             <li class="nav-item">
-                                <?= $this->Html->link('Connexion', [
+                                <?= $this->Html->link('Mon espace', [
                                     'controller' => 'users',
                                     'action' => 'login'
                                 ]); ?>
                             </li>
                             <li class="nav-item nav-item-primary">
-                                <?= $this->Html->link('Inscription', [
+                                <?= $this->Html->link('Trouver un prof', [
                                     'controller' => 'users',
                                     'action' => 'register'
                                 ]); ?>

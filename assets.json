@@ -2,7 +2,8 @@
   "css": {
     "public": [
       "bower_components/beemuse/dist/beemuse.css",
-      "bower_components/owl.carousel/dist/assets/owl.carousel.css"
+      "bower_components/owl.carousel/dist/assets/owl.carousel.css",
+      "bower_components/animate.css/animate.css"
     ],
     "admin": [
       "bower_components/datatables.net-bs/css/dataTables.bootstrap.css",
@@ -28,9 +29,10 @@
       "bower_components/bootstrap/js/alert.js",
       "bower_components/bootstrap/js/button.js",
       "bower_components/bootstrap/js/tab.js",
-      "bower_components/owl.carousel/dist/owl.carousel.min.js",
+      "bower_components/owl.carousel/dist/owl.carousel.js",
       "webroot/js/common/*.js",
-      "webroot/js/public/main.js"
+      "webroot/js/public/main.js",
+      "webroot/js/public/register.js"
     ],
     "admin": [
       "bower_components/js-cookie/src/js.cookie.js",

@@ -41,6 +41,25 @@ class LessonsController extends AppController
      */
     public function add()
     {
+        $this->loadModel('Users');
+        $students = $this->Users->find('all')
+            ->select(['id', 'firstname', 'lastname'])
+            ->where(['type' => 'student'])
+            ->order('lastname')
+            ->toArray();
+
+        $new = [];
+
+        foreach ($students as $key => $student) {
+            $new[$student->id] = $student->lastname . ' ' . $student->firstname;
+        }
+
+        $students = $new;
+
+        $this->set(compact('students'));
+    }
+
+    public function add2() {
         if ($this->request->is('post')) {
             $data = $this->request->getData();
             $course = explode('/', $data['course']);
@@ -57,6 +76,7 @@ class LessonsController extends AppController
                 $this->Flash->error('Erreur lors de l\'enregistrement du cours');
             }
         }
+
     }
 
     /**

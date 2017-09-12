@@ -130,11 +130,11 @@ gulp.task('watch', buildTask, function () {
         'webroot/less/public/*.less',
         'webroot/less/public.less'
     ], ['css-public']);
-
     gulp.watch([
         'webroot/js/common/*.js',
         'webroot/js/public/*.js'
     ], ['js-public']);
+
 
     // Admin
     gulp.watch([
@@ -142,7 +142,6 @@ gulp.task('watch', buildTask, function () {
         'webroot/less/admin/*.less',
         'webroot/less/admin.less'
     ], ['css-admin']);
-
     gulp.watch([
         'webroot/js/common/*.js',
         'webroot/js/admin/*.js'

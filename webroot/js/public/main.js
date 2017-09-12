@@ -1,3 +1,12 @@
+$.fn.extend({
+    animateCss: function (animationName) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+            $(this).removeClass('animated ' + animationName);
+        });
+    }
+});
+
 $('.toggle-nav').on('click', function (e) {
     e.preventDefault();
     var $nav = $('.nav');
@@ -12,7 +21,7 @@ $('.toggle-nav').on('click', function (e) {
     }
 });
 
-$('.owl-carousel').owlCarousel({
+$('#main-carousel').owlCarousel({
     autoplay: true,
     loop: true,
     items: 1
