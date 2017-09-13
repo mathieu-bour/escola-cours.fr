@@ -1,70 +1,70 @@
 .footer {
+  color: @gray-light;
+  background-color: @gray-darker;
+  font-size: 13px;
+  text-align: justify;
+
+  a {
     color: @gray-light;
-    background-color: @gray-darker;
-    font-size: 13px;
-    text-align: justify;
+    transition: color .3s ease, border .3s ease;
+  }
+  a:hover {
+    color: @gray-lighter;
+  }
+
+  .footer-main {
+    padding: 40px 0;
+  }
+
+  .footer-title {
+    color: @gray-lighter;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .footer-logo {
+    margin-bottom: 10px;
+  }
+
+  .footer-socials {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      float: left;
+    }
 
     a {
-        color: @gray-light;
-        transition: color .3s ease, border .3s ease;
+      display: block;
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      text-align: center;
+      line-height: 30px;
+      border: solid 1px @gray-light;
+      border-radius: 2px;
     }
     a:hover {
-        color: @gray-lighter;
+      border: solid 1px @gray-lighter;
     }
+  }
 
-    .footer-main {
-        padding: 40px 0;
+  ul {
+    list-style: square;
+    margin: 0;
+    padding: 0 0 0 20px;
+
+    a {
+      line-height: 20px;
     }
-
-    .footer-title {
-        color: @gray-lighter;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-
-    .footer-logo {
-        margin-bottom: 10px;
-    }
-
-    .footer-socials {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-
-        li {
-            float: left;
-        }
-
-        a {
-            display: block;
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            text-align: center;
-            line-height: 30px;
-            border: solid 1px @gray-light;
-            border-radius: 2px;
-        }
-        a:hover {
-            border: solid 1px @gray-lighter;
-        }
-    }
-
-    ul {
-        list-style: square;
-        margin: 0;
-        padding: 0 0 0 20px;
-
-        a {
-            line-height: 20px;
-        }
-    }
+  }
 }
 
 .copyright {
-    margin-bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    font-size: 12px;
-    line-height: 40px;
-    text-align: center;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 12px;
+  line-height: 40px;
+  text-align: center;
 }

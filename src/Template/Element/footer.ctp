@@ -3,14 +3,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <?= $this->Html->image('//placehold.it/200x80', ['class' => 'footer-logo']); ?>
-                    <p>Escola, la réussite</p>
+                    <?= $this->Html->image('escola-logo.png', ['class' => 'footer-logo', 'height' => '60']); ?>
+                    <p>Escola, la réussite imminente !</p>
                 </div>
 
                 <div class="col-md-3">
                     <h4 class="footer-title">Suivez-nous !</h4>
-                    <p>Escola est sur Facebook ! Restez connecté pour recevoir les dernières informations sur notre
-                    projet !</p>
+                    <p>Escola est sur Facebook ! Restez connecté pour recevoir les dernières informations !</p>
 
                     <ul class="footer-socials clearfix">
                         <li>
@@ -45,31 +44,15 @@
                                 'action' => 'about'
                             ]); ?>
                         </li>
-                        <li>
-                            <?= $this->Html->link('C.G.U.', [
-                                'controller' => 'pages',
-                                'action' => 'cgu'
-                            ]); ?>
-                        </li>
-                        <li>
-                            <?= $this->Html->link('C.G.V.', [
-                                'controller' => 'pages',
-                                'action' => 'cgv'
-                            ]); ?>
-                        </li>
                     </ul>
                 </div>
 
                 <div class="col-md-3">
-                    <h4 class="footer-title">Développeurs</h4>
+                    <h4 class="footer-title">Contact</h4>
 
-                    <p>Proudly developped and maintained by</p>
+                    <p>Pour toute question, contactez-nous par mail à l’adresse suivante :</p>
 
-                    <?= $this->Html->link(
-                        $this->Html->image('synthetica-logo.png'),
-                        'https://synthetica.fr', [
-                        'escape' => false
-                    ]); ?>
+                    <p><?= $this->Html->link('contact@escola-cours.fr', 'mailto:contact@escola-cours.fr'); ?></p>
                 </div>
             </div>
         </div>

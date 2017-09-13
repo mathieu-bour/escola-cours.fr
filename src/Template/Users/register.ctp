@@ -5,12 +5,11 @@ use Cake\Core\Configure;
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-8 col-md-offset-2">
                 <?= $this->Form->create(null, ['id' => 'register-form']) ?>
                 <div class="owl-carousel owl-theme" id="register-form-carousel">
                     <div class="form-page">
-                        <h3>Bienvenue sur Escola !</h3>
-                        <p>Tout d'abord, nous avons besoin de votre adresse.</p>
+                        <h3>Tout d'abord, nous avons besoin de votre adresse.</h3>
 
                         <?= $this->Form->input('dynamic_address', [
                             'class' => 'input-lg',
@@ -27,8 +26,7 @@ use Cake\Core\Configure;
                     </div>
 
                     <div class="form-page">
-                        <h3>Super !</h3>
-                        <p>Nous avons maintenant besoin de quelques informations personnelles.</p>
+                        <h3>Nous avons maintenant besoin de quelques informations personnelles.</h3>
 
                         <?= $this->Form->input('lastname', ['label' => 'Nom']); ?>
                         <?= $this->Form->input('firstname', ['label' => 'Prénom']); ?>

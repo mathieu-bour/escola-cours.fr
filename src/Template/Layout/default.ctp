@@ -18,6 +18,7 @@ use Cake\Routing\Router;
         <meta property="og:description" content="<?= $pageDescription ?? 'Escola : cours particulier sur la région Grand Est'; ?>" />
 
         <!-- CSS -->
+        <?= $this->Html->css('//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700'); ?>
         <?= $this->Html->css('public'); ?>
     </head>
 

@@ -1,7 +1,7 @@
 <section>
     <div class="container">
         <h2 class="page-subtitle">Qui sommes-nous ?</h2>
-        <p class="text-center"><em>La réussite !</em></p>
+        <p class="text-center"><em>La réussite imminente !</em></p>
 
         <p class="text-center">Escola, c’est une idée née il y a deux ans dans l'esprit de deux étudiants messins. L’objectif ?
             Proposer une approche pédagogique différente de celle, classique, mise en application à
@@ -15,9 +15,9 @@
         <p class="text-center">Escola, c’est une équipe de 3 personnes, et 20 enseignants, pour la plupart étudiants, tous
             mobilisés avec les élèves pour leur permettre une réussite imminente.</p>
 
-        <h2 class="page-subtitle">L'équipe</h2>
+        <?php /*<h2 class="page-subtitle">L'équipe</h2>
 
-        <? /*<div class="row">
+        <div class="row">
             <div class="col-md-3 col-md-offset-3">
                 <div class="team-member">
                     <?= $this->Html->image('//placehold.it/262', ['class' => 'team-member-photo']); ?>

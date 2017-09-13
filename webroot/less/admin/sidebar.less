@@ -1,100 +1,105 @@
 .sidebar {
-    position: fixed;
-    z-index: 10;
-    top: 50px;
-    left: 0;
-    bottom: 0;
-    width: 250px;
-    background-color: @gray-dark;
+  position: fixed;
+  z-index: 10;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  background-color: @gray-dark;
 }
+
 .sidebar-profile {
-    background-color: @brand-primary;
-    padding: 10px 20px;
+  background-color: @brand-primary;
+  padding: 10px 20px;
 }
+
 .sidebar-profile-meta {
-    float: left;
-    color: @gray-lighter;
+  float: left;
+  color: @gray-lighter;
 }
+
 .sidebar-profile-welcome {
-    font-size: 12px;
-    line-height: 16px;
+  font-size: 12px;
+  line-height: 16px;
 }
+
 .sidebar-profile-name {
-    font-size: 16px;
-    line-height: 24px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .sidebar-title {
-    color: @gray-light;
-    padding: 15px 20px 0;
-    margin: 0;
+  color: @gray-light;
+  padding: 15px 20px 0;
+  margin: 0;
 }
+
 .menu {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-    .menu-item {
-        padding: 0 20px;
-        transition: background-color .3s ease;
-        a {
-            position: relative;
-            display: block;
-            height: 50px;
-            color: @gray-light-inter;
-            background-color: transparent !important;
-            line-height: 50px;
-            transition: color .3s ease;
+  .menu-item {
+    padding: 0 20px;
+    transition: background-color .3s ease;
+    a {
+      position: relative;
+      display: block;
+      height: 50px;
+      color: @gray-light-inter;
+      background-color: transparent !important;
+      line-height: 50px;
+      transition: color .3s ease;
 
-            .fa {
-                margin-right: 15px;
-            }
-        }
-        a:hover {
-            color: @gray-lighter;
-        }
-
-        .submenu {
-            display: none;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-
-            .submenu-item {
-                a:before {
-                    content: '\f105';
-                    display: inline-block;
-                    margin-right: 15px;
-                    width: 1.28571429em;
-                    font-family: "FontAwesome", sans-serif;
-                    text-align: center;
-                }
-            }
-        }
+      .fa {
+        margin-right: 15px;
+      }
     }
-    .menu-item.current, .menu-item.open {
-        background-color: @gray-darker;
-
-        > a {
-            color: @gray-lighter;
-        }
+    a:hover {
+      color: @gray-lighter;
     }
 
-    .menu-item.has-submenu > a:after {
-        content: '\f0d7';
-        display: block;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 1.28571429em;
-        margin-left: 15px;
-        font-family: "FontAwesome", sans-serif;
-        text-align: center;
-        transition: transform .3s ease;
-        transform: translateY(-50%);
+    .submenu {
+      display: none;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      .submenu-item {
+        a:before {
+          content: '\f105';
+          display: inline-block;
+          margin-right: 15px;
+          width: 1.28571429em;
+          font-family: "FontAwesome", sans-serif;
+          text-align: center;
+        }
+      }
     }
-    .menu-item.has-submenu.current > a:after,
-    .menu-item.has-submenu.open > a:after {
-        transform: translateY(-50%) rotate(180deg);
+  }
+  .menu-item.current, .menu-item.open {
+    background-color: @gray-darker;
+
+    > a {
+      color: @gray-lighter;
     }
+  }
+
+  .menu-item.has-submenu > a:after {
+    content: '\f0d7';
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 1.28571429em;
+    margin-left: 15px;
+    font-family: "FontAwesome", sans-serif;
+    text-align: center;
+    transition: transform .3s ease;
+    transform: translateY(-50%);
+  }
+  .menu-item.has-submenu.current > a:after,
+  .menu-item.has-submenu.open > a:after {
+    transform: translateY(-50%) rotate(180deg);
+  }
 }

@@ -1,60 +1,68 @@
 @media only screen and (max-width: @screen-xs-max) {
-    body {
-        font-size: 12px;
-        padding-top: 50px;
-    }
-    section {
-        padding: 20px 0;
-    }
-    #content {
-        position: absolute;
-        left: 0;
-        top: 50px;
-        right: 0;
-        padding: 0;
-    }
-    /*= Header
-     *=====================================================*/
-    .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 5;
-        height: 50px;
-    }
-    .header-logo {
-        font-size: 24px;
-        line-height: 50px;
-    }
-    /*= Nav
-     *=====================================================*/
-    #overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 4;
-    }
-    .toggle-nav {
-        margin-right: 5px;
-    }
-    .sidebar {
-        position: fixed;
-        display: block;
-        width: 250px;
-        top: 50px;
-        left: 0;
-        bottom: 0;
-        z-index: 5;
-        text-align: left;
-        transform: translateX(-100%);
-        transition: transform .3s ease;
-    }
-    .sidebar.open {
-        transform: translateX(0);
-    }
+  body {
+    font-size: 12px;
+    padding-top: 50px;
+  }
+
+  section {
+    padding: 20px 0;
+  }
+
+  #content {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    right: 0;
+    padding: 0;
+  }
+
+  /*= Header
+   *=====================================================*/
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    height: 50px;
+  }
+
+  .header-logo {
+    font-size: 24px;
+    line-height: 50px;
+  }
+
+  /*= Nav
+   *=====================================================*/
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 4;
+  }
+
+  .toggle-nav {
+    margin-right: 5px;
+  }
+
+  .sidebar {
+    position: fixed;
+    display: block;
+    width: 250px;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    z-index: 5;
+    text-align: left;
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
 }

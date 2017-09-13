@@ -2,16 +2,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <h1 class="main-title">
+                <h1 class="main-title visible-xs-inline-block">
                     <?= $this->Html->link(
-                        '<i class="fa fa-bars visible-xs-inline-block"></i>',
+                        '<i class="fa fa-bars "></i>',
                         '#', [
                             'class' => 'toggle-nav',
                             'escape' => false
                         ]
                     ); ?>
-                    <?= $this->Html->link('Escola', '/'); ?>
                 </h1>
+                <?= $this->Html->link(
+                    $this->Html->image('escola-logo.png', ['height' => 50]),
+                    '/',
+                    ['class' => 'header-logo-link', 'escape' => false]
+                ); ?>
             </div>
             <div class="col-md-9">
                 <nav class="nav">
@@ -33,7 +37,7 @@
                                 'action' => 'index'
                             ]); ?>
                         </li>
-                        <?php if(!$isLogged): ?>
+                        <?php if (!$isLogged): ?>
                             <li class="nav-item">
                                 <?= $this->Html->link('Recrutement', [
                                     'controller' => 'users',

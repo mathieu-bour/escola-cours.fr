@@ -1,25 +1,51 @@
 .city {
-    position: relative;
-    width: 360px;
-    height: 197px;
+  position: relative;
+  width: 458px;
+  height: 258px;
 
-    .city-bg, .city-content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
+  .city-bg, .city-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .city-content {
+    z-index: 2;
+    text-align: center;
+
+    .city-name {
+      position: relative;
+      margin: 80px 0 15px;
+      padding-bottom: 15px;
+      color: #ffffff;
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 70px;
+      text-transform: uppercase;
     }
 
-    .city-content {
-        z-index: 2;
-        text-align: center;
-
-        .city-name {
-            margin: 80px 0 15px;
-            color: #ffffff;
-            text-transform: uppercase;
-        }
+    .city-name:after {
+      content: '';
+      position: absolute;
+      height: 3px;
+      width: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      background-color: #fff;
     }
+
+    .city-link {
+      display: block;
+      color: #fff;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    .city-link:hover, .city-link:focus {
+      color: #fff;
+    }
+  }
 }
