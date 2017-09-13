@@ -29,6 +29,7 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         $this->Auth->allow(['login', 'register', 'teachers', 'forgot', 'reset']);
+        $this->Security->setConfig('unlockedActions', ['register', 'account']);
 
         return parent::beforeFilter($event);
     }
@@ -43,8 +44,8 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->request->getData();
 
-            debug($user);
-            die();
+            $user['address'] = $user['dynamic_address'];
+            unset($user['dynamic_address']);
 
             $user['courses'] = !empty($user['courses']) ? json_decode($user['courses'], true) : [];
 

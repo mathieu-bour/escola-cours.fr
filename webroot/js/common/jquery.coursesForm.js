@@ -18,6 +18,10 @@ $.fn.coursesForm = function () {
      */
     var $form = $(this);
 
+    if ($form.length < 1) {
+        return false;
+    }
+
     /**
      * @type {number} the courses iterator, used to be sure that the courses[] array submitted has different keys; they will be ignored during processing
      */
@@ -124,7 +128,7 @@ $.fn.coursesForm = function () {
      */
     var $coursesJson = $form.find('#courses-json');
 
-    $('#register-form-send').click(function (e) {
+    $form.submit(function (e) {
         e.preventDefault();
 
         var courses = [];
@@ -145,9 +149,8 @@ $.fn.coursesForm = function () {
             });
         });
 
-        console.log($coursesJson);
         $coursesJson.val(JSON.stringify(courses));
 
-        $form.submit();
+        $form.unbind('submit').submit();
     });
 };

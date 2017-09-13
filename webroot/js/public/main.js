@@ -27,6 +27,7 @@ $('#main-carousel').owlCarousel({
     items: 1
 });
 
-$('#user-register-form, #user-account-form').coursesForm();
+$('#user-account-form').coursesForm();
+$('#user-register-form').coursesForm();
 
 $('#user-slots-form').slotsTable();

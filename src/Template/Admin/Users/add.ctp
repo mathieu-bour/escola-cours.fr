@@ -36,17 +36,7 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-8">
-                        <?= $this->Form->input('address', ['label' => 'Adresse']); ?>
-                    </div>
-                    <div class="col-md-2">
-                        <?= $this->Form->input('zip_code', ['label' => 'Code postal']); ?>
-                    </div>
-                    <div class="col-md-2">
-                        <?= $this->Form->input('city', ['label' => 'Ville']); ?>
-                    </div>
-                </div>
+                <?= $this->Form->input('address', ['label' => 'Adresse']); ?>
 
                 <div class="row">
                     <div class="col-md-6">

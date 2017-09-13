@@ -6,12 +6,14 @@ use Cake\Core\Configure;
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <?= $this->Form->create(null, ['id' => 'register-form']) ?>
+                <?= $this->Form->create(null, ['id' => 'user-register-form']) ?>
+                <?= $this->Flash->render() ?>
+
                 <div class="owl-carousel owl-theme" id="register-form-carousel">
                     <div class="form-page">
                         <h3>Tout d'abord, nous avons besoin de votre adresse.</h3>
 
-                        <?= $this->Form->input('dynamic_address', [
+                        <?= $this->Form->input('address', [
                             'class' => 'input-lg',
                             'placeholder' => '10 rue Einstein Metz',
                             'label' => false,

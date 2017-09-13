@@ -7,7 +7,7 @@
  * The register form
  * @type {jQuery}
  */
-var $registerForm = $('#register-form');
+var $registerForm = $('#user-register-form');
 
 if ($registerForm.length > 0) {
     /*= Init
@@ -168,18 +168,22 @@ if ($registerForm.length > 0) {
 
     /*= Stage 3
      *=====================================================*/
+    var $formPassword = $('#password');
+    var $formPasswordConfirm = $('#password-confirm');
     var $formPasswordInputs = $('#password, #password-confirm');
     $formPasswordInputs.on('change', function (e) {
-        var allFilled = true;
-        $formInfoInputs.each(function () {
-            if ($(this).val() === '') {
-                allFilled = false;
-            }
-        });
+        var allFilled = $formPassword.val() !== '' && $formPasswordConfirm.val() !== '';
+        var identical = $formPassword.val() === $formPasswordConfirm.val();
 
-        if (allFilled) {
+        console.log($formPassword.val() + '|' + $formPasswordConfirm.val());
+        console.log(allFilled + '|' + identical);
+
+        if (allFilled && identical) {
             $formNext.show();
             setFormMessage('Excellent ! Il ne vous plus qu\'à choisir vos cours !', 'success');
+        } else if(allFilled && !identical) {
+            $formNext.hide();
+            setFormMessage('Les mots de passe ne correspondent pas', 'danger');
         } else {
             $formNext.hide();
             setFormMessage('', 'success');

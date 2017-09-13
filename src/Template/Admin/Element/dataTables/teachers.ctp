@@ -57,16 +57,6 @@ $this->start('script'); ?>
                 "title": "Adresse",
                 "name": "Users.address",
                 "data": "address"
-            },
-            {
-                "title": "Code postal",
-                "name": "Users.zip_code",
-                "data": "zip_code"
-            },
-            {
-                "title": "Ville",
-                "name": "Users.city",
-                "data": "city"
             }
         ]
     });
