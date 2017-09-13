@@ -4,13 +4,13 @@
             <div class="row">
                 <div class="col-md-3">
                     <?= $this->Html->image('//placehold.it/200x80', ['class' => 'footer-logo']); ?>
-                    <p>Escola, </p>
+                    <p>Escola, la réussite</p>
                 </div>
 
                 <div class="col-md-3">
                     <h4 class="footer-title">Suivez-nous !</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta expedita explicabo
-                        necessitatibus</p>
+                    <p>Escola est sur Facebook ! Restez connecté pour recevoir les dernières informations sur notre
+                    projet !</p>
 
                     <ul class="footer-socials clearfix">
                         <li>

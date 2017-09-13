@@ -90,6 +90,7 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest('webroot/fonts/font-awesome/'));
     gulp.src(['bower_components/bootstrap/fonts/*'])
         .pipe(gulp.dest('webroot/fonts/glyphicons/'));
+    gulp.src(['bower_components/'])
     return gulp.src(['bower_components/open-sans-fontface/fonts/**'])
         .pipe(gulp.dest('webroot/fonts/open-sans/'));
 });

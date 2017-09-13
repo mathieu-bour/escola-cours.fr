@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\Table\LevelsTable;
 use Cake\Event\Event;
-use Cake\Datasource\ConnectionManager;
 
 /**
  * Levels Controller
@@ -22,13 +21,18 @@ class LevelsController extends AppController
         return parent::beforeFilter($event);
     }
 
+
     /**
      * JSON-only
      * Return all Levels available
      */
     public function index()
     {
-        $levels = $this->Levels->find('list')->toArray();
-        $this->set($levels);
+        $this->request->allowMethod(['json']);
+
+        if ($this->request->is(['json'])) {
+            $levels = $this->Levels->find('list')->toArray();
+            $this->set($levels);
+        }
     }
 }

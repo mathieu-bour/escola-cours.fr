@@ -47,6 +47,7 @@ Router::defaultRouteClass(DashedRoute::class);
  *=====================================================*/
 Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'pages', 'action' => 'home']);
+    $routes->connect('/blog', ['controller' => 'posts', 'action' => 'index']);
 
     $routes->fallbacks(DashedRoute::class);
 });

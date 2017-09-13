@@ -21,7 +21,11 @@
 
                     <div class="city-content">
                         <h3 class="city-name">Metz</h3>
-                        <a href="javascript:void(0)" class="btn btn-lg btn-ghost">Trouver un prof</a>
+                        <?= $this->Html->link(
+                            'Trouver un prof',
+                            ['controller' => 'users', 'action' => 'register'],
+                            ['class' => 'btn btn-lg btn-ghost']
+                        ); ?>
                     </div>
                 </div>
             </div>
@@ -52,7 +56,8 @@
                 <div class="col-md-4 col-xs-6">
                     <div class="feature">
                         <div class="feature-icon"><span class="glyphicon glyphicon-home"></span></div>
-                        <p class="feature-text">Des étudiants et enseignants compétents choisis par nos soins après entretien.</p>
+                        <p class="feature-text">Des étudiants et enseignants compétents choisis par nos soins après
+                            entretien.</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-6">
@@ -60,14 +65,16 @@
                 <div class="col-md-4 col-xs-6">
                     <div class="feature">
                         <div class="feature-icon"><span class="glyphicon glyphicon-time"></span></div>
-                        <p class="feature-text">En quelques clis, faîtes votre demande de prof, et nous vous sélectionnons un Super Prof
+                        <p class="feature-text">En quelques clis, faîtes votre demande de prof, et nous vous
+                            sélectionnons un Super Prof
                             Escola en moins de 24 heures !</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-6">
                     <div class="feature feature">
                         <div class="feature-icon"><span class="glyphicon glyphicon-tasks"></span></div>
-                        <p class="feature-text">Un suivi approfondi de chaque élève selon leurs besoins, avec des bilans réguliers</p>
+                        <p class="feature-text">Un suivi approfondi de chaque élève selon leurs besoins, avec des bilans
+                            réguliers</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-6">
@@ -75,7 +82,8 @@
                 <div class="col-md-4 col-xs-6">
                     <div class="feature feature">
                         <div class="feature-icon"><span class="glyphicon glyphicon-euro"></span></div>
-                        <p class="feature-text">Escola, c’est aucun frais de dossier ni d’inscription : les cours particuliers à un prix enfin
+                        <p class="feature-text">Escola, c’est aucun frais de dossier ni d’inscription : les cours
+                            particuliers à un prix enfin
                             raisonnable</p>
                     </div>
                 </div>
