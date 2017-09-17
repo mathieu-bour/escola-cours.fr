@@ -133,23 +133,14 @@ $.fn.coursesForm = function () {
 
         var courses = [];
 
+        var counter = 0;
         $('.course').each(function () {
-            var id = $(this).find('input[name*="[id"]').val();
-            var level_id = $(this).find('select[name*="[level_id]"]').val();
-            var discipline_id = $(this).find('select[name*="[discipline_id]"]').val();
+            $(this).find('[name="courses[id]"]').attr('name', 'courses[' + counter + '][id]');
+            $(this).find('[name="courses[level_id]"]').attr('name', 'courses[' + counter + '][level_id]');
+            $(this).find('[name="courses[discipline_id]"]').attr('name', 'courses[' + counter + '][discipline_id]');
 
-            if (id === undefined) {
-                id = null;
-            }
-
-            courses.push({
-                id: id,
-                level_id: level_id,
-                discipline_id: discipline_id
-            });
+            counter++;
         });
-
-        $coursesJson.val(JSON.stringify(courses));
 
         $form.unbind('submit').submit();
     });

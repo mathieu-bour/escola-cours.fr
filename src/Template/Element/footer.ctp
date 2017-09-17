@@ -58,5 +58,5 @@
         </div>
     </div>
 
-    <p class="copyright">Copyright &copy; 2017 | Escola SARL</p>
+    <p class="copyright">Copyright &copy; 2017 | Escola SARL - Baked with love by Mathieu Bour</p>
 </footer>

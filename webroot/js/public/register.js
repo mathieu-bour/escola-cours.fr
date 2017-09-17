@@ -18,11 +18,15 @@ if ($registerForm.length > 0) {
      * @type {jQuery}
      */
     var $form = $registerForm;
+
+    var formData = {};
+
     /**
      * The form message span
      * @type {jQuery}
      */
     var $formMessage = $('#register-form-message');
+
     /*= Owl Carousel Init
      *=====================================================*/
     var $formCarousel = $('#register-form-carousel');
@@ -116,6 +120,16 @@ if ($registerForm.length > 0) {
                 if (status === 'OK') {
                     results = results[0];
 
+                    // Format address
+                    var address_components = {};
+                    $.each(results.address_components, function(key, val) {
+                        address_components[val.types[0]] = val.long_name;
+                    });
+                    $('input[name="address"]').val(address_components['street_number'] + ' ' + address_components['route']);
+                    $('input[name="city"]').val(address_components['locality']);
+                    $('input[name="zip_code"]').val(address_components['postal_code']);
+
+                    // Place map and marker
                     $dynamicAddress.val(results.formatted_address);
 
                     center = {
@@ -149,7 +163,7 @@ if ($registerForm.length > 0) {
     /*= Stage 2
      *=====================================================*/
     var $formInfoInputs = $('#lastname, #firstname, #email, #telephone');
-    $formInfoInputs.on('change', function (e) {
+    $formInfoInputs.on('keyup keypress blur change', function (e) {
         var allFilled = true;
         $formInfoInputs.each(function () {
             if ($(this).val() === '') {
@@ -171,12 +185,9 @@ if ($registerForm.length > 0) {
     var $formPassword = $('#password');
     var $formPasswordConfirm = $('#password-confirm');
     var $formPasswordInputs = $('#password, #password-confirm');
-    $formPasswordInputs.on('change', function (e) {
+    $formPasswordInputs.on('keyup keypress blur change', function (e) {
         var allFilled = $formPassword.val() !== '' && $formPasswordConfirm.val() !== '';
         var identical = $formPassword.val() === $formPasswordConfirm.val();
-
-        console.log($formPassword.val() + '|' + $formPasswordConfirm.val());
-        console.log(allFilled + '|' + identical);
 
         if (allFilled && identical) {
             $formNext.show();

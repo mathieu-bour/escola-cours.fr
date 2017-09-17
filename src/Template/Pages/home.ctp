@@ -14,6 +14,20 @@
                 </div>
             </div>
         </div>
+
+        <div class="slide">
+            <div class="slide-outer">
+                <?= $this->Html->image('slider/slide-2.jpg', ['class' => 'slide-bg']); ?>
+
+                <div class="slide-inner container">
+                    <?= $this->Html->link(
+                        'Trouver un prof',
+                        ['controller' => 'users', 'action' => 'register'],
+                        ['class' => 'main-link']
+                    ); ?>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

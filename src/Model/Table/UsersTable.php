@@ -82,7 +82,7 @@ class UsersTable extends Table
             ->lengthBetween('firstname', [1, 60], 'Votre prénom doit être compris entre 1 et 60 caractères')
             ->allowEmpty('firstname', false, 'Votre prénom est nécessaire')
             // telephone
-            ->lengthBetween('telephone', [10, 20], 'Votre numéro de téléphone doit être compris entre 10 et 20 caractères')
+            ->lengthBetween('telephone', [1, 20], 'Votre numéro de téléphone doit être compris entre 1 et 20 caractères')
             ->allowEmpty('telephone', false, 'Votre numéro de téléphone est nécessaire')
             // address
             ->lengthBetween('address', [1, 255], 'Votre adresse doit être compris entre 1 et 255 caractères')

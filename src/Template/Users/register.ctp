@@ -1,7 +1,4 @@
-<?php
-use Cake\Core\Configure;
-
-?>
+<?php use Cake\Core\Configure; ?>
 <section>
     <div class="container">
         <div class="row">
@@ -13,7 +10,7 @@ use Cake\Core\Configure;
                     <div class="form-page">
                         <h3>Tout d'abord, nous avons besoin de votre adresse.</h3>
 
-                        <?= $this->Form->input('address', [
+                        <?= $this->Form->input('dynamic-address', [
                             'class' => 'input-lg',
                             'placeholder' => '10 rue Einstein Metz',
                             'label' => false,
@@ -22,7 +19,10 @@ use Cake\Core\Configure;
                                 'class' => 'btn-lg btn-primary',
                                 'type' => 'button'
                             ])
-                        ]); ?>
+                        ]) ?>
+                        <?= $this->Form->input('address', ['type' => 'hidden']) ?>
+                        <?= $this->Form->input('city', ['type' => 'hidden']) ?>
+                        <?= $this->Form->input('zip_code', ['type' => 'hidden']) ?>
 
                         <div id="register-form-map"></div>
                     </div>
@@ -30,21 +30,21 @@ use Cake\Core\Configure;
                     <div class="form-page">
                         <h3>Nous avons maintenant besoin de quelques informations personnelles.</h3>
 
-                        <?= $this->Form->input('lastname', ['label' => 'Nom']); ?>
-                        <?= $this->Form->input('firstname', ['label' => 'Prénom']); ?>
-                        <?= $this->Form->input('email', ['label' => 'Adresse e-mail']); ?>
-                        <?= $this->Form->input('telephone', ['label' => 'Téléphone']); ?>
+                        <?= $this->Form->input('lastname', ['label' => 'Nom']) ?>
+                        <?= $this->Form->input('firstname', ['label' => 'Prénom']) ?>
+                        <?= $this->Form->input('email', ['label' => 'Adresse e-mail']) ?>
+                        <?= $this->Form->input('telephone', ['label' => 'Téléphone']) ?>
                     </div>
 
                     <div class="form-page">
                         <h3>Excellent !</h3>
                         <p>Choisissez maintenant votre mot de passe</p>
 
-                        <?= $this->Form->input('password', ['label' => 'Mot de passe']); ?>
+                        <?= $this->Form->input('password', ['label' => 'Mot de passe']) ?>
                         <?= $this->Form->input('password_confirm', [
                             'type' => 'password',
                             'label' => 'Confirmation du mot de passe'
-                        ]); ?>
+                        ]) ?>
                     </div>
 
                     <div class="form-page">
@@ -52,13 +52,12 @@ use Cake\Core\Configure;
                         <p>Indiquez maintenant quels cours vous recherchez.</p>
 
                         <div id="courses-container"></div>
-
-                        <?= $this->Form->input('courses', ['type' => 'hidden', 'id' => 'courses-json']); ?>
+                        <?php $this->Form->unlockFields("courses") ?>
 
                         <a class="btn btn-primary" id="add-course">Ajouter un cours</a>
 
                         <div class="text-center">
-                            <button class="btn btn-primary" id="register-form-send">Valider mon inscription</button>
+                            <button type="submit" class="btn btn-primary">Valider mon inscription</button>
                         </div>
                     </div>
                 </div>
@@ -76,6 +75,6 @@ use Cake\Core\Configure;
 </section>
 
 <?php $this->start('js') ?>
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= Configure::read('GoogleMapsAPI.key') ?>"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?= Configure::read('GoogleMapsAPI.key') ?>"></script>
 <?php $this->end() ?>
 

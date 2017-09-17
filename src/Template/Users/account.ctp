@@ -37,7 +37,17 @@
                         </div>
                     </div>
 
-                    <?= $this->Form->input('address', ['label' => 'Adresse']); ?>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <?= $this->Form->input('address', ['label' => 'Adresse']); ?>
+                        </div>
+                        <div class="col-md-2">
+                            <?= $this->Form->input('zip_code', ['label' => 'Code postal']); ?>
+                        </div>
+                        <div class="col-md-2">
+                            <?= $this->Form->input('city', ['label' => 'Ville']); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -75,13 +85,13 @@
 
                         <?php foreach ($user->courses as $key => $course): ?>
                             <div class="course">
-                                <?= $this->Form->input('courses-json[id]', [
+                                <?= $this->Form->input('courses[id]', [
                                     'type' => 'hidden',
                                     'value' => $course->id
                                 ]); ?>
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <?= $this->Form->input('courses-json[level_id]', [
+                                        <?= $this->Form->input('courses[level_id]', [
                                             'label' => false,
                                             'type' => 'select',
                                             'options' => $levels,
@@ -89,13 +99,14 @@
                                         ]); ?>
                                     </div>
                                     <div class="col-md-5">
-                                        <?= $this->Form->input('courses-json[discipline_id]', [
+                                        <?= $this->Form->input('courses[discipline_id]', [
                                             'label' => false,
                                             'type' => 'select',
                                             'options' => $disciplines,
                                             'value' => $course->discipline_id
                                         ]); ?>
                                     </div>
+
                                     <div class="col-md-2">
                                         <button type="button" class="btn btn-danger btn-block remove-course">
                                             Supprimer

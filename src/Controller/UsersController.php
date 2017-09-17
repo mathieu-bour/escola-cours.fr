@@ -43,12 +43,6 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             $user = $this->request->getData();
-
-            $user['address'] = $user['dynamic_address'];
-            unset($user['dynamic_address']);
-
-            $user['courses'] = !empty($user['courses']) ? json_decode($user['courses'], true) : [];
-
             $user = $this->Users->newEntity($user, ['associated' => ['Courses']]);
 
             if ($this->Users->save($user)) {
