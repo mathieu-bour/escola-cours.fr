@@ -1,6 +1,4 @@
-<?php
-use Cake\Routing\Router;
-?>
+<?php use Cake\Routing\Router; ?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -10,6 +8,16 @@ use Cake\Routing\Router;
 
         <title>Escola - <?= $pageTitle ?? 'Cours particuliers'; ?></title>
         <meta name="description" content="<?= $pageDescription ?? 'Escola : cours particulier sur la région Grand Est'; ?>">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= Router::url('/img/icons/apple-touch-icon.png'); ?>') ?>">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?= Router::url('img/icons/favicon-32x32.png') ?>">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?= Router::url('img/icons/favicon-16x16.png') ?>">
+        <link rel="manifest" href="<?= Router::url('img/icons/manifest.json') ?>">
+        <link rel="mask-icon" href="<?= Router::url('img/icons/safari-pinned-tab.svg" color="#5bbad5') ?>">
+        <link rel="shortcut icon" href="<?= Router::url('img/icons/favicon.ico') ?>">
+        <meta name="msapplication-config" content="<?= Router::url('/img/icons/browserconfig.xml') ?>">
+        <meta name="theme-color" content="#ffffff">
 
         <!-- Meta OG -->
         <meta property="og:url" content="<?= Router::url($here, true); ?>" />

@@ -3,8 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <?= $this->Html->image('escola-logo.png', ['class' => 'footer-logo', 'height' => '60']); ?>
-                    <p>Escola, la réussite imminente !</p>
+                    <?= $this->Html->image('escola-logo-w.png', ['class' => 'footer-logo', 'height' => '60']); ?>
+                    <p>La réussite imminente !</p>
                 </div>
 
                 <div class="col-md-3">
