@@ -14,7 +14,7 @@
                 <?= $this->Html->link(
                     $this->Html->image('escola-logo.png', ['height' => 50]),
                     '/',
-                    ['class' => 'header-logo-link visible-md', 'escape' => false]
+                    ['class' => 'header-logo-link hidden-xs', 'escape' => false]
                 ); ?>
             </div>
             <div class="col-md-9">
