@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="panel-heading">
-        <h2>Ajouter un utilisateur</h2>
+        <h2>Éditer un utilisateur</h2>
     </div>
 
     <div class="panel-body">
@@ -13,30 +13,31 @@
                 'student' => 'Élève',
                 'teacher' => 'Professeur'
             ],
-            'default' => 'student'
+            'default' => 'student',
+            'value' => $user->type
         ]); ?>
 
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-6">
-                        <?= $this->Form->input('lastname', ['label' => 'Nom']); ?>
+                        <?= $this->Form->input('lastname', ['label' => 'Nom', 'value' => $user->lastname]); ?>
                     </div>
                     <div class="col-md-6">
-                        <?= $this->Form->input('firstname', ['label' => 'Prénom']); ?>
+                        <?= $this->Form->input('firstname', ['label' => 'Prénom', 'value' => $user->firstname]); ?>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6">
-                        <?= $this->Form->input('email', ['label' => 'Adresse e-mail']); ?>
+                        <?= $this->Form->input('email', ['label' => 'Adresse e-mail', 'value' => $user->email]); ?>
                     </div>
                     <div class="col-md-6">
-                        <?= $this->Form->input('telephone', ['label' => 'Téléphone']); ?>
+                        <?= $this->Form->input('telephone', ['label' => 'Téléphone', 'value' => $user->telephone]); ?>
                     </div>
                 </div>
 
-                <?= $this->Form->input('address', ['label' => 'Adresse']); ?>
+                <?= $this->Form->input('address', ['label' => 'Adresse', 'value' => $user->address]); ?>
 
                 <div class="row">
                     <div class="col-md-6">
@@ -53,9 +54,9 @@
                     </div>
                 </div>
 
-                <?= $this->Form->input('social_security_number', ['label' => 'Numéro de sécurité sociale']); ?>
+                <?= $this->Form->input('social_security_number', ['label' => 'Numéro de sécurité sociale', 'value' => $user->social_security_number]); ?>
 
-                <?= $this->Form->input('notes', ['type' => 'textarea', 'label' => 'Notes']); ?>
+                <?= $this->Form->input('notes', ['type' => 'textarea', 'label' => 'Notes', 'value' => $user->notes]); ?>
             </div>
 
             <div class="col-md-6">

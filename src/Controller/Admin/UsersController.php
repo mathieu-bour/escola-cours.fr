@@ -10,7 +10,6 @@ use Cake\ORM\Query;
  *
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Controller\Admin
- *
  * @property UsersTable $Users
  */
 class UsersController extends AppController
@@ -50,6 +49,7 @@ class UsersController extends AppController
 
     /**
      * Students page
+     *
      * @param int|null $level_id the level id
      * @param  int|null $discipline_id the discipline id
      */
@@ -109,6 +109,35 @@ class UsersController extends AppController
             $this->Users->Courses->saveMany($courses);
 
             $this->redirect(['controller' => 'users', 'action' => 'teachers']);
+        }
+    }
+
+    /**
+     * Edit a user
+     *
+     * @param int $id
+     *
+     * @return \Cake\Http\Response|null
+     */
+    public function edit(int $id)
+    {
+        $user = $this->Users->get($id);
+
+        if ($this->request->is('get')) {
+            $this->set('user', $user);
+        }
+
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $user = $this->Users->patchEntity($user, $data);
+
+            if ($this->Users->save($user)) {
+                $this->Flash->success('Utilisateur modifié avec succès');
+            } else {
+                $this->Flash->error('Erreur lors de la modification');
+            }
+
+            return $this->redirect(['controller' => 'users', 'action' => $user->type . 's']);
         }
     }
 }
