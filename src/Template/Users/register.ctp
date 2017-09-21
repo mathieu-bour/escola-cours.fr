@@ -1,4 +1,6 @@
 <?php use Cake\Core\Configure; ?>
+<h1 class="page-title">Inscription</h1>
+
 <section>
     <div class="container">
         <div class="row">

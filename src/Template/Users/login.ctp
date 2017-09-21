@@ -1,3 +1,5 @@
+<h1 class="page-title">Connexion</h1>
+
 <section>
     <div class="container">
         <div class="row">

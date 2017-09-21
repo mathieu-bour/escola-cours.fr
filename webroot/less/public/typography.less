@@ -1,10 +1,20 @@
 .page-title {
-  margin: 20px 0;
+  margin: 0 0 20px;
   color: @brand-primary;
   text-align: center;
   text-transform: uppercase;
   font-size: 50px;
+  line-height: 100px;
 }
+.page-title:before, .page-title:after {
+  content: '';
+  display: block;
+  height: 100px;
+  background-image: url(../img/papers/blue.png);
+  background-size: 100%;
+}
+
+
 
 .page-subtitle {
   position: relative;

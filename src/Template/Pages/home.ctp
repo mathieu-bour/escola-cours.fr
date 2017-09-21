@@ -1,8 +1,8 @@
 <section class="no-p">
     <div class="owl-carousel owl-theme" id="main-carousel">
-        <div class="slide">
+        <div class="slide" id="slide-1">
             <div class="slide-outer">
-                <?= $this->Html->image('slider/slide-1.jpg', ['class' => 'slide-bg']); ?>
+                <?= $this->Html->image('slider/slide-1.png', ['class' => 'slide-bg']); ?>
 
                 <div class="slide-inner container">
                     <h2 class="animated bounceIn">Bienvenue sur Escola</h2>
@@ -15,9 +15,9 @@
             </div>
         </div>
 
-        <div class="slide">
+        <div class="slide" id="slide-2">
             <div class="slide-outer">
-                <?= $this->Html->image('slider/slide-2.jpg', ['class' => 'slide-bg']); ?>
+                <?= $this->Html->image('slider/slide-2.png', ['class' => 'slide-bg']); ?>
 
                 <div class="slide-inner container">
                     <?= $this->Html->link(
@@ -25,6 +25,19 @@
                         ['controller' => 'users', 'action' => 'register'],
                         ['class' => 'main-link']
                     ); ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide-3">
+            <div class="slide-outer">
+                <?= $this->Html->image('slider/slide-3.png', ['class' => 'slide-bg']); ?>
+
+                <div class="slide-inner container">
+                    <div class="title-container">
+                        <h3>Escola est à</h3>
+                        <h2>Metz</h2>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,3 +1,5 @@
+<h1 class="page-title">Recrutement</h1>
+
 <section>
     <div class="container">
         <div class="row">

@@ -1,3 +1,5 @@
+<h1 class="page-title">Mot de passe oublié</h1>
+
 <section>
     <div class="container">
         <div class="row">

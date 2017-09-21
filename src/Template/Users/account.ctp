@@ -1,3 +1,5 @@
+<h1 class="page-title">Mon compte</h1>
+
 <section>
     <div class="container">
         <?= $this->Flash->render(); ?>

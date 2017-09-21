@@ -1,3 +1,7 @@
+<section class="bg-icons-blue bg-fit-size" style="height: 150px">
+
+</section>
+
 <section>
     <div class="container">
         <h2 class="page-subtitle">Qui sommes-nous ?</h2>

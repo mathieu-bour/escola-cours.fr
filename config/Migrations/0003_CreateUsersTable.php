@@ -61,6 +61,16 @@ class CreateUsersTable extends AbstractMigration
                 'limit' => 60,
                 'null' => true,
             ])
+            ->addColumn('social_security_number', 'string', [
+                'default' => null,
+                'limit' => 20,
+                'null' => true,
+            ])
+            ->addColumn('notes', 'text', [
+                'default' => null,
+                'limit' => 60,
+                'null' => true,
+            ])
             ->addColumn('lesson_count', 'integer', [
                 'default' => '0',
                 'limit' => 11,
