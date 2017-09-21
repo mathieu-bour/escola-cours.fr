@@ -4,7 +4,7 @@
             <div class="col-md-3">
                 <h1 class="main-title visible-xs-inline-block">
                     <?= $this->Html->link(
-                        '<i class="fa fa-bars "></i>',
+                        '<i class="fa fa-bars "></i> Escola',
                         '#', [
                             'class' => 'toggle-nav',
                             'escape' => false
@@ -14,7 +14,7 @@
                 <?= $this->Html->link(
                     $this->Html->image('escola-logo.png', ['height' => 50]),
                     '/',
-                    ['class' => 'header-logo-link', 'escape' => false]
+                    ['class' => 'header-logo-link visible-md', 'escape' => false]
                 ); ?>
             </div>
             <div class="col-md-9">
