@@ -1,4 +1,7 @@
-<h1 class="page-title">Recrutement</h1>
+<section class="page-title-container">
+    <h1 class="page-title">Recrutement</h1>
+</section>
+
 
 <section>
     <div class="container">

@@ -1,5 +1,8 @@
 <?php use Cake\Core\Configure; ?>
-<h1 class="page-title">Inscription</h1>
+<section class="page-title-container">
+    <h1 class="page-title">Inscription</h1>
+</section>
+
 
 <section>
     <div class="container">
@@ -10,7 +13,7 @@
 
                 <div class="owl-carousel owl-theme" id="register-form-carousel">
                     <div class="form-page">
-                        <h3>Tout d'abord, nous avons besoin de votre adresse.</h3>
+                        <h3>Tout d'abord, nous avons besoin de votre adresse</h3>
 
                         <?= $this->Form->input('dynamic-address', [
                             'class' => 'input-lg',
@@ -30,7 +33,7 @@
                     </div>
 
                     <div class="form-page">
-                        <h3>Nous avons maintenant besoin de quelques informations personnelles.</h3>
+                        <h3>Nous avons maintenant besoin de quelques informations personnelles</h3>
 
                         <?= $this->Form->input('lastname', ['label' => 'Nom']) ?>
                         <?= $this->Form->input('firstname', ['label' => 'Prénom']) ?>
@@ -51,7 +54,7 @@
 
                     <div class="form-page">
                         <h3>Parfait !</h3>
-                        <p>Indiquez maintenant quels cours vous recherchez.</p>
+                        <p>Indiquez maintenant quels cours vous recherchez</p>
 
                         <div id="courses-container"></div>
                         <?php $this->Form->unlockFields("courses") ?>

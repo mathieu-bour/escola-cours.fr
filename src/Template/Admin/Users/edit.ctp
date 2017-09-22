@@ -56,16 +56,68 @@
 
                 <?= $this->Form->input('social_security_number', ['label' => 'Numéro de sécurité sociale', 'value' => $user->social_security_number]); ?>
 
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->input('urssaf_email', [
+                            'label' => 'Email URSSAF',
+                            'value' => $user->urssaf_email
+                        ]); ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->input('urssaf_password', [
+                            'label' => 'Mot de passe URSSAF',
+                            'value' => $user->urssaf_password
+                        ]); ?>
+                    </div>
+                </div>
+
                 <?= $this->Form->input('notes', ['type' => 'textarea', 'label' => 'Notes', 'value' => $user->notes]); ?>
             </div>
 
             <div class="col-md-6">
                 <label class="control-label">Cours</label>
-                <div id="courses-container"></div>
+                <div id="courses-container">
 
-                <?= $this->Form->input('courses', [
-                    'type' => 'hidden'
+                    <?php foreach ($user->courses as $key => $course): ?>
+                        <div class="course">
+                            <?= $this->Form->input('courses[id]', [
+                                'type' => 'hidden',
+                                'value' => $course->id
+                            ]); ?>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <?= $this->Form->input('courses[level_id]', [
+                                        'label' => false,
+                                        'type' => 'select',
+                                        'options' => $levels,
+                                        'value' => $course->level_id
+                                    ]); ?>
+                                </div>
+                                <div class="col-md-5">
+                                    <?= $this->Form->input('courses[discipline_id]', [
+                                        'label' => false,
+                                        'type' => 'select',
+                                        'options' => $disciplines,
+                                        'value' => $course->discipline_id
+                                    ]); ?>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-danger btn-block remove-course">
+                                        Supprimer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <?= $this->Form->input('courses-json', [
+                    'type' => 'hidden',
+                    'value' => ''
                 ]); ?>
+
+                <button type="button" class="btn btn-primary" id="add-course">Ajouter un cours</button>
 
                 <a class="btn btn-primary" id="add-course">Ajouter un cours</a>
             </div>

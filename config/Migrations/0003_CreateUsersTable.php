@@ -71,6 +71,16 @@ class CreateUsersTable extends AbstractMigration
                 'limit' => 60,
                 'null' => true,
             ])
+            ->addColumn('urssaf_email', 'text', [
+                'default' => null,
+                'limit' => 60,
+                'null' => true,
+            ])
+            ->addColumn('urssaf_password', 'text', [
+                'default' => null,
+                'limit' => 60,
+                'null' => true,
+            ])
             ->addColumn('lesson_count', 'integer', [
                 'default' => '0',
                 'limit' => 11,

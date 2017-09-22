@@ -13,7 +13,8 @@
     "holt59/cakephp3-bootstrap-helpers": "dev-master",
     "fheider/cakephp-datatables": "dev-master",
     "wyrihaximus/minify-html": "^1.1",
-    "phpunit/phpunit": "^6.0"
+    "phpunit/phpunit": "^6.0",
+    "fzaninotto/faker": "^1.7"
   },
   "require-dev": {
     "psy/psysh": "@stable",
