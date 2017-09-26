@@ -6,36 +6,12 @@ class CreateLessonsTable extends AbstractMigration
     public function up()
     {
         $this->table('lessons')
-            ->addColumn('beginning', 'datetime', [
-                'default' => null,
-                'limit' => null,
-                'null' => true,
-            ])
-            ->addColumn('duration', 'float', [
-                'default' => null,
-                'limit' => null,
-                'null' => true,
-            ])
-            ->addColumn('teacher_id', 'integer', [
-                'default' => null,
-                'limit' => 11,
-                'null' => true,
-            ])
-            ->addColumn('user_id', 'integer', [
-                'default' => null,
-                'limit' => 11,
-                'null' => true,
-            ])
-            ->addColumn('level_id', 'integer', [
-                'default' => null,
-                'limit' => 11,
-                'null' => true,
-            ])
-            ->addColumn('discipline_id', 'integer', [
-                'default' => null,
-                'limit' => 11,
-                'null' => true,
-            ])
+            ->addColumn('beginning', 'datetime')
+            ->addColumn('duration', 'float')
+            ->addColumn('teacher_id', 'integer')
+            ->addColumn('user_id', 'integer')
+            ->addColumn('level_id', 'integer')
+            ->addColumn('discipline_id', 'integer')
             ->addIndex(['discipline_id'])
             ->addIndex(['level_id'])
             ->addIndex(['teacher_id'])
@@ -43,39 +19,10 @@ class CreateLessonsTable extends AbstractMigration
             ->create();
 
         $this->table('lessons')
-            ->addForeignKey(
-                'discipline_id',
-                'disciplines',
-                'id',
-                [
-                    'update' => 'NO_ACTION',
-                    'delete' => 'NO_ACTION'
-                ]
-            )
-            ->addForeignKey(
-                'level_id',
-                'levels',
-                'id', [
-                    'update' => 'NO_ACTION',
-                    'delete' => 'NO_ACTION'
-                ]
-            )
-            ->addForeignKey(
-                'teacher_id',
-                'users',
-                'id', [
-                    'update' => 'SET_NULL',
-                    'delete' => 'SET_NULL'
-                ]
-            )
-            ->addForeignKey(
-                'user_id',
-                'users',
-                'id', [
-                    'update' => 'NO_ACTION',
-                    'delete' => 'NO_ACTION'
-                ]
-            )
+            ->addForeignKey('discipline_id', 'disciplines', 'id')
+            ->addForeignKey('level_id', 'levels', 'id')
+            ->addForeignKey('teacher_id', 'users', 'id')
+            ->addForeignKey('user_id', 'users', 'id')
             ->update();
 
     }

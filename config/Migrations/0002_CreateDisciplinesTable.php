@@ -6,11 +6,7 @@ class CreateDisciplinesTable extends AbstractMigration
     public function up()
     {
         $this->table('disciplines')
-            ->addColumn('name', 'string', [
-                'default' => null,
-                'limit' => 45,
-                'null' => true,
-            ])
+            ->addColumn('name', 'string')
             ->create();
     }
 

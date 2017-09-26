@@ -6,51 +6,18 @@ class CreateCoursesTable extends AbstractMigration
     public function up()
     {
         $this->table('courses')
-            ->addColumn('user_id', 'integer', [
-                'default' => null,
-                'limit' => 11,
-                'null' => true,
-            ])
-            ->addColumn('level_id', 'integer', [
-                'default' => null,
-                'limit' => 11,
-                'null' => true,
-            ])
-            ->addColumn('discipline_id', 'integer', [
-                'default' => null,
-                'limit' => 11,
-                'null' => true,
-            ])
+            ->addColumn('user_id', 'integer')
+            ->addColumn('level_id', 'integer')
+            ->addColumn('discipline_id', 'integer')
             ->addIndex(['discipline_id'])
             ->addIndex(['level_id'])
             ->addIndex(['user_id'])
             ->create();
 
         $this->table('courses')
-            ->addForeignKey(
-                'discipline_id',
-                'disciplines',
-                'id', [
-                    'update' => 'RESTRICT',
-                    'delete' => 'RESTRICT'
-                ]
-            )
-            ->addForeignKey(
-                'level_id',
-                'levels',
-                'id', [
-                    'update' => 'RESTRICT',
-                    'delete' => 'RESTRICT'
-                ]
-            )
-            ->addForeignKey(
-                'user_id',
-                'users',
-                'id', [
-                    'update' => 'RESTRICT',
-                    'delete' => 'RESTRICT'
-                ]
-            )
+            ->addForeignKey('discipline_id', 'disciplines', 'id')
+            ->addForeignKey('level_id', 'levels', 'id')
+            ->addForeignKey('user_id', 'users', 'id')
             ->update();
     }
 

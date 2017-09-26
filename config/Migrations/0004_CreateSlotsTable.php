@@ -25,24 +25,15 @@ class CreateSlotsTable extends AbstractMigration
             ->create();
 
         $this->table('slots')
-            ->addForeignKey(
-                'user_id',
-                'users',
-                'id',
-                [
-                    'update' => 'CASCADE',
-                    'delete' => 'CASCADE'
-                ]
-            )
+            ->addForeignKey('user_id', 'users', 'id')
             ->update();
     }
+
 
     public function down()
     {
         $this->table('slots')
-            ->dropForeignKey(
-                'user_id'
-            );
+            ->dropForeignKey('user_id');
 
         $this->dropTable('slots');
     }
