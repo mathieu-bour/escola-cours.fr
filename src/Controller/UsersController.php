@@ -43,12 +43,6 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             $user = $this->request->getData();
-
-            $user['address'] = $user['dynamic_address'];
-            unset($user['dynamic_address']);
-
-            $user['courses'] = !empty($user['courses']) ? json_decode($user['courses'], true) : [];
-
             $user = $this->Users->newEntity($user, ['associated' => ['Courses']]);
 
             if ($this->Users->save($user)) {
@@ -70,10 +64,9 @@ class UsersController extends AppController
     public function teachers()
     {
         if ($this->request->is('post')) {
-            $user = $this->request->getData();
-            $user['courses'] = !empty($user['courses']) ? json_decode($user['courses'], true) : [];
+            $data = $this->request->getData();
 
-            $user = $this->Users->newEntity($user, ['associated' => ['Courses']]);
+            $user = $this->Users->newEntity($data, ['associated' => ['Courses']]);
 
             if ($this->Users->save($user)) {
                 $this->Flash->success('Votre inscription a bien été prise en compte, vous pouvez dès lors vous connecter');

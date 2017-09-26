@@ -1,3 +1,8 @@
+<section class="page-title-container">
+    <h1 class="page-title">Disponibilités</h1>
+</section>
+
+
 <section>
     <div class="container">
         <div class="callout callout-primary">

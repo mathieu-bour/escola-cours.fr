@@ -38,7 +38,7 @@
                 </ul>
             </li>
             <li class="menu-item has-submenu">
-                <a href="#"><i class="fa fa-fw fa-users" aria-hidden="true"></i>Utlisateurs</a>
+                <a href="#"><i class="fa fa-fw fa-users" aria-hidden="true"></i>Utilisateurs</a>
                 <ul class="submenu">
                     <li class="submenu-item">
                         <?= $this->Html->link(

@@ -24,6 +24,9 @@ use Cake\ORM\Entity;
  * @property string $address
  * @property string $zip_code
  * @property string $city
+ * @property string $social_security_number
+ * @property string $urssaf_email
+ * @property string $urssaf_password
  * @property int $lesson_count
  * @property FrozenDate $created
  *

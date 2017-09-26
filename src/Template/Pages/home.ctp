@@ -1,8 +1,8 @@
 <section class="no-p">
     <div class="owl-carousel owl-theme" id="main-carousel">
-        <div class="slide">
+        <div class="slide" id="slide-1">
             <div class="slide-outer">
-                <?= $this->Html->image('slider/slide-1.jpg', ['class' => 'slide-bg']); ?>
+                <?= $this->Html->image('slider/slide-1.png', ['class' => 'slide-bg']); ?>
 
                 <div class="slide-inner container">
                     <h2 class="animated bounceIn">Bienvenue sur Escola</h2>
@@ -11,6 +11,38 @@
                         ['controller' => 'pages', 'action' => 'about'],
                         ['class' => 'btn btn-ghost btn-lg animated bounceIn']
                     ); ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide-2">
+            <div class="slide-outer">
+                <?= $this->Html->image('slider/slide-2.png', ['class' => 'slide-bg']); ?>
+
+                <div class="slide-inner container">
+                    <?= $this->Html->link(
+                        'Trouver un prof',
+                        ['controller' => 'users', 'action' => 'register'],
+                        ['class' => 'main-link']
+                    ); ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide-3">
+            <div class="slide-outer">
+                <?= $this->Html->image('slider/slide-3.png', ['class' => 'slide-bg']); ?>
+
+                <div class="slide-inner container">
+                    <div class="title-container">
+                        <h3>Escola est à</h3>
+                        <h2>Metz</h2>
+                        <?= $this->Html->link(
+                            'En savoir plus',
+                            ['controller' => 'posts', 'action' => 'index'],
+                            ['class' => 'btn btn-ghost btn-lg hidden-xs']
+                        ); ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,7 +102,7 @@
                 <div class="col-md-4 col-md-offset-2 col-xs-6">
                     <div class="feature">
                         <div class="feature-icon"><span class="glyphicon glyphicon-time"></span></div>
-                        <p class="feature-text">En quelques clis, faîtes votre demande de prof, et nous vous
+                        <p class="feature-text">En quelques clics, faîtes votre demande de prof, et nous vous
                             sélectionnons un Super Prof
                             Escola en moins de 24 heures !</p>
                     </div>
@@ -79,7 +111,7 @@
                     <div class="feature feature">
                         <div class="feature-icon"><span class="glyphicon glyphicon-tasks"></span></div>
                         <p class="feature-text">Un suivi approfondi de chaque élève selon leurs besoins, avec des bilans
-                            réguliers</p>
+                            réguliers.</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-md-offset-2 col-xs-6">
@@ -87,7 +119,7 @@
                         <div class="feature-icon"><span class="glyphicon glyphicon-euro"></span></div>
                         <p class="feature-text">Escola, c’est aucun frais de dossier ni d’inscription : les cours
                             particuliers à un prix enfin
-                            raisonnable</p>
+                            raisonnable.</p>
                     </div>
                 </div>
             </div>

@@ -88,11 +88,8 @@ gulp.task('js-admin', function () {
 gulp.task('fonts', function () {
     gulp.src(['bower_components/font-awesome/fonts/*'])
         .pipe(gulp.dest('webroot/fonts/font-awesome/'));
-    gulp.src(['bower_components/bootstrap/fonts/*'])
+    return gulp.src(['bower_components/bootstrap/fonts/*'])
         .pipe(gulp.dest('webroot/fonts/glyphicons/'));
-    gulp.src(['bower_components/']);
-    return gulp.src(['bower_components/open-sans-fontface/fonts/**'])
-        .pipe(gulp.dest('webroot/fonts/open-sans/'));
 });
 
 /*= Minify assets

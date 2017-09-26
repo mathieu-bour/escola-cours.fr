@@ -1,3 +1,8 @@
+<section class="page-title-container">
+    <h1 class="page-title">Connexion</h1>
+</section>
+
+
 <section>
     <div class="container">
         <div class="row">

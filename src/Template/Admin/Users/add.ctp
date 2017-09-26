@@ -52,6 +52,10 @@
                         ]); ?>
                     </div>
                 </div>
+
+                <?= $this->Form->input('social_security_number', ['label' => 'Numéro de sécurité sociale']); ?>
+
+                <?= $this->Form->input('notes', ['type' => 'textarea', 'label' => 'Notes']); ?>
             </div>
 
             <div class="col-md-6">

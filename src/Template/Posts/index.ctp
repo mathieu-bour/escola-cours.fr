@@ -1,3 +1,7 @@
+<section class="page-title-container">
+    <h1 class="page-title">Blog</h1>
+</section>
+
 <div class="container">
     <div class="posts-container">
         <div class="post callout callout-primary">

@@ -18,10 +18,8 @@ use Cake\Validation\Validator;
  *
  * @author Mathieu Bour <mathieu.tin.bour@gmail.com>
  * @package App\Model\Table
- *
  * @property HasMany $Courses
  * @property HasMany $Slots
- *
  * @method User get($primaryKey, $options = [])
  * @method User newEntity($data = null, array $options = [])
  * @method User[] newEntities(array $data, array $options = [])
@@ -36,6 +34,7 @@ class UsersTable extends Table
      * Initialize method
      *
      * @param array $config The configuration for the Table.
+     *
      * @return void
      */
     public function initialize(array $config)
@@ -58,6 +57,7 @@ class UsersTable extends Table
      * Default validation rules.
      *
      * @param Validator $validator Validator instance.
+     *
      * @return Validator
      */
     public function validationDefault(Validator $validator)
@@ -82,7 +82,7 @@ class UsersTable extends Table
             ->lengthBetween('firstname', [1, 60], 'Votre prénom doit être compris entre 1 et 60 caractères')
             ->allowEmpty('firstname', false, 'Votre prénom est nécessaire')
             // telephone
-            ->lengthBetween('telephone', [10, 20], 'Votre numéro de téléphone doit être compris entre 10 et 20 caractères')
+            ->lengthBetween('telephone', [1, 20], 'Votre numéro de téléphone doit être compris entre 1 et 20 caractères')
             ->allowEmpty('telephone', false, 'Votre numéro de téléphone est nécessaire')
             // address
             ->lengthBetween('address', [1, 255], 'Votre adresse doit être compris entre 1 et 255 caractères')
@@ -107,6 +107,7 @@ class UsersTable extends Table
      * application integrity.
      *
      * @param RulesChecker $rules The rules object to be modified.
+     *
      * @return RulesChecker
      */
     public function buildRules(RulesChecker $rules)
@@ -118,10 +119,21 @@ class UsersTable extends Table
 
     /*= Hooks
      *=====================================================*/
-    public function beforeSave(Event $event, User $entity, ArrayObject $options)
+    public function beforeSave(Event $event, User $user, ArrayObject $options)
     {
-        if ($entity->isNew()) {
-            $entity->token = Text::uuid();
+        if ($user->isNew()) {
+            $user->token = Text::uuid();
+
+            // Generate urssaf_fields
+            $urssaf_emailPrefix = strtolower(Text::slug($user->firstname . '.' . $user->lastname, ['ignore' => '.']));
+            $urssaf_email = $urssaf_emailPrefix . '@escola-cours.fr';
+            $urssaf_emailCount = $this->find()->where(['urssaf_email' => $urssaf_email])->count();
+
+            if ($urssaf_emailCount > 0) {
+                $urssaf_email = str_replace('@escola', ($urssaf_emailCount + 1) . '@escola', $urssaf_email);
+            }
+            $user->urssaf_email = $urssaf_email;
+            $user->urssaf_password = substr(md5($urssaf_email . random_int(0, 99999)), 0, 20);
         }
     }
 
@@ -136,6 +148,7 @@ class UsersTable extends Table
             ]);
         })
             ->where(['type' => 'teacher']);
+
         return $query;
     }
 }
