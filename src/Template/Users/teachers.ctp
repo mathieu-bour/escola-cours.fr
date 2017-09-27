@@ -12,7 +12,7 @@
                     <?= $this->Flash->render(); ?>
                 </div>
 
-                <?= $this->Form->create(); ?>
+                <?= $this->Form->create(null, ['id' => 'user-recruitment-form']); ?>
 
                 <h3 class="title-lined"><span class="bg-white">Informations personnelles</span></h3>
                 <div class="form-block">

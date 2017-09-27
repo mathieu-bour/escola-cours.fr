@@ -29,5 +29,6 @@ $('#main-carousel').owlCarousel({
 
 $('#user-account-form').coursesForm();
 $('#user-register-form').coursesForm();
+$('#user-recruitment-form').coursesForm();
 
 $('#user-slots-form').slotsTable();
