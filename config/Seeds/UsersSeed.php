@@ -105,9 +105,9 @@ class UsersSeed extends AbstractSeed
                     'created' => Time::now()->format('Y-m-d H:i:s')
                 ];
             }
-
-            $table = $this->table('users');
-            $table->insert($data)->save();
         }
+
+        $table = $this->table('users');
+        $table->insert($data)->save();
     }
 }
