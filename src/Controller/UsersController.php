@@ -157,7 +157,9 @@ class UsersController extends AppController
 
         if ($this->request->is('post')) {
             $data = $this->request->getData();
-            $data['token'] = null;
+
+            $data['token'] = Text::uuid(); // Refresh uuid
+
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 $this->Flash->success('Votre mot de passe a été changé avec succès, vous pouvez vous reconnecter');
@@ -167,6 +169,7 @@ class UsersController extends AppController
             }
         } else {
             if (empty($user)) {
+                $user = $this->Users->patchEntity($user, ['token' => Text::uuid()]);
                 $this->response = $this->response->withStatus(404);
                 $this->Flash->error('Ce lien n\'est pas lié à un utilisateur ou a expiré');
             }
@@ -180,9 +183,8 @@ class UsersController extends AppController
      */
     public function account()
     {
-        if ($this->request->is(['post'])) {
+        if ($this->request->is(['post', 'put'])) {
             $data = $this->request->getData();
-            $data['courses'] = json_decode($data['courses'], true);
 
             /** @var User */
             $user = $this->Users->find()

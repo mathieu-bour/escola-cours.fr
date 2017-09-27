@@ -123,16 +123,11 @@
                     </div>
                 </div>
 
-                <?= $this->Form->input('courses-json', [
-                    'type' => 'hidden',
-                    'value' => ''
-                ]); ?>
-
                 <button type="button" class="btn btn-primary" id="add-course">Ajouter un cours</button>
             </div>
 
             <div class="text-center">
-                <button type="submit" class="btn btn-lg btn-primary">Mettre à jour mon profil</button>
+                <button class="btn btn-lg btn-primary">Mettre à jour mon profil</button>
             </div>
         </div>
         <?= $this->Form->end(); ?>

@@ -10,10 +10,10 @@
                 <?= $this->Flash->render('auth'); ?>
 
                 <?= $this->Form->create(); ?>
-                <?= $this->Form->input('new_password', [
+                <?= $this->Form->input('password', [
                     'label' => 'Mot de passe'
                 ]); ?>
-                <?= $this->Form->input('new_password_confirm', [
+                <?= $this->Form->input('password_confirm', [
                     'label' => 'Confirmation du mot de passe'
                 ]); ?>
 

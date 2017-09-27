@@ -112,11 +112,6 @@
                     <?php endforeach; ?>
                 </div>
 
-                <?= $this->Form->input('courses-json', [
-                    'type' => 'hidden',
-                    'value' => ''
-                ]); ?>
-
                 <button type="button" class="btn btn-primary" id="add-course">Ajouter un cours</button>
 
                 <a class="btn btn-primary" id="add-course">Ajouter un cours</a>

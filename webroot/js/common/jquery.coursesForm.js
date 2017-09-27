@@ -122,16 +122,8 @@ $.fn.coursesForm = function () {
         $(this).parents('.course').remove();
     });
 
-
-    /*
-     * On submit action, create a json string with the selected courses
-     */
-    var $coursesJson = $form.find('#courses-json');
-
     $form.submit(function (e) {
         e.preventDefault();
-
-        var courses = [];
 
         var counter = 0;
         $('.course').each(function () {
