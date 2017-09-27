@@ -43,6 +43,9 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             $user = $this->request->getData();
+
+            $user['type'] = 'student';
+
             $user = $this->Users->newEntity($user, ['associated' => ['Courses']]);
 
             if ($this->Users->save($user)) {
@@ -65,18 +68,11 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             $data = $this->request->getData();
-            $data['type'] = 'student';
 
             $user = $this->Users->newEntity($data, ['associated' => ['Courses']]);
 
-            if ($this->Users->save($user)) {
-                $this->Flash->success('Votre inscription a bien été prise en compte, vous pouvez dès lors vous connecter');
-                $this->redirect(['controller' => 'users', 'action' => 'login']);
-            } else if (!empty($user->getErrors()) || !empty($user->invalid())) {
-                $this->set('user', $user);
-                $this->response = $this->response->withStatus(400, 'Invalid data');
-                $this->Flash->error('Erreur lors de votre inscription, veuillez corriger vos informations');
-            }
+            debug($user);
+            die();
         }
 
         $this->setTitle('Recrutement');
@@ -149,8 +145,7 @@ class UsersController extends AppController
     }
 
     /**
-     * Reset a passwordSuivant
-
+     * Reset a password
      *
      * @param $token
      */
