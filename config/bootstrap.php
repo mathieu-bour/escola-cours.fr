@@ -64,6 +64,9 @@ use Cake\Network\Request;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 
+$dotenv = new Dotenv\Dotenv(__DIR__ . '/..');
+$dotenv->load();
+
 /*
  * Read configuration file and inject configuration into various
  * CakePHP classes.
@@ -99,7 +102,7 @@ if (Configure::read('debug')) {
  * Set server timezone to UTC. You can change it to another timezone of your
  * choice but using UTC makes time calculations / conversions easier.
  */
-date_default_timezone_set('UTC');
+date_default_timezone_set('Europe/Paris');
 
 /*
  * Configure the mbstring extension to use the correct encoding.
@@ -148,11 +151,11 @@ if (!Configure::read('App.fullBaseUrl')) {
     unset($httpHost, $s);
 }
 
-Cache::config(Configure::consume('Cache'));
-ConnectionManager::config(Configure::consume('Datasources'));
-Email::configTransport(Configure::consume('EmailTransport'));
-Email::config(Configure::consume('Email'));
-Log::config(Configure::consume('Log'));
+Cache::setConfig(Configure::consume('Cache'));
+ConnectionManager::setConfig(Configure::consume('Datasources'));
+Email::setConfigTransport(Configure::consume('EmailTransport'));
+Email::setConfig(Configure::consume('Email'));
+Log::setConfig(Configure::consume('Log'));
 Security::salt(Configure::consume('Security.salt'));
 
 /*
@@ -224,7 +227,7 @@ if (Configure::read('debug')) {
 /*
  * Define default database
  */
-\Cake\DataSource\ConnectionManager::alias('dev', 'default');
+\Cake\DataSource\ConnectionManager::alias(env('DB_CONNECTION', 'dev'), 'default');
 
 Plugin::load('Bootstrap');
 Plugin::load('WyriHaximus/MinifyHtml', ['bootstrap' => true]);

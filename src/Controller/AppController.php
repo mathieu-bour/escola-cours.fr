@@ -120,6 +120,10 @@ class AppController extends Controller
         $this->Crumbs->end($pageTitle);
     }
 
+    /**
+     * Set the page description
+     * @param $pageDescription
+     */
     public function setDescription($pageDescription) {
         $this->set('pageDescription', $pageDescription);
     }

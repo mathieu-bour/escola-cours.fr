@@ -2,8 +2,7 @@
 $config = [
     /*= Debug level
      *=====================================================*/
-    //'debug' => env('DATASOURCE_CONFIG') == 'dev',
-    'debug' => true,
+    'debug' => env('DEBUG', false),
 
     'App' => [
         'namespace' => 'App',
@@ -73,15 +72,15 @@ $config = [
             'host' => 'ssl://mathieu-bour.fr',
             'port' => 465,
             'timeout' => 30,
-            'username' => 'no-reply@escola-cours.fr',
-            'password' => 'ZK#!&%MHSv*zoVbmk!Wt'
+            'username' => 'contact@escola-cours.fr',
+            'password' => 'QtAYbll7gfsmm0TOZHKO'
         ],
     ],
     'Email' => [
         'default' => [
             'transport' => 'default',
-            'from' => 'no-reply@escola-cours.fr',
-            'sender' => 'no-reply@escola-cours.fr',
+            'from' => 'ncontact@escola-cours.fr',
+            'sender' => 'contact@escola-cours.fr',
             'replyTo' => 'contact@escola-cours.fr',
             'charset' => 'utf-8',
             'headerCharset' => 'utf-8',
@@ -117,9 +116,9 @@ $config = [
             'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
             'host' => '127.0.0.1',
-            'username' => 'escola_cours_fr_test',
+            'username' => 'escola_cours_fr_tests',
             'password' => '%T1!pnxuQlUQtr^&@vqy',
-            'database' => 'escola_cours_fr_test',
+            'database' => 'escola_cours_fr_tests',
             'encoding' => 'utf8'
         ],
     ],

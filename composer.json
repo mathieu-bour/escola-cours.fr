@@ -14,7 +14,8 @@
     "fheider/cakephp-datatables": "dev-master",
     "wyrihaximus/minify-html": "^1.1",
     "phpunit/phpunit": "^6.0",
-    "fzaninotto/faker": "^1.7"
+    "fzaninotto/faker": "^1.7",
+    "vlucas/phpdotenv": "^2.4"
   },
   "require-dev": {
     "psy/psysh": "@stable",
