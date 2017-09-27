@@ -18,10 +18,11 @@ beta:
   include:
      "webroot/css/*": "webroot/css/"
      "webroot/js/*": "webroot/js/"
+
 live:
-  scheme: "ftp"
+  scheme: "sftp"
   host: "mathieu-bour.fr"
-  user: "escola_cours_fr"
+  user: "escola-cours-fr"
   pass: "PC54Jfa7H5BKXAdrk23e"
   exclude:
     - ".idea/*"

@@ -58,7 +58,7 @@ class AppController extends Controller
             $this->set([
                 'here' =>  $this->request->getRequestTarget(),
                 'isLogged' => (bool)$this->Auth->user(),
-                'isAdmin' => (bool)$this->Auth->user('admin'),
+                'isAdmin' => (bool)$this->Auth->user('type') == 'admin',
                 '_csrfToken' => $this->request->getParam('_csrfToken')
             ]);
         }
@@ -87,7 +87,7 @@ class AppController extends Controller
         }
 
         if ($this->request->getParam('prefix') === 'admin') {
-            return (bool)($user['admin']);
+            return $user['type'] == 'admin';
         }
 
         return false;

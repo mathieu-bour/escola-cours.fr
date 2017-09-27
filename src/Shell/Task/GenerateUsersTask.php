@@ -55,6 +55,8 @@ class GenerateUsersTask extends GenerateTask
                 'zip_code' => '57000',
                 'city' => 'Metz',
                 'social_security_number' => $type == 'teacher' ? random_int(1000000, 9999999) . random_int(10000000, 99999999) : null,
+                'urssaf_email' => $emailUsername . '@escola-cours.fr',
+                'urssaf_password' => $faker->password(20, 20),
                 'created' => Time::now()
                     ->subDays(random_int(0, 30))
                     ->subHours(random_int(0, 24))
