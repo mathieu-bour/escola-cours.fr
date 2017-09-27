@@ -9,7 +9,9 @@ class CreateUsersTable extends AbstractMigration
             ->addColumn('token', 'uuid')
             ->addColumn('email', 'string')
             ->addColumn('password', 'string')
-            ->addColumn('type', 'string', ['values' => ['admin', 'teacher', 'student']])
+            ->addColumn('type', 'string', [
+                'values' => ['admin', 'teacher', 'student']
+            ])
             ->addColumn('lastname', 'string')
             ->addColumn('firstname', 'string')
             ->addColumn('telephone', 'string')
@@ -18,7 +20,7 @@ class CreateUsersTable extends AbstractMigration
             ->addColumn('city', 'string')
             ->addColumn('lesson_count', 'integer', ['default' => 0])
             ->addColumn('created', 'datetime')
-            ->addIndex('email', ['unique'])
+            ->addIndex(['email'], ['unique' => true])
             ->create();
     }
 
