@@ -65,6 +65,7 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             $data = $this->request->getData();
+            $data['type'] = 'student';
 
             $user = $this->Users->newEntity($data, ['associated' => ['Courses']]);
 
@@ -148,7 +149,8 @@ class UsersController extends AppController
     }
 
     /**
-     * Reset a password
+     * Reset a passwordSuivant
+
      *
      * @param $token
      */

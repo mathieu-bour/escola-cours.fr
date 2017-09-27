@@ -17,6 +17,8 @@ class UsersController extends AppController
 
     /**
      * Students page
+     *
+     * @param null $action
      */
     public function students($action = null)
     {

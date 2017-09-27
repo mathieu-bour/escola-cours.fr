@@ -6,24 +6,26 @@
     <div class="panel-body">
         <?= $this->Form->create(null, ['id' => 'user-add-admin-form']); ?>
         <?php $this->Form->unlockField('courses'); ?>
-        <?= $this->Form->input('type', [
-            'type' => 'radio',
-            'label' => 'Type de compte',
-            'options' => [
-                'student' => 'Élève',
-                'teacher' => 'Professeur'
-            ],
-            'default' => 'student'
-        ]); ?>
 
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <?= $this->Form->input('lastname', ['label' => 'Nom']); ?>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <?= $this->Form->input('firstname', ['label' => 'Prénom']); ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->input('type', [
+                            'label' => 'Type de compte',
+                            'options' => [
+                                'student' => 'Élève',
+                                'teacher' => 'Professeur',
+                                'admin' => 'Administrateur'
+                            ],
+                            'default' => 'student'
+                        ]); ?>
                     </div>
                 </div>
 
@@ -36,7 +38,17 @@
                     </div>
                 </div>
 
-                <?= $this->Form->input('address', ['label' => 'Adresse']); ?>
+                <div class="row">
+                    <div class="col-md-7">
+                        <?= $this->Form->input('address', ['label' => 'Adresse']); ?>
+                    </div>
+                    <div class="col-md-2">
+                        <?= $this->Form->input('zip_code', ['label' => 'Code postal']); ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->input('city', ['label' => 'Ville']); ?>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-6">
