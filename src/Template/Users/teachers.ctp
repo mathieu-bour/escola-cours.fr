@@ -26,7 +26,7 @@
                     <?= $this->element('course-form'); ?>
                 </div>
 
-                <h3 class="title-lined"><span class="bg-white">Vos disponibilités pour l'entretien</span></h3>
+                <h3 class="title-lined"><span class="bg-white">Vos disponibilités pour enseigner</span></h3>
                 <div class="form-block">
                     <?= $this->Form->input('availabilities', ['type' => 'textarea', 'label' => 'Disponibilités']); ?>
                 </div>
