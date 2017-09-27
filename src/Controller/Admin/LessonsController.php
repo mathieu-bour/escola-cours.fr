@@ -80,6 +80,7 @@ class LessonsController extends AppController
     }
 
     /**
+    {
      * Delete a lesson
      * @param int $id
      */
