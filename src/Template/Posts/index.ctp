@@ -11,6 +11,8 @@
             <div class="post-content">
                 <?= $this->Html->image('blog/blog-thumb-1.jpg'); ?>
 
+                <p></p>
+
                 <p>Metz, capitale culturelle de la Lorraine, est une ville authentique, forte et portée par son histoire
                     de
                     plusieurs millénaires. Non, nous ne ferons pas de cours d’histoire dans cet article, puisque nous

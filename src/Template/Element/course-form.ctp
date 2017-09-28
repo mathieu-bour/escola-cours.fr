@@ -1,7 +1,5 @@
-<div id="courses-container"></div>
+<?php $this->Form->unlockFields("courses") ?>
 
-<?= $this->Form->input('courses', [
-    'type' => 'hidden'
-]); ?>
+<div id="courses-container"></div>
 
 <a class="btn btn-primary" id="add-course">Ajouter un cours</a>

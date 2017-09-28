@@ -41,7 +41,7 @@
                             <li class="nav-item">
                                 <?= $this->Html->link('Recrutement', [
                                     'controller' => 'users',
-                                    'action' => 'teachers'
+                                    'action' => 'recruitment'
                                 ]); ?>
                             </li>
                         <?php endif; ?>

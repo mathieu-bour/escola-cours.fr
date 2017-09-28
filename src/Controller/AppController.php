@@ -58,7 +58,7 @@ class AppController extends Controller
             $this->set([
                 'here' =>  $this->request->getRequestTarget(),
                 'isLogged' => (bool)$this->Auth->user(),
-                'isAdmin' => (bool)$this->Auth->user('type') == 'admin',
+                'isAdmin' => $this->Auth->user('type') == 'admin',
                 '_csrfToken' => $this->request->getParam('_csrfToken')
             ]);
         }

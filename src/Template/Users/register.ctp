@@ -13,7 +13,7 @@
 
                 <div class="owl-carousel owl-theme" id="register-form-carousel">
                     <div class="form-page">
-                        <h3>Tout d'abord, nous avons besoin de votre adresse</h3>
+                        <h3>Tout d'abord, nous avons besoin de votre adresse...</h3>
 
                         <?= $this->Form->input('dynamic-address', [
                             'class' => 'input-lg',
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-page">
-                        <h3>Nous avons maintenant besoin de quelques informations personnelles</h3>
+                        <h3>Nous avons maintenant besoin de quelques informations personnelles..</h3>
 
                         <?= $this->Form->input('lastname', ['label' => 'Nom']) ?>
                         <?= $this->Form->input('firstname', ['label' => 'Prénom']) ?>
@@ -43,7 +43,7 @@
 
                     <div class="form-page">
                         <h3>Excellent !</h3>
-                        <p>Choisissez maintenant votre mot de passe</p>
+                        <p>Choisissez maintenant votre mot de passe..</p>
 
                         <?= $this->Form->input('password', ['label' => 'Mot de passe']) ?>
                         <?= $this->Form->input('password_confirm', [
@@ -54,12 +54,9 @@
 
                     <div class="form-page">
                         <h3>Parfait !</h3>
-                        <p>Indiquez maintenant quels cours vous recherchez</p>
+                        <p>Indiquez maintenant quels cours vous recherchez.</p>
 
-                        <div id="courses-container"></div>
-                        <?php $this->Form->unlockFields("courses") ?>
-
-                        <a class="btn btn-primary" id="add-course">Ajouter un cours</a>
+                        <?= $this->element('course-form'); ?>
 
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Valider mon inscription</button>

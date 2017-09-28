@@ -149,12 +149,12 @@ if ($registerForm.length > 0) {
 
                     $formMessage.show();
                     $formNext.show();
-                    setFormMessage('C\'est ici ? Si non, essayez d\'entrer un adresse plus précise !', 'success');
+                    setFormMessage('C\'est ici ? Si non, essayez d\'entrer une adresse plus précise !', 'success');
                 } else {
                     resetMarker();
 
                     $formNext.hide();
-                    setFormMessage('On ne vous trouve pas ! Essayez d\'entrer un adresse plus précise !', 'danger');
+                    setFormMessage('On ne vous trouve pas ! Essayez d\'entrer une adresse plus précise !', 'danger');
                 }
             });
         }

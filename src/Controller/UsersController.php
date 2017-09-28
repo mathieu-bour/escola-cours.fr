@@ -28,8 +28,8 @@ class UsersController extends AppController
      *=====================================================*/
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['login', 'register', 'teachers', 'forgot', 'reset']);
-        $this->Security->setConfig('unlockedActions', ['register', 'account']);
+        $this->Auth->allow(['login', 'register', 'recruitment', 'forgot', 'reset']);
+        $this->Security->setConfig('unlockedActions', ['recruitment', 'register', 'account']);
 
         return parent::beforeFilter($event);
     }
@@ -49,7 +49,10 @@ class UsersController extends AppController
             $user = $this->Users->newEntity($user, ['associated' => ['Courses']]);
 
             if ($this->Users->save($user)) {
-                $this->Flash->success('Votre inscription a bien été prise en compte, vous pouvez dès lors vous connecter');
+                $this->Flash->success('Votre inscription a bien été prise en compte, vous pouvez dès lors ' .
+                    'vous connecter !');
+                $this->Flash->success('Nous avons bien enregistré votre demande. Dans les prochaines 24 ' .
+                    'heures, nous allons vous sélectionner un Super Prof Escola, puis nous vous recontacterons.');
                 $this->redirect(['controller' => 'users', 'action' => 'login']);
             } else if (!empty($user->getErrors()) || !empty($user->invalid())) {
                 $this->set('user', $user);
@@ -64,15 +67,24 @@ class UsersController extends AppController
     /**
      * Teacher register page
      */
-    public function teachers()
+    public function recruitment()
     {
         if ($this->request->is('post')) {
             $data = $this->request->getData();
 
             $user = $this->Users->newEntity($data, ['associated' => ['Courses']]);
+            $this->loadModel('Levels');
+            $levels = $this->Levels->find('list')->toArray();
+            $this->loadModel('Disciplines');
+            $disciplines = $this->Disciplines->find('list')->toArray();
 
-            debug($user);
-            die();
+            if ($this->getMailer('User')->send('recruitment', [$user, $levels, $disciplines])) {
+                $this->Flash->success('Nous avons bien reçu votre demande et vous répondrons par e-mail' .
+                    ' dans les meilleurs délais');
+            } else {
+                $this->response = $this->response->withStatus(503);
+                $this->Flash->error('Impossible de vous envoyer l\'e-mail ; contactez le support');
+            }
         }
 
         $this->setTitle('Recrutement');
@@ -185,6 +197,11 @@ class UsersController extends AppController
     {
         if ($this->request->is(['post', 'put'])) {
             $data = $this->request->getData();
+
+            if (empty($data['password'])) {
+                unset($data['password']);
+                unset($data['password_confirm']);
+            }
 
             /** @var User */
             $user = $this->Users->find()
