@@ -56,7 +56,8 @@
                 "title": "Actions",
                 "render": function (data, type, row) {
                     return '<button class="btn btn-xs btn-danger btn-delete">Supprimer<button';
-                }
+                },
+                "searchable": false
             }
         ],
         "order": [0, "desc"]

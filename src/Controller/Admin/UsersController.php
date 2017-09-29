@@ -102,11 +102,10 @@ class UsersController extends AppController
 
             if ($this->Users->save($user)) {
                 $this->Flash->success('Utilisateur enregistré');
+                return $this->redirect(['controller' => 'users', 'action' => $user->type . 's']);
             } else {
-                $this->Flash->error('');
+                $this->Flash->error('Erreur lors de l\'enregistrement de l\'utilisateur');
             }
-
-            return $this->redirect(['controller' => 'users', 'action' => $user->type . 's']);
         }
     }
 

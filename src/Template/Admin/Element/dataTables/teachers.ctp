@@ -62,7 +62,8 @@ $this->start('script'); ?>
                 "title": "Actions",
                 "render": function (data, type, row) {
                     return '<a href="/admin/users/edit/' + row.id + '" class="label label-warning">Éditer</a>';
-                }
+                },
+                "searchable": false
             }
         ]
     });

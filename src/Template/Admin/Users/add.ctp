@@ -52,13 +52,13 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <?= $this->Form->input('new_password', [
+                        <?= $this->Form->input('password', [
                             'type' => 'password',
                             'label' => 'Mot de passe'
                         ]); ?>
                     </div>
                     <div class="col-md-6">
-                        <?= $this->Form->input('new_password_confirm', [
+                        <?= $this->Form->input('password_confirm', [
                             'type' => 'password',
                             'label' => 'Confirmation du mot de passe'
                         ]); ?>
