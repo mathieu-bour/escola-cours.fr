@@ -72,13 +72,8 @@
 
             <div class="col-md-6">
                 <label class="control-label">Cours</label>
-                <div id="courses-container"></div>
 
-                <?= $this->Form->input('courses', [
-                    'type' => 'hidden'
-                ]); ?>
-
-                <a class="btn btn-primary" id="add-course">Ajouter un cours</a>
+                <?= $this->element('../Element/course-form'); ?>
             </div>
         </div>
 
